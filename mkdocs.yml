@@ -1,0 +1,86 @@
+site_name: 'Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>'
+
+nav:
+  - about me: index.md
+  - cv: cv/cv.md
+  - research: research/research.md
+  - short courses & resources:
+    - solving economic models: 
+      - courses/sem/index.md
+      - 1 Numpy: ./courses/sem/1-numpy.md
+      - 2 Numba: ./courses/sem/2-numba.md
+      - "3 Application: Stochastic Processes": ./courses/sem/3-application_stoch_proc.md
+      - 4 Optimization: ./courses/sem/4-optimization.md
+      - 5 Endogenous Grid Method: ./courses/sem/5-endogenous_grid_method.md
+    - bayesian econometrics:
+      - /courses/bmetrics/index.md
+      - 1 Bayesian Regression: ./courses/bmetrics/BayReg.md
+      - 2 The Unobserved Component Stochastic Volatility Model: ./courses/bmetrics/UCSV.md
+      - 3 The Time-Varying Parameter Model: ./courses/bmetrics/TVP-AR.md
+
+theme:
+  name: material
+  custom_dir: overrides
+  features:
+    - navigation.top
+    - navigation.indexes
+  favicon: assets/images/logo.jpg
+  logo: assets/images/logo.jpg  # Update the path to your logo
+  # logo:
+  #   icon: "home"
+  #palette:
+  #  primary: "white" #"blue grey"
+  #  accent: "teal"
+  font:
+    text: "IBM Plex Serif"
+    code: "IBM Plex Mono"
+  extra:
+    social:
+      - type: "github"
+        link: "https://github.com/FredHB"
+      - type: "linkedin"
+        link: "https://linkedin.com/in/fbennhoff"
+
+markdown_extensions:
+  - pymdownx.arithmatex  # Render LaTeX math
+  - pymdownx.superfences  # Enhanced fenced code blocks
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight  # Syntax highlighting
+  - pymdownx.inlinehilite  # Inline syntax highlighting
+  - pymdownx.betterem:  # Improved emphasis
+      smart_enable: all
+  - pymdownx.caret  # Insertions and deletions
+  - pymdownx.critic  # Critic markup
+  - pymdownx.details  # Details and summary tags
+  - pymdownx.emoji:  # Emoji support
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.magiclink  # Auto-linking URLs
+  - pymdownx.mark  # Highlight text
+  - pymdownx.smartsymbols  # Convert ASCII symbols to Unicode
+  - pymdownx.tasklist:  # Task lists with checkboxes
+      custom_checkbox: true
+  - pymdownx.tilde  # Strikethrough text
+  - toc:  # Table of contents
+      permalink: "#"
+  - smarty  # Smart quotes and dashes
+  - admonition  # Admonition blocks
+  - footnotes  # Footnotes support
+  - codehilite  # Code highlighting
+#  - fontawesome_markdown  # FontAwesome icons
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.details
+  - markdown.extensions.extra
+  - pymdownx.extra
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra_css:
+  - "stylesheets/extra.css"
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML
