@@ -24,22 +24,24 @@ theme:
   features:
     - navigation.top
     - navigation.indexes
-  favicon: assets/images/logo.jpg
-  logo: assets/images/logo.jpg  # Update the path to your logo
+  favicon: assets/images/logo_white.png
+  logo: assets/images/logo_white.png  # Update the path to your logo
   # logo:
   #   icon: "home"
-  #palette:
-  #  primary: "white" #"blue grey"
-  #  accent: "teal"
+  palette:
+   primary: "teal"
+   accent: "teal"
   font:
     text: "IBM Plex Serif"
     code: "IBM Plex Mono"
-  extra:
-    social:
-      - type: "github"
-        link: "https://github.com/FredHB"
-      - type: "linkedin"
-        link: "https://linkedin.com/in/fbennhoff"
+  # extra:
+  #   social:
+  #     - type: "github"
+  #       link: "https://github.com/FredHB"
+  #     - type: "linkedin"
+  #       link: "https://linkedin.com/in/fbennhoff"
+
+plugins: [] # disable search
 
 markdown_extensions:
   - pymdownx.arithmatex  # Render LaTeX math

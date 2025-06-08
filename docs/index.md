@@ -1,7 +1,10 @@
 ---
-title: Biography
-# template: home.html
+title: "about me"
+hide: 
+    - toc
+# template: _home.html
 ---
+
 # at a glance
 <section id="about-sec" class="wg-about-biography">
     <div class="about-grid">
