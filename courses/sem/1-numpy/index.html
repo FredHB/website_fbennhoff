@@ -1,0 +1,1470 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../2-numba/">
+      
+      
+      <link rel="icon" href="../../../assets/images/logo.jpg">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.32">
+    
+    
+      
+        <title>1 Numpy - Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small></title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3cba04c6.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Serif";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#numpy-basics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Frederik H Bennhoff &lt;br&gt;&lt;small&gt;&lt;i&gt;i want to be a professor of economics.&lt;/i&gt;&lt;/small&gt;" class="md-header__button md-logo" aria-label="Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1 Numpy
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Frederik H Bennhoff &lt;br&gt;&lt;small&gt;&lt;i&gt;i want to be a professor of economics.&lt;/i&gt;&lt;/small&gt;" class="md-nav__button md-logo" aria-label="Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.jpg" alt="logo">
+
+    </a>
+    Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    about me
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cv/cv/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cv
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/research/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    research
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    short courses & resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            short courses & resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    solving economic models
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            solving economic models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    1 Numpy
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    1 Numpy
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Arrays
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#array-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Array Indexing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions-to-make-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions to Make Arrays
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-computations-and-broadcasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Computations and Broadcasting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Computations and Broadcasting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#array-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Array Methods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matrix-computations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matrix Computations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-nprandom-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. The np.random Module
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-other-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Other Exercises
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-numba/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 Numba
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-application_stoch_proc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3 Application: Stochastic Processes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4 Optimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-endogenous_grid_method/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5 Endogenous Grid Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    bayesian econometrics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            bayesian econometrics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/courses/bmetrics/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bmetrics/BayReg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 Bayesian Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bmetrics/UCSV/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 The Unobserved Component Stochastic Volatility Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bmetrics/TVP-AR/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3 The Time-Varying Parameter Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Arrays
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#array-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Array Indexing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions-to-make-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions to Make Arrays
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-computations-and-broadcasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Computations and Broadcasting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Computations and Broadcasting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#array-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Array Methods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matrix-computations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matrix Computations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-nprandom-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. The np.random Module
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-other-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Other Exercises
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="numpy-basics"><strong>Numpy Basics</strong><a class="headerlink" href="#numpy-basics" title="Permanent link">#</a></h1>
+<p>To get started, install <code>numpy</code> using <code>pip</code> or <code>conda</code> package managers, or make sure that you have a recent version of numpy in your active Python environment.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># as usual, import the module</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1"># np is the standard name of numpy</span>
+</code></pre></div>
+<h2 id="1-arrays">1. <strong>Arrays</strong><a class="headerlink" href="#1-arrays" title="Permanent link">#</a></h2>
+<p>The fundamental object in numpy are numpy arrays, <code>np.array</code>s. They are iterable objects which behave much like lists. They can have many dimensions. Create an array as follows. </p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="c1"># create a numpy array from a list</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span> <span class="c1"># create a 2-d array from a list with two lists</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a = &quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s2">&quot;A = &quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="c1"># extra bit of python: sep argument in print function defines the separating string</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>a = [1 2 3]
+A = [[1 2 3]
+ [4 5 6]]
+</code></pre></div>
+<p>You cannot create numpy arrays from <em>any</em> kind of list. If your list contains integers and floats, integers will be &lsquo;up-cast&rsquo; to the float datatype. If your list contains string, all else will be up-cast to string. What if it contains another datatype, like a list? Brace for an error.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;an up-cast array to float: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;an up-cast array to str: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;1.2&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+
+<span class="c1">#print(&quot;something illegal: &quot;, np.array([1, 2, 3, [1, 2]]) ) # this will throw an error</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>an up-cast array to float:  [1.2 1.  3. ]
+an up-cast array to str:  [&#39;1.2&#39; &#39;1&#39; &#39;3&#39;]
+</code></pre></div>
+<p><strong>Exercise:</strong> Use the &lsquo;dtype&rsquo; argument to save the list <code>[1.9, 1, 3]</code> as a numpy array consisting of str/float/int/bool. What do you notice in the <code>int</code>-case? In the <code>bool</code>-case?</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Begin with list: &quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;forced data-type to str: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;forced data-type to int: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;forced data-type to int: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Begin with list:  [1.9, 1, 3]
+forced data-type to str:  [1 1 3]
+forced data-type to int:  [&#39;1.9&#39; &#39;1&#39; &#39;3&#39;]
+forced data-type to int:  [ True  True  True]
+</code></pre></div>
+<p><strong><em>For Reference: Data Types</em></strong></p>
+<table>
+<thead>
+<tr>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bool_</code></td>
+<td>Boolean (True or False) stored as a byte</td>
+</tr>
+<tr>
+<td><code>int_</code></td>
+<td>Default integer type (same as C <code>long</code>; normally either <code>int64</code> or <code>int32</code>)</td>
+</tr>
+<tr>
+<td><code>intc</code></td>
+<td>Identical to C <code>int</code> (normally <code>int32</code> or <code>int64</code>)</td>
+</tr>
+<tr>
+<td><code>intp</code></td>
+<td>Integer used for indexing (same as C <code>ssize_t</code>; normally either <code>int32</code> or <code>int64</code>)</td>
+</tr>
+<tr>
+<td><code>int8</code></td>
+<td>Byte (-128 to 127)</td>
+</tr>
+<tr>
+<td><code>int16</code></td>
+<td>Integer (-32768 to 32767)</td>
+</tr>
+<tr>
+<td><code>int32</code></td>
+<td>Integer (-2147483648 to 2147483647)</td>
+</tr>
+<tr>
+<td><code>int64</code></td>
+<td>Integer (-9223372036854775808 to 9223372036854775807)</td>
+</tr>
+<tr>
+<td><code>uint8</code></td>
+<td>Unsigned integer (0 to 255)</td>
+</tr>
+<tr>
+<td><code>uint16</code></td>
+<td>Unsigned integer (0 to 65535)</td>
+</tr>
+<tr>
+<td><code>uint32</code></td>
+<td>Unsigned integer (0 to 4294967295)</td>
+</tr>
+<tr>
+<td><code>uint64</code></td>
+<td>Unsigned integer (0 to 18446744073709551615)</td>
+</tr>
+<tr>
+<td><code>float_</code></td>
+<td>Shorthand for <code>float64</code>.</td>
+</tr>
+<tr>
+<td><code>float16</code></td>
+<td>Half precision float: sign bit, 5 bits exponent, 10 bits mantissa</td>
+</tr>
+<tr>
+<td><code>float32</code></td>
+<td>Single precision float: sign bit, 8 bits exponent, 23 bits mantissa</td>
+</tr>
+<tr>
+<td><code>float64</code></td>
+<td>Double precision float: sign bit, 11 bits exponent, 52 bits mantissa</td>
+</tr>
+<tr>
+<td><code>complex_</code></td>
+<td>Shorthand for <code>complex128</code>.</td>
+</tr>
+<tr>
+<td><code>complex64</code></td>
+<td>Complex number, represented by two 32-bit floats</td>
+</tr>
+<tr>
+<td><code>complex128</code></td>
+<td>Complex number, represented by two 64-bit floats</td>
+</tr>
+</tbody>
+</table>
+<p>Source: Jake VanderPlas (2016), Python Data Science Handbook Essential Tools for Working with Data, O&rsquo;Reilly Media.</p>
+<p><strong>Exercise:</strong> Explore the commands <code>np.zeros</code>, <code>np.ones</code>, <code>np.full</code> as follows:</p>
+<ul>
+<li>instantiate a <code>(2, 3, 4)</code> array with each of the commands</li>
+<li>select element <code>[0, 0, 2]</code> for each object and set its value to <code>100</code></li>
+<li>print each object.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span> <span class="c1"># different syntax for full</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">]:</span>
+    <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># extra bit of python syntax:</span>
+<span class="c1"># &quot;abc&quot; * 10 produces a string which repeats &quot;abc&quot; 10 times.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> &quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">,</span>  <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="n">B</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> &quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">,</span>  <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span> 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[[[  0.   0. 100.   0.]
+  [  0.   0.   0.   0.]
+  [  0.   0.   0.   0.]]
+
+ [[  0.   0.   0.   0.]
+  [  0.   0.   0.   0.]
+  [  0.   0.   0.   0.]]] 
+  ---------------------------------------------------------------------- 
+ [[[  1.   1. 100.   1.]
+  [  1.   1.   1.   1.]
+  [  1.   1.   1.   1.]]
+
+ [[  1.   1.   1.   1.]
+  [  1.   1.   1.   1.]
+  [  1.   1.   1.   1.]]] 
+  ---------------------------------------------------------------------- 
+ [[[  4   4 100   4]
+  [  4   4   4   4]
+  [  4   4   4   4]]
+
+ [[  4   4   4   4]
+  [  4   4   4   4]
+  [  4   4   4   4]]]
+</code></pre></div>
+<p>Arrays have <em>methods</em> and <em>attributes</em> associated with them. An attribute is <code>dtype</code>, another attribute is <code>shape</code>. We will cover <em>methods</em> below.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>float64
+(2, 3, 4)
+</code></pre></div>
+<p>The command <code>np.empty</code> instantiates an empty array, the command <code>np.empty_like</code> instantiates <em>some</em> array which has the same dimension and data type as a given array. Empty arrays are computationally less wasteful to produce than e.g. <code>np.zeros</code>, if one replaces the elements in some process anyways. The print function called on an empty array produces mostly garbage, don&rsquo;t worry about this.</p>
+<p>The following two are equivalent: <code>np.empty(shape = A.shape)</code> and <code>np.empty_like(A)</code></p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>float64
+(2, 3, 4)
+[[4.9e-324 9.9e-324 1.5e-323]
+ [2.0e-323 2.5e-323 3.0e-323]]
+</code></pre></div>
+<h3 id="array-indexing">Array Indexing<a class="headerlink" href="#array-indexing" title="Permanent link">#</a></h3>
+<p>Indexing arrays is easy and best done by example. We can select elements by regular indexing and Boolean indexing:</p>
+<div class="highlight"><pre><span></span><code><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span> <span class="c1"># a matrix is basically a (n,m)-array</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># indexing</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span> <span class="c1"># multiply element [0,1] by 10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># boolean mask</span>
+<span class="n">A</span><span class="p">[</span><span class="n">A</span> <span class="o">&lt;</span> <span class="mf">3.2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># replace all elements &lt; 3.2 by 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[[1 2 3]
+ [4 5 6]]
+[[ 1  2  3]
+ [40  5  6]]
+[[ 0  0  0]
+ [40  5  6]]
+</code></pre></div>
+<p>Note that above we created a <code>np.matrix</code>, which is in many ways similar to a numpy array. However, it has some methods associated with it which are specific for linear algebra. Additionally, some operators are interpreted differently. The asterisk <code>*</code> defines element-wise multiplication for arrays, but always refers to matrix-multiplication for matrices. Furthermore, when making a boolean comparison where only matrices are involved, the returned object will be a <em>boolean matrix</em> and also have matrix operations associated to it.</p>
+<p>Note that the Boolean comparison is done element-wise on the elements of the matrix (here, <code>A</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="n">A</span> <span class="o">&gt;</span> <span class="mi">10</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>matrix([[False, False, False],
+        [ True, False, False]])
+</code></pre></div>
+<p>Finally, we consider the difference between <em>views</em> and <em>copies</em>:</p>
+<p>If we want to obtain a true copy of some array <code>A</code>, we need to enclose it in <code>np.copy</code>. Otherwise, we will obtain a view, which if called links back to the original object <code>A</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">A_copy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c1"># use the copy function to make A_copy, which DOES NOT change if we change A</span>
+
+<span class="c1"># however, this LHS variable will &#39;point&#39; to the elements of A_copy</span>
+<span class="c1"># if we change stuff in A_copy[0,:], then the_first_row_of_A_copy changes</span>
+<span class="n">the_first_row_of_A_copy</span> <span class="o">=</span> <span class="n">A_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">the_first_row_of_A_copy</span><span class="p">)</span>
+
+<span class="n">A_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># np.arange(start, end, step) creates a sequence from start to (excluding) end, in &#39;step&#39;-size</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">the_first_row_of_A_copy</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[0 0 0]
+[1 2 3]
+</code></pre></div>
+<p>We can slice arrays in any dimensions using the usual <code>i:j:k</code> syntax: select every <code>k</code>th element from <code>i</code> to <code>j</code>.</p>
+<p><strong>Exercise:</strong> 
+- Write a function <code>make_shift_mat</code> which takes a number <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> and outputs the <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> by <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> <em>shift matrix</em> </p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+\begin{align*}
+S_n =  \begin{pmatrix}
+0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0
+\end{pmatrix}
+\end{align*}
+</div>
+<script type="math/tex; mode=display">
+\begin{align*}
+S_n =  \begin{pmatrix}
+0 & 1 & 0 & \cdots & 0 \\
+0 & 0 & 1 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \cdots & 1 \\
+0 & 0 & 0 & \cdots & 0
+\end{pmatrix}
+\end{align*}
+</script>
+</div>
+<ul>
+<li>Create another function <code>make_nilpotent_mat</code> which takes as argument a list of integers <code>[n_1, n_2, ..., n_m]</code> and outputs the a matrix which has <span class="arithmatex"><span class="MathJax_Preview">S_{n_1}, ..., S_{n_m}</span><script type="math/tex">S_{n_1}, ..., S_{n_m}</script></span> on the diagonal and is <span class="arithmatex"><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> in all other entries.</li>
+<li>Then create a function <code>get_np_index</code> which takes in a nilpotent matrix <span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> and calculates the (least) <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>, for which <span class="arithmatex"><span class="MathJax_Preview">N^k = \mathbf{0}</span><script type="math/tex">N^k = \mathbf{0}</script></span> (the zero matrix)</li>
+</ul>
+<p><em>HINT: To calculate a matrix product of two arrays <code>A, B</code> of conforming dimension, use <code>A@B</code>.</em></p>
+<p><strong>Solution:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># a solution with a loop</span>
+<span class="k">def</span> <span class="nf">make_shift_mat</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">A</span>
+
+<span class="c1"># an alternative way with slicing</span>
+<span class="k">def</span> <span class="nf">make_shift_mat</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">A</span>
+
+<span class="n">make_shift_mat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">make_nilpotent_mat</span><span class="p">(</span><span class="n">dim_list</span><span class="p">):</span> 
+    <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">sum</span><span class="p">(</span><span class="n">dim_list</span><span class="p">),</span><span class="nb">sum</span><span class="p">(</span><span class="n">dim_list</span><span class="p">)))</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">dim_list</span><span class="p">:</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">n</span>
+        <span class="n">B</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span> <span class="o">=</span> <span class="n">make_shift_mat</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">start</span> <span class="o">+=</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">B</span>
+
+
+<span class="k">def</span> <span class="nf">get_np_index</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">10_000</span><span class="p">):</span>
+    <span class="n">M_copy</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">M_copy</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">M_copy</span> <span class="o">=</span> <span class="n">M_copy</span> <span class="o">@</span> <span class="n">M</span>
+
+        <span class="k">if</span> <span class="n">counter</span> <span class="o">&gt;=</span> <span class="n">max_iter</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NO NILPINDEX FOUND&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>      
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NILPINDEX&quot;</span><span class="p">,</span> <span class="n">counter</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">counter</span><span class="o">+</span><span class="mi">2</span>
+
+
+<span class="k">def</span> <span class="nf">get_np_index</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">10_000</span><span class="p">):</span>
+    <span class="n">M_copy</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+
+        <span class="n">M_copy</span> <span class="o">=</span> <span class="n">M_copy</span> <span class="o">@</span> <span class="n">M</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">M_copy</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>    
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NILPINDEX&quot;</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">i</span><span class="o">+</span><span class="mi">2</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NO NILPINDEX FOUND&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span>      
+
+
+<span class="n">M</span> <span class="o">=</span> <span class="n">make_nilpotent_mat</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="n">get_np_index</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="c1"># check that it works</span>
+<span class="n">M</span> <span class="o">@</span> <span class="n">M</span> <span class="o">@</span> <span class="n">M</span> <span class="o">@</span> <span class="n">M</span> <span class="o">@</span> <span class="n">M</span> <span class="o">@</span> <span class="n">M</span> 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>NILPINDEX 6
+
+
+
+
+
+array([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]])
+</code></pre></div>
+<h3 id="functions-to-make-arrays">Functions to Make Arrays<a class="headerlink" href="#functions-to-make-arrays" title="Permanent link">#</a></h3>
+<p>Numpy has a few handy built-in methods to create arrays of different kinds. <code>np.ones</code> and <code>np.zeros</code> are such. Now we look at two more: <code>np.linspace</code> and <code>np.logspace</code>. </p>
+<div class="highlight"><pre><span></span><code><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># create a grid from 0 to 100 with 20 grid points</span>
+<span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">stop</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">num</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">base</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">e</span><span class="p">)</span> <span class="c1"># create a grid from 0 to 100 with 20 grid points but in logs</span>
+
+<span class="c1"># the latter is equivalent to </span>
+<span class="n">lower</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># np.log( . ) is the natural logarithm</span>
+<span class="n">upper</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span> <span class="c1"># use broadcasting here, see next section</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>array([  1.        ,   1.27427499,   1.62377674,   2.06913808,
+         2.6366509 ,   3.35981829,   4.2813324 ,   5.45559478,
+         6.95192796,   8.8586679 ,  11.28837892,  14.38449888,
+        18.32980711,  23.35721469,  29.76351442,  37.92690191,
+        48.32930239,  61.58482111,  78.47599704, 100.        ])
+</code></pre></div>
+<p>The function <code>np.arange</code> is very similar to the native <code>range()</code> function:</p>
+<div class="highlight"><pre><span></span><code><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>array([ 1,  4,  7, 10, 13, 16, 19])
+</code></pre></div>
+<h2 id="2-computations-and-broadcasting">2. <strong>Computations and Broadcasting</strong><a class="headerlink" href="#2-computations-and-broadcasting" title="Permanent link">#</a></h2>
+<p>One can do pretty much all basic computations on <code>np.array</code>s and these will be applied elementwise. (These computations are also called <em>vectorized</em> functions.) </p>
+<p>Let&rsquo;s also consider some functions coming with numpy: <code>np.exp, np.log, np.abs</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># multiplication / addition with a scalar</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># exponential function, log function</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[1 3 5 7 9]
+[10 30 50 70 90]
+[11 13 15 17 19]
+[2.71828183e+00 2.00855369e+01 1.48413159e+02 1.09663316e+03
+ 8.10308393e+03]
+[0.         1.09861229 1.60943791 1.94591015 2.19722458]
+[1 0 1]
+</code></pre></div>
+<p>We can add two <code>np.array</code>s together element-wise in the obvious fashion. This is called &lsquo;broadcasting&rsquo;. My advice: While useful, try to avoid situations in which non-obvious broadcasting things can happen.</p>
+<p>Instead of addition, we can perform above computations with multiplication <code>*</code> or exponentiation <code>**</code>, too.</p>
+<p>An interesting way to leverage broadcasting is to use <code>np.newaxis</code>, which creates an additional yet empty dimension to an array. For example, let <code>a = np.array([1, 2, 3])</code>. Then <code>a[:, np.newaxis]</code> has shape <code>(3, 1)</code> and <code>a[np.newaxis, :]</code> has shape <code>(1, 3)</code>. What does the following broadcasting procedure yield: <code>B = a[np.newaxis, :] + a[:, np.newaxis]</code>?</p>
+<p>Think it through. If you repeat <code>a[np.newaxis, :]</code> on the second axis you get a <code>(3,3)</code> array. Same if you repeat <code>a[:, np.newaxis]</code> thrice on the first axis. Then, you add the two resulting matrices elementwise. That&rsquo;s basically an outer product!</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">**</span> <span class="n">a</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[1 4 9]
+
+(3, 1)
+
+[[2 3 4]
+ [3 4 5]
+ [4 5 6]]
+
+[[ 1  2  3]
+ [ 1  4  9]
+ [ 1  8 27]]
+</code></pre></div>
+<p><strong>Rules of Broadcasting</strong></p>
+<p>Now we have seen Broadcasting in action, let&rsquo;s consider the rules that NumPy us using to determine how it operates on two arrays:</p>
+<ul>
+<li><em>Rule 1</em>: If the two arrays differ in their number of dimensions, the shape of the one with fewer dimensions is padded with ones on its leading (left) side.</li>
+<li><em>Rule 2</em>: If the shape of the two arrays does not match in any dimension, the array with shape equal to 1 in that dimension is stretched to match the other shape.</li>
+<li><em>Rule 3</em>: If in any dimension the sizes disagree and neither is equal to 1, an error is raised.</li>
+</ul>
+<p>Consider an operation on <code>matrix</code> and <code>array</code>. The shape of each is:</p>
+<ul>
+<li><code>matrix.shape = (2, 3)</code></li>
+<li><code>array.shape = (3,)</code></li>
+</ul>
+<p>Rule 1 tells us that <code>array</code> has fewer dimensions, so we pad it on the left with ones:</p>
+<ul>
+<li><code>matrix.shape -&gt; (2, 3)</code></li>
+<li><code>array.shape -&gt; (1, 3)</code></li>
+</ul>
+<p>Rule 2, tells us the first dimension disagrees, so we stretch itnsion to match:</p>
+<ul>
+<li><code>matrix.shape -&gt; (2, 3)</code></li>
+<li><code>array.shape -&gt; (2, 3)</code></li>
+</ul>
+<p>Now the shapes match, and we see the output of a ufunc operation will be <code>(2, 3)</code>:</p>
+<p><em>(Source PP4RS, 2023)</em></p>
+<p>Above, we have seen <em>rule 2</em> in action. Now look at <em>rule 1</em>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Example of padding</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># look at the shape of array and matrix</span>
+
+<span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span> <span class="c1"># look at the shape of the broadcasted result</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(1, 3) (3,)
+
+
+
+
+
+(1, 3)
+</code></pre></div>
+<h3 id="array-methods">Array Methods<a class="headerlink" href="#array-methods" title="Permanent link">#</a></h3>
+<p>We spent a minute on useful methods (=functions) associated with <code>numpy</code> objects. First, we create an array. Then we <code>reshape</code>the array. Then we consider some <code>sum</code>, <code>max</code>, <code>min</code>, <code>mean</code> commands.</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">3.1234</span><span class="p">)</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># well, lets make this a (4, 8) array. </span>
+<span class="c1"># the reshape method will first fill up the columns, for row 1, then for row 2, etc until all rows are filled</span>
+<span class="c1"># an analogous reshaping occurs when looping through multiple dimensions.</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># global max</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+<span class="c1"># row max: take max over the first dimension</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="c1"># column min: take min over the second dimension</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># the mean and sum methods work completely analogously.</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(32,)
+(4, 8)
+97.8254
+[75.9616 79.085  82.2084 85.3318 88.4552 91.5786 94.702  97.8254]
+[ 1.     25.9872 50.9744 75.9616]
+</code></pre></div>
+<p>Note: instead of using <code>np.copy(a)</code>, we can always write <code>a.copy()</code> since <code>copy()</code> is a method of the numpy object.</p>
+<h3 id="matrix-computations">Matrix Computations<a class="headerlink" href="#matrix-computations" title="Permanent link">#</a></h3>
+<p>Of course we can use matrix algebra with <code>numpy</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># transpose of A</span>
+<span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+
+<span class="c1"># multiply A to A&#39;</span>
+<span class="n">A</span> <span class="o">@</span> <span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span> <span class="c1"># alternatively, use np.dot instead of @</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>matrix([[   0,    0],
+        [   0, 1661]])
+</code></pre></div>
+<h2 id="3-the-nprandom-module">3. <strong>The <code>np.random</code> Module</strong><a class="headerlink" href="#3-the-nprandom-module" title="Permanent link">#</a></h2>
+<p>The <code>np.random</code> module is a collection of functions able to generate random variables and fill array with those. For instance, <code>np.random.uniform</code> generates samples drawn from the uniform distribution. Can you guess what <code>np.random.randint</code> will give us?</p>
+<div class="highlight"><pre><span></span><code><span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># random matrix</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># random matrix with integers</span>
+<span class="n">u_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Exercise:</strong></p>
+<p>Write the function <code>demean</code> which takes two inputs, a numpy array <code>A</code> and <code>axis</code> defaulting to <code>None</code>. If <code>axis</code> is equal to the default, the function calculate the mean across all elements of <code>A</code> and subtract this mean from each element. If <code>axis = i</code>, then the function calculates the means of <code>A</code> along that axis and only demeans in this direction. For example, it calculates <span class="arithmatex"><span class="MathJax_Preview">a_{i, j, k, l} - \bar a_{i, j, \cdot, l}</span><script type="math/tex">a_{i, j, k, l} - \bar a_{i, j, \cdot, l}</script></span> if <code>axis = 2</code>. (This means the third dimension is used to calculate means.)</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">demean</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c1"># make sure A is a numpy array, keepdims does not work with matrices</span>
+    <span class="n">A_mean</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">keepdims</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">A</span> <span class="o">-</span> <span class="n">A_mean</span> <span class="c1"># broadcasting rule 2 is our friend here</span>
+
+<span class="n">demean</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>matrix([[  0.,   0.,   0.],
+        [ 23., -12., -11.]])
+</code></pre></div>
+<h2 id="4-other-exercises">4. <strong>Other Exercises</strong><a class="headerlink" href="#4-other-exercises" title="Permanent link">#</a></h2>
+<p><strong>Exercise: Discretizing the asset space</strong></p>
+<p>Consider the situation in which we want to create an asset grid for the households in your favorite macro-model. Households choose assets from <span class="arithmatex"><span class="MathJax_Preview">[\underline a, \infty)</span><script type="math/tex">[\underline a, \infty)</script></span>, need to discretize this grid. Idea: there should be more grid points around <span class="arithmatex"><span class="MathJax_Preview">\underline a</span><script type="math/tex">\underline a</script></span>, because policy function is more nonlinear here. But we also want some points for high <span class="arithmatex"><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>. Solution: <em>double exponential transformation of uniformly spaced grid</em>:</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">a_i = \underline a + e^{e^{u_i} - 1} - 1, u_i \in [0, \bar u]</div>
+<script type="math/tex; mode=display">a_i = \underline a + e^{e^{u_i} - 1} - 1, u_i \in [0, \bar u]</script>
+</div>
+<p>Write a function <code>discretize_assets(amin, amax, n_a)</code> which outputs an asset grid ranging from <code>a_min</code> to <code>a_max</code> with <code>n_a</code> grid points, where <span class="arithmatex"><span class="MathJax_Preview">a_i</span><script type="math/tex">a_i</script></span> is determined by the formula above.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># SOLUTION:</span>
+
+<span class="c1"># write a function which discretizes the asset space</span>
+<span class="k">def</span> <span class="nf">discretize_assets</span><span class="p">(</span><span class="n">amin</span><span class="p">,</span> <span class="n">amax</span><span class="p">,</span> <span class="n">n_a</span><span class="p">):</span>
+    <span class="c1"># find ubar </span>
+    <span class="n">ubar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">amax</span> <span class="o">-</span> <span class="n">amin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># make linar grid for the u&#39;s</span>
+    <span class="n">grid_u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ubar</span><span class="p">,</span> <span class="n">n_a</span><span class="p">)</span>
+    <span class="c1"># transform back to a</span>
+    <span class="n">grid_a</span> <span class="o">=</span> <span class="n">amin</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">grid_u</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">grid_a</span>
+
+<span class="n">grid_a</span> <span class="o">=</span> <span class="n">discretize_assets</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10_000</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># visualize the grid</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># some useful plot defaults</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span> <span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;lines.linewidth&#39;</span> <span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span> <span class="s1">&#39;figure.figsize&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">)})</span>
+<span class="c1"># scatter plot of the grid</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">grid_a</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid_a</span><span class="p">)),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;matplotlib.collections.PathCollection at 0x116872290&gt;
+</code></pre></div>
+<p><img alt="png" src="../1-numpy_files/1-numpy_47_1.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.471ce7a9.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

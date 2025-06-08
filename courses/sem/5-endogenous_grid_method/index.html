@@ -1,0 +1,1689 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../4-optimization/">
+      
+      
+        <link rel="next" href="../../bmetrics/BayReg/">
+      
+      
+      <link rel="icon" href="../../../assets/images/logo.jpg">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.32">
+    
+    
+      
+        <title>5 Endogenous Grid Method - Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small></title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3cba04c6.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Serif";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#endogeneous-grid-method" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Frederik H Bennhoff &lt;br&gt;&lt;small&gt;&lt;i&gt;i want to be a professor of economics.&lt;/i&gt;&lt;/small&gt;" class="md-header__button md-logo" aria-label="Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5 Endogenous Grid Method
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Frederik H Bennhoff &lt;br&gt;&lt;small&gt;&lt;i&gt;i want to be a professor of economics.&lt;/i&gt;&lt;/small&gt;" class="md-nav__button md-logo" aria-label="Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.jpg" alt="logo">
+
+    </a>
+    Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    about me
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cv/cv/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cv
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/research/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    research
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    short courses & resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            short courses & resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    solving economic models
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            solving economic models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 Numpy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-numba/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 Numba
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-application_stoch_proc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3 Application: Stochastic Processes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4 Optimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    5 Endogenous Grid Method
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    5 Endogenous Grid Method
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-incomplete-markets-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Incomplete Markets Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-backwards-iteration-to-obtain-policy-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Backwards Iteration to Obtain Policy Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Backwards Iteration to Obtain Policy Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-initialize-set-up-grids-and-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1 - Initialize, Set up Grids and Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-obtain-aprime_taprime_t-w_tw_t" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2 - Obtain a^\prime_{t}a^\prime_{t}, W_{t}W_{t}
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-obtain-v_t-av_t-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3 - Obtain V_{t, a}V_{t, a}
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combine-steps-into-single-backward-iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Combine Steps into single Backward Iteration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-forward-iteration-to-obtain-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Forward Iteration to Obtain Distribution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Forward Iteration to Obtain Distribution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-steadystatehh-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the SteadyStateHH Module
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    bayesian econometrics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            bayesian econometrics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/courses/bmetrics/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bmetrics/BayReg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 Bayesian Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bmetrics/UCSV/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 The Unobserved Component Stochastic Volatility Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bmetrics/TVP-AR/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3 The Time-Varying Parameter Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-incomplete-markets-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Incomplete Markets Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-backwards-iteration-to-obtain-policy-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Backwards Iteration to Obtain Policy Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Backwards Iteration to Obtain Policy Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-initialize-set-up-grids-and-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1 - Initialize, Set up Grids and Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-obtain-aprime_taprime_t-w_tw_t" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2 - Obtain a^\prime_{t}a^\prime_{t}, W_{t}W_{t}
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-obtain-v_t-av_t-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3 - Obtain V_{t, a}V_{t, a}
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combine-steps-into-single-backward-iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Combine Steps into single Backward Iteration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-forward-iteration-to-obtain-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Forward Iteration to Obtain Distribution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Forward Iteration to Obtain Distribution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-steadystatehh-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the SteadyStateHH Module
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="endogeneous-grid-method"><strong>Endogeneous Grid Method</strong><a class="headerlink" href="#endogeneous-grid-method" title="Permanent link">#</a></h1>
+<p>In this notebook we discuss how to solve the household problem a la Aiyagari&ndash;this is the main building block of most HANK models&ndash;with fast, optimized methods. The main reference for this notebook is Matt Rognlie&rsquo;s code on which you can find in <a href="https://github.com/shade-econ/nber-workshop-2023/blob/bc3bbba90ab575f09c4c8a9e77b0b2fe88812cd1/Lectures/Lecture%201%2C%20Standard%20Incomplete%20Markets%20Steady%20State.ipynb">his repository</a> (2024). The endogenous grid method was introduced by Carroll (2006).</p>
+<h2 id="1-incomplete-markets-model">1. <strong>Incomplete Markets Model</strong><a class="headerlink" href="#1-incomplete-markets-model" title="Permanent link">#</a></h2>
+<p>The standard incomplete markets model features the following timing:</p>
+<ul>
+<li>begin of period with asset returns <span class="arithmatex"><span class="MathJax_Preview">(1+r)a</span><script type="math/tex">(1+r)a</script></span> and stochastic income <span class="arithmatex"><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>.</li>
+<li>allocate to assets tomorrow <span class="arithmatex"><span class="MathJax_Preview">a'</span><script type="math/tex">a'</script></span> and consumption today <span class="arithmatex"><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span></li>
+<li>all subject to a borrowing constraint <span class="arithmatex"><span class="MathJax_Preview">a\geq \underline a</span><script type="math/tex">a\geq \underline a</script></span> and no ability to insure against idiosyncratic shocks: </li>
+</ul>
+<div class="arithmatex">
+<div class="MathJax_Preview"> 
+\begin{align*}
+  V(y, a) = \max_{c, a'} u( c ) + \beta \mathbb E[V(e', a') | y] 
+\end{align*}
+</div>
+<script type="math/tex; mode=display"> 
+\begin{align*}
+  V(y, a) = \max_{c, a'} u( c ) + \beta \mathbb E[V(e', a') | y] 
+\end{align*}
+</script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview"> 
+\begin{align*}
+  s.t.\; a' = (1+r)a + y - c 
+\end{align*}
+</div>
+<script type="math/tex; mode=display"> 
+\begin{align*}
+  s.t.\; a' = (1+r)a + y - c 
+\end{align*}
+</script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview"> 
+\begin{align*}
+  a' \geq \underline a 
+\end{align*}
+</div>
+<script type="math/tex; mode=display"> 
+\begin{align*}
+  a' \geq \underline a 
+\end{align*}
+</script>
+</div>
+<p>We model the income process as an AR(1), so 
+  $$ y_t = \rho y_{t-1} + e_t.$$
+  Since we would like to solve the whole model on a finite grid <span class="arithmatex"><span class="MathJax_Preview">\mathcal{Y} \times \mathcal{A}</span><script type="math/tex">\mathcal{Y} \times \mathcal{A}</script></span> with indices <span class="arithmatex"><span class="MathJax_Preview">(i_y, i_a)</span><script type="math/tex">(i_y, i_a)</script></span>, we need to discretize the income and the asset space. We already have functions to do this, applying the double-exponential grid space for assets, and the Rouwenhorst AR(1) process. </p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># some useful plot defaults$</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span> <span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;lines.linewidth&#39;</span> <span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span> <span class="s1">&#39;figure.figsize&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">)})</span>
+</code></pre></div>
+<p><strong>Exercise:</strong> Write and import a class called <code>Grids</code> which if supplied the correct parameters outputs asset and income grids, as well as transition matrix and steady state for income.</p>
+<p><strong>Solution:</strong> A script containing this and other classes (to be defined later in this document) can be found <a href="https://github.com/FredHB/solving_economic_models/blob/main/utils_simm.py">on my github</a>. A non-maintained version is at the bottom of this notebook.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">utils_simm</span> <span class="kn">import</span> <span class="n">Grid</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">Grids</span> <span class="o">=</span> <span class="n">Grid</span><span class="p">(</span><span class="n">n_y</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">rho</span> <span class="o">=</span> <span class="mf">0.975</span><span class="p">,</span>  <span class="n">sd_log_y</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span> <span class="n">n_a</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">min_a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">max_a</span> <span class="o">=</span> <span class="mi">10_000</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>the steady state is unique.
+</code></pre></div>
+<h2 id="2-backwards-iteration-to-obtain-policy-functions">2. <strong>Backwards Iteration to Obtain Policy Functions</strong><a class="headerlink" href="#2-backwards-iteration-to-obtain-policy-functions" title="Permanent link">#</a></h2>
+<p>It is more efficient and accurate to use envelope condition and FOC to iterate on marginal value function <span class="arithmatex"><span class="MathJax_Preview">V_a</span><script type="math/tex">V_a</script></span> instead of finding the value function itself. We do backwards iteration in time. Let <span class="arithmatex"><span class="MathJax_Preview">a_t'(y_t, a_t)</span><script type="math/tex">a_t'(y_t, a_t)</script></span> be the policy function for next-period asset holdings. Assume that <span class="arithmatex"><span class="MathJax_Preview">u(c) = \frac{c^{1-\sigma}}{1-\sigma}</span><script type="math/tex">u(c) = \frac{c^{1-\sigma}}{1-\sigma}</script></span>, where <span class="arithmatex"><span class="MathJax_Preview">\sigma</span><script type="math/tex">\sigma</script></span> is the elasiticity of intertemporal substitution (eis).</p>
+<p>For backward iteration, we use the <strong>Envelope condition</strong>,
+$$ V_{a,t}(e, a) = (1+r_t)u&rsquo;(c_t(e, a))$$</p>
+<p>and the <strong>First-Order Condition</strong> (inequality binds if borrowing limit binds) </p>
+<div class="arithmatex">
+<div class="MathJax_Preview">u'(c_t(y, a)) \geq \beta \mathbb E [V_{a, t+1}(y', a_t'(y, a))]|e]. </div>
+<script type="math/tex; mode=display">u'(c_t(y, a)) \geq \beta \mathbb E [V_{a, t+1}(y', a_t'(y, a))]|e]. </script>
+</div>
+<p>repeatedly:</p>
+<p><strong>[Algorithm: Backward iteration in time]</strong> </p>
+<p>Start at <span class="arithmatex"><span class="MathJax_Preview">t = T</span><script type="math/tex">t = T</script></span>, initialize <span class="arithmatex"><span class="MathJax_Preview">V_{a, T} = 1</span><script type="math/tex">V_{a, T} = 1</script></span>. For <span class="arithmatex"><span class="MathJax_Preview">t&lt; T</span><script type="math/tex">t< T</script></span>:
+1. Use <span class="arithmatex"><span class="MathJax_Preview">V_{a, t+1}</span><script type="math/tex">V_{a, t+1}</script></span> to calculate RHS of FOC
+2. Solve for today&rsquo;s policies <span class="arithmatex"><span class="MathJax_Preview">a_t'(y, a)</span><script type="math/tex">a_t'(y, a)</script></span>, <span class="arithmatex"><span class="MathJax_Preview">c_t(y, a)</span><script type="math/tex">c_t(y, a)</script></span>
+3. Using envelope condition, obtain marginal value function of today <span class="arithmatex"><span class="MathJax_Preview">V_{a, t}</span><script type="math/tex">V_{a, t}</script></span></p>
+<p>We go through the steps in detail.</p>
+<h4 id="step-1-initialize-set-up-grids-and-parameters"><strong>Step 1</strong> - Initialize, Set up Grids and Parameters<a class="headerlink" href="#step-1-initialize-set-up-grids-and-parameters" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">model_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;beta&#39;</span> <span class="p">:</span> <span class="mf">0.95</span><span class="p">,</span>
+    <span class="s1">&#39;r&#39;</span> <span class="p">:</span> <span class="mf">0.03</span><span class="p">,</span>
+    <span class="s1">&#39;eis&#39;</span> <span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>
+    <span class="s1">&#39;rho&#39;</span> <span class="p">:</span> <span class="mf">0.975</span><span class="p">,</span>
+    <span class="s1">&#39;sd_log_y&#39;</span> <span class="p">:</span> <span class="mf">0.7</span>
+<span class="p">}</span>
+
+<span class="n">Grids</span> <span class="o">=</span> <span class="n">Grid</span><span class="p">(</span><span class="n">n_y</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">rho</span> <span class="o">=</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">],</span>  <span class="n">sd_log_y</span> <span class="o">=</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;sd_log_y&#39;</span><span class="p">],</span> <span class="n">n_a</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">min_a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">max_a</span> <span class="o">=</span> <span class="mi">10_000</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>the steady state is unique.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># initial Va</span>
+<span class="n">Va</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">Grids</span><span class="o">.</span><span class="n">n_y</span><span class="p">,</span> <span class="n">Grids</span><span class="o">.</span><span class="n">n_a</span><span class="p">))</span>
+
+<span class="n">W</span> <span class="o">=</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">Grids</span><span class="o">.</span><span class="n">Pi</span> <span class="o">@</span> <span class="n">Va</span>
+</code></pre></div>
+<h4 id="step-2-obtain-aprime_taprime_t-w_tw_t"><strong>Step 2</strong> - Obtain <span class="arithmatex"><span class="MathJax_Preview">a^\prime_{t}</span><script type="math/tex">a^\prime_{t}</script></span>, <span class="arithmatex"><span class="MathJax_Preview">W_{t}</span><script type="math/tex">W_{t}</script></span><a class="headerlink" href="#step-2-obtain-aprime_taprime_t-w_tw_t" title="Permanent link">#</a></h4>
+<p>We now write policy functions, marginal value function and associated objects as functions on the grid indices <span class="arithmatex"><span class="MathJax_Preview">i_y</span><script type="math/tex">i_y</script></span> and <span class="arithmatex"><span class="MathJax_Preview">i_a</span><script type="math/tex">i_a</script></span> whenever useful. We would like to solve for consumption policy using the FOC (assuming the constraint is slack)
+$$ u&rsquo;(c_t) = W_{a,t}(y, a&rsquo;) \Rightarrow c_t = \left( W_{a,t}(y, a&rsquo;) \right)^{-1/\sigma}$$
+for each possible future asset level <span class="arithmatex"><span class="MathJax_Preview">a'</span><script type="math/tex">a'</script></span>. Then we use the envelope condition and can obtain <span class="arithmatex"><span class="MathJax_Preview">V_t(y, a)</span><script type="math/tex">V_t(y, a)</script></span>, where <span class="arithmatex"><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> solves <span class="arithmatex"><span class="MathJax_Preview">a' = (1+r)a + y - c_t(y, a')</span><script type="math/tex">a' = (1+r)a + y - c_t(y, a')</script></span>.</p>
+<p><strong>Problem:</strong> The implied <span class="arithmatex"><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> may not lie on the grid. Generally, we want <span class="arithmatex"><span class="MathJax_Preview">V_{t, a}(y, a)</span><script type="math/tex">V_{t, a}(y, a)</script></span> for fixed values of <span class="arithmatex"><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> on the grid, not <span class="arithmatex"><span class="MathJax_Preview">V_{t, a}(y, a(a'))</span><script type="math/tex">V_{t, a}(y, a(a'))</script></span>, where <span class="arithmatex"><span class="MathJax_Preview">a(a')</span><script type="math/tex">a(a')</script></span> depends on the values of <span class="arithmatex"><span class="MathJax_Preview">a'\in \mathcal{A}</span><script type="math/tex">a'\in \mathcal{A}</script></span>.</p>
+<p>Simple solution: For each fixed level of <span class="arithmatex"><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>&hellip;</p>
+<ul>
+<li>Obtain the points <span class="arithmatex"><span class="MathJax_Preview">c_t(y, a)</span><script type="math/tex">c_t(y, a)</script></span>, store in <code>c_endog[i_y, :]</code> (these are also called &lsquo;endogeneous grid points&rsquo;)</li>
+<li>Compute <span class="arithmatex"><span class="MathJax_Preview">(1+r)^{-1} (a' + c_t(y, a') - y) = a</span><script type="math/tex">(1+r)^{-1} (a' + c_t(y, a') - y) = a</script></span>, and save the <span class="arithmatex"><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> vector as <code>a_endog[i_y,:]</code>. We now have essentially a function <span class="arithmatex"><span class="MathJax_Preview">a(y, a')</span><script type="math/tex">a(y, a')</script></span></li>
+<li>To invert for the policy function, <span class="arithmatex"><span class="MathJax_Preview">a'(y, a)</span><script type="math/tex">a'(y, a)</script></span>, use linear interpolation evaluated at <span class="arithmatex"><span class="MathJax_Preview">\mathcal{A}</span><script type="math/tex">\mathcal{A}</script></span>: <code>np.interpolate(grid_a, a_endog[i_y,:], grid_a)</code></li>
+<li>Enforce the borrowing constraint by <code>a_prime = np.maximum(a_prime, Grids.grid_a[0])</code></li>
+</ul>
+<p>There is a slightly more efficient version of this algorithm using cash-on-hand. See Rognlie (2024).</p>
+<!-- This requires that there is an entry $(y, a)$ on the grid such that $ a' = (1+r)a + y - c_t(y, a)$
+
+- if FOC holds with equality, then $$ c_t^{endog}(e, a') \equiv c_t(e, a_t(e, a')) = u^{\prime, -1}(W_{a,t}(e, a')) $$
+- this is time-$t$ consumption at the *endogenous gridpoint* $(e, a_t(e, a'))$; $a_t(e, a')$ is the asset level today which makes the household hold $a_t'$ tomorrow. How is $a_t(e, a')$ found?
+- Use budget constraint: $$c_t^{endog}(e, a') + a' = (1+r_t)a_t(e, a') + y_t(e) \equiv coh_t(e, a_t(e, a'))$$
+- We can solve this equation for $a_t(e, a')$, BUT ultimately we want the inverse of this function, $a_t'(a ; e)$ defined on our grid.
+- Given mapping $a_t(e, a')$:
+  - Evaluate $(a_t(e, a'), a')$ on the grid of all $a'$ for a given $e$
+  - Treat $(a_t(e, a'), a')_{a' \in grid}$ as sample points of function $a'_t(e, a)$!
+  - Linearly interpolate to evaluate $a'_t(e, a)$ on our grid of $a$.
+- Slightly more convenient alternative: use cash-on-hand!
+  - Get a collection of sample points $(coh_t(e, a_t(e, a')), a')$ evaluated at each gridpoint for $a'$
+  - Then linearly interpolate to get $a'$ for $coh_t$ for the actual value of $a$ (i.e. on the actual asset grid)
+- Need to do this separately for each $e$ -->
+
+<div class="highlight"><pre><span></span><code><span class="n">c_endog</span> <span class="o">=</span> <span class="n">W</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;eis&#39;</span><span class="p">])</span>
+<span class="n">a_endog</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">])</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">Grids</span><span class="o">.</span><span class="n">grid_y</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">+</span> <span class="n">c_endog</span><span class="p">)</span>
+<span class="n">a_prime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">Grids</span><span class="o">.</span><span class="n">n_y</span><span class="p">,</span> <span class="n">Grids</span><span class="o">.</span><span class="n">n_a</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i_y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Grids</span><span class="o">.</span><span class="n">n_y</span><span class="p">):</span>
+    <span class="n">a_prime</span><span class="p">[</span><span class="n">i_y</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span><span class="p">,</span> <span class="n">a_endog</span><span class="p">[</span><span class="n">i_y</span><span class="p">,</span> <span class="p">:],</span> <span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span><span class="p">)</span>
+
+<span class="c1">#a_prime = np.maximum(a_prime, Grids.grid_a[0]) # enforce borrowing constraint. actually not needed because interp already does this</span>
+
+<span class="c1"># obtain the consumption policy</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">Grids</span><span class="o">.</span><span class="n">grid_y</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span> <span class="o">-</span> <span class="n">a_prime</span>
+</code></pre></div>
+<p>We can look at the policy function after one iteration:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># plot policy function</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i_y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Grids</span><span class="o">.</span><span class="n">n_y</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">40</span><span class="p">],</span> <span class="n">a_prime</span><span class="p">[</span><span class="n">i_y</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">40</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_y</span><span class="p">[</span><span class="n">i_y</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$a$&#39;</span><span class="p">,</span> <span class="n">ylabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$a^{\prime}$&#39;</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Policy function after 1 iteration&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../5-endogenous_grid_method_files/5-endogenous_grid_method_12_0.png" /></p>
+<h4 id="step-3-obtain-v_t-av_t-a"><strong>Step 3</strong> - Obtain <span class="arithmatex"><span class="MathJax_Preview">V_{t, a}</span><script type="math/tex">V_{t, a}</script></span><a class="headerlink" href="#step-3-obtain-v_t-av_t-a" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">V_a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="n">c</span> <span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;eis&#39;</span><span class="p">])</span> <span class="c1"># update value function derivative</span>
+</code></pre></div>
+<h3 id="combine-steps-into-single-backward-iteration"><strong>Combine Steps into single Backward Iteration</strong><a class="headerlink" href="#combine-steps-into-single-backward-iteration" title="Permanent link">#</a></h3>
+<p>Now we write a function which takes as input a marginal value function, income and asset grids, preference parameters and transition matrices to compute a single backward iteration and output objects <code>V_a, a, c</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">backward_iteration</span><span class="p">(</span><span class="n">V_a</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">eis</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">grid_a</span><span class="p">,</span> <span class="n">grid_y</span><span class="p">,</span> <span class="n">Pi</span><span class="p">):</span>
+
+    <span class="n">n_y</span><span class="p">,</span> <span class="n">n_a</span> <span class="o">=</span> <span class="n">grid_y</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">grid_a</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">W</span> <span class="o">=</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">Pi</span> <span class="o">@</span> <span class="n">V_a</span>
+
+    <span class="n">c_endog</span> <span class="o">=</span> <span class="n">W</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">eis</span><span class="p">)</span>
+    <span class="n">a_endog</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">grid_a</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">grid_y</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">+</span> <span class="n">c_endog</span><span class="p">)</span>
+    <span class="n">a_prime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n_y</span><span class="p">,</span> <span class="n">n_a</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i_y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Grids</span><span class="o">.</span><span class="n">n_y</span><span class="p">):</span>
+        <span class="n">a_prime</span><span class="p">[</span><span class="n">i_y</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">grid_a</span><span class="p">,</span> <span class="n">a_endog</span><span class="p">[</span><span class="n">i_y</span><span class="p">,</span> <span class="p">:],</span> <span class="n">grid_a</span><span class="p">)</span>
+
+    <span class="c1">#a_prime = np.maximum(a_prime, Grids.grid_a[0]) # enforce borrowing constraint. actually not needed because interp already does this</span>
+
+    <span class="c1"># obtain the consumption policy</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">grid_a</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">grid_y</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span> <span class="o">-</span> <span class="n">a_prime</span>
+
+    <span class="k">return</span> <span class="n">c</span><span class="p">,</span> <span class="n">a_prime</span>
+
+<span class="c1"># test the function</span>
+<span class="n">c</span><span class="p">,</span> <span class="n">a_prime</span> <span class="o">=</span> <span class="n">backward_iteration</span><span class="p">(</span><span class="n">V_a</span><span class="p">,</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">],</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;eis&#39;</span><span class="p">],</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">],</span> <span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span><span class="p">,</span> <span class="n">Grids</span><span class="o">.</span><span class="n">grid_y</span><span class="p">,</span> <span class="n">Grids</span><span class="o">.</span><span class="n">Pi</span><span class="p">)</span>
+</code></pre></div>
+<p>And we can solve the entire household problem for steady-state policies.</p>
+<div class="highlight"><pre><span></span><code><span class="n">grid_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;n_y&#39;</span> <span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="s1">&#39;n_a&#39;</span> <span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+    <span class="s1">&#39;min_a&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;max_a&#39;</span> <span class="p">:</span> <span class="mi">10_000</span>
+<span class="p">}</span>
+
+<span class="n">model_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;beta&#39;</span> <span class="p">:</span> <span class="mi">1</span><span class="o">-</span><span class="mf">0.08</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="c1"># quarterly discount factor</span>
+    <span class="s1">&#39;r&#39;</span> <span class="p">:</span> <span class="mf">0.01</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="c1"># quarterly interest rate</span>
+    <span class="s1">&#39;eis&#39;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;rho&#39;</span> <span class="p">:</span> <span class="mf">0.975</span><span class="p">,</span>
+    <span class="s1">&#39;sd_log_y&#39;</span> <span class="p">:</span> <span class="mf">0.7</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">SteadyStateHH</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_params</span><span class="p">,</span> <span class="n">grid_params</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="n">max_iter</span> <span class="o">=</span> <span class="mi">1_000</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_params</span> <span class="o">=</span> <span class="n">model_params</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span> <span class="o">=</span> <span class="n">grid_params</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Grids</span> <span class="o">=</span> <span class="n">Grid</span><span class="p">(</span><span class="n">n_y</span> <span class="o">=</span> <span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_y&#39;</span><span class="p">],</span> <span class="n">rho</span> <span class="o">=</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">],</span>  <span class="n">sd_log_y</span> <span class="o">=</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;sd_log_y&#39;</span><span class="p">],</span> <span class="n">n_a</span> <span class="o">=</span> <span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_a&#39;</span><span class="p">],</span> <span class="n">min_a</span> <span class="o">=</span> <span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;min_a&#39;</span><span class="p">],</span> <span class="n">max_a</span> <span class="o">=</span> <span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;max_a&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tol</span> <span class="o">=</span> <span class="n">tol</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span> <span class="o">=</span> <span class="n">max_iter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a_prime</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">V_a</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">backward_iteration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">V_a</span><span class="p">):</span>
+
+        <span class="n">W</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">Pi</span> <span class="o">@</span> <span class="n">V_a</span>
+
+        <span class="n">c_endog</span> <span class="o">=</span> <span class="n">W</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;eis&#39;</span><span class="p">])</span>
+        <span class="n">a_endog</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">])</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_y</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">+</span> <span class="n">c_endog</span><span class="p">)</span>
+        <span class="n">a_prime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_y&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_a&#39;</span><span class="p">]))</span>
+
+        <span class="k">for</span> <span class="n">i_y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_y&#39;</span><span class="p">]):</span>
+            <span class="n">a_prime</span><span class="p">[</span><span class="n">i_y</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span><span class="p">,</span> <span class="n">a_endog</span><span class="p">[</span><span class="n">i_y</span><span class="p">,</span> <span class="p">:],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span><span class="p">)</span>
+
+        <span class="c1">#a_prime = np.maximum(a_prime, self.Grids.grid_a[0]) </span>
+
+        <span class="c1"># obtain the consumption policy</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_y</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span> <span class="o">-</span> <span class="n">a_prime</span>
+
+        <span class="k">return</span> <span class="n">c</span><span class="p">,</span> <span class="n">a_prime</span>
+
+    <span class="k">def</span> <span class="nf">solve_ss</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c1"># initialize value function derivative with guess</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">V_a</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">V_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_y&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_a&#39;</span><span class="p">]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">V_a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">V_a</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span><span class="p">):</span>
+            <span class="n">c</span><span class="p">,</span> <span class="n">a_prime</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backward_iteration</span><span class="p">(</span><span class="n">V_a</span><span class="p">)</span>
+            <span class="n">V_a_new</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="n">c</span> <span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;eis&#39;</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">V_a_new</span> <span class="o">-</span> <span class="n">V_a</span><span class="p">))</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">tol</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="n">V_a</span> <span class="o">=</span> <span class="n">V_a_new</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">=</span> <span class="n">c</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a_prime</span> <span class="o">=</span> <span class="n">a_prime</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">V_a</span> <span class="o">=</span> <span class="n">V_a</span>
+
+        <span class="k">return</span> <span class="n">c</span><span class="p">,</span> <span class="n">a_prime</span>
+
+    <span class="k">def</span> <span class="nf">plot_policy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bound_grid</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">        Plot the policy function for the first 4 income states</span>
+<span class="sd">        bound_grid: float, fraction of the grid to plot</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rng_asset_grid</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_a&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">bound_grid</span><span class="p">)</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i_y</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_y</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]):</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">rng_asset_grid</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="p">[</span><span class="n">i_y</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">rng_asset_grid</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">y</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$a$&#39;</span><span class="p">,</span> <span class="n">ylabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$c(y,a)$&#39;</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Steady State Policy Function&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;small&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">ss</span> <span class="o">=</span> <span class="n">SteadyStateHH</span><span class="p">(</span><span class="n">model_params</span><span class="p">,</span> <span class="n">grid_params</span><span class="p">)</span>
+<span class="n">ss</span><span class="o">.</span><span class="n">solve_ss</span><span class="p">()</span>
+<span class="n">ss</span><span class="o">.</span><span class="n">c</span><span class="p">,</span> <span class="n">ss</span><span class="o">.</span><span class="n">a_prime</span>
+<span class="n">ss</span><span class="o">.</span><span class="n">plot_policy</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>the steady state is unique.
+</code></pre></div>
+<p><img alt="png" src="../5-endogenous_grid_method_files/5-endogenous_grid_method_18_1.png" /></p>
+<p><strong>Exercise:</strong> Refactor the code in order to use <code>@njit</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+
+<span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">backward_iteration</span><span class="p">(</span><span class="n">V_a</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">eis</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">grid_a</span><span class="p">,</span> <span class="n">grid_y</span><span class="p">,</span> <span class="n">Pi</span><span class="p">):</span>
+    <span class="n">W</span> <span class="o">=</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">Pi</span> <span class="o">@</span> <span class="n">V_a</span>
+
+    <span class="n">c_endog</span> <span class="o">=</span> <span class="n">W</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">eis</span><span class="p">)</span>
+    <span class="n">a_endog</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">grid_a</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">grid_y</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">+</span> <span class="n">c_endog</span><span class="p">)</span>
+    <span class="n">a_prime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">grid_y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">grid_a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+    <span class="k">for</span> <span class="n">i_y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">grid_y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">a_prime</span><span class="p">[</span><span class="n">i_y</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">grid_a</span><span class="p">,</span> <span class="n">a_endog</span><span class="p">[</span><span class="n">i_y</span><span class="p">,</span> <span class="p">:],</span> <span class="n">grid_a</span><span class="p">)</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">grid_a</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">grid_y</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span> <span class="o">-</span> <span class="n">a_prime</span>
+
+    <span class="k">return</span> <span class="n">c</span><span class="p">,</span> <span class="n">a_prime</span>
+
+<span class="k">class</span> <span class="nc">SteadyStateHH</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_params</span><span class="p">,</span> <span class="n">grid_params</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="n">max_iter</span> <span class="o">=</span> <span class="mi">1_000</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_params</span> <span class="o">=</span> <span class="n">model_params</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span> <span class="o">=</span> <span class="n">grid_params</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Grids</span> <span class="o">=</span> <span class="n">Grid</span><span class="p">(</span><span class="n">n_y</span> <span class="o">=</span> <span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_y&#39;</span><span class="p">],</span> <span class="n">rho</span> <span class="o">=</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">],</span>  <span class="n">sd_log_y</span> <span class="o">=</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;sd_log_y&#39;</span><span class="p">],</span> <span class="n">n_a</span> <span class="o">=</span> <span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_a&#39;</span><span class="p">],</span> <span class="n">min_a</span> <span class="o">=</span> <span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;min_a&#39;</span><span class="p">],</span> <span class="n">max_a</span> <span class="o">=</span> <span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;max_a&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tol</span> <span class="o">=</span> <span class="n">tol</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span> <span class="o">=</span> <span class="n">max_iter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a_prime</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">V_a</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># adding the model_params as an argument allows solving for different parameterizations</span>
+    <span class="k">def</span> <span class="nf">solve_ss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_params</span><span class="p">):</span>
+
+        <span class="c1"># update grid if necessary</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;sd_log_y&#39;</span><span class="p">])</span> <span class="o">!=</span> <span class="p">(</span><span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">],</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;sd_log_y&#39;</span><span class="p">]):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Grids</span> <span class="o">=</span> <span class="n">Grid</span><span class="p">(</span><span class="n">n_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_y&#39;</span><span class="p">],</span> <span class="n">rho</span> <span class="o">=</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">],</span>  <span class="n">sd_log_y</span> <span class="o">=</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;sd_log_y&#39;</span><span class="p">],</span> <span class="n">n_a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_a&#39;</span><span class="p">],</span> <span class="n">min_a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;min_a&#39;</span><span class="p">],</span> <span class="n">max_a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;max_a&#39;</span><span class="p">])</span>
+        <span class="c1"># update model_params if necessary</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_params</span> <span class="o">!=</span> <span class="n">model_params</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model_params</span> <span class="o">=</span> <span class="n">model_params</span>
+
+        <span class="c1"># initialize value function derivative with guess</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">V_a</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">V_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_y&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_a&#39;</span><span class="p">]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">V_a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">V_a</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span><span class="p">):</span>
+            <span class="n">c</span><span class="p">,</span> <span class="n">a_prime</span> <span class="o">=</span> <span class="n">backward_iteration</span><span class="p">(</span><span class="n">V_a</span><span class="p">,</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">],</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;eis&#39;</span><span class="p">],</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">Pi</span><span class="p">)</span>
+            <span class="n">V_a_new</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="n">c</span> <span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;eis&#39;</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">V_a_new</span> <span class="o">-</span> <span class="n">V_a</span><span class="p">))</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">tol</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="n">V_a</span> <span class="o">=</span> <span class="n">V_a_new</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">=</span> <span class="n">c</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a_prime</span> <span class="o">=</span> <span class="n">a_prime</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">V_a</span> <span class="o">=</span> <span class="n">V_a</span>
+
+        <span class="k">return</span> <span class="n">c</span><span class="p">,</span> <span class="n">a_prime</span>
+
+    <span class="k">def</span> <span class="nf">plot_policy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bound_grid</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">        Plot the policy function for the first 4 income states</span>
+<span class="sd">        bound_grid: float, fraction of the grid to plot</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rng_asset_grid</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_a&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">bound_grid</span><span class="p">)</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i_y</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_y</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]):</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">rng_asset_grid</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="p">[</span><span class="n">i_y</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">rng_asset_grid</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">y</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$a$&#39;</span><span class="p">,</span> <span class="n">ylabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$c(y,a)$&#39;</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Steady State Policy Function&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;small&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">ss</span> <span class="o">=</span> <span class="n">SteadyStateHH</span><span class="p">(</span><span class="n">model_params</span><span class="p">,</span> <span class="n">grid_params</span><span class="p">)</span>
+<span class="n">ss</span><span class="o">.</span><span class="n">solve_ss</span><span class="p">(</span><span class="n">model_params</span><span class="o">=</span><span class="n">ss</span><span class="o">.</span><span class="n">model_params</span><span class="p">)</span>
+<span class="n">ss</span><span class="o">.</span><span class="n">c</span><span class="p">,</span> <span class="n">ss</span><span class="o">.</span><span class="n">a_prime</span>
+<span class="n">ss</span><span class="o">.</span><span class="n">plot_policy</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>the steady state is unique.
+</code></pre></div>
+<p><img alt="png" src="../5-endogenous_grid_method_files/5-endogenous_grid_method_21_1.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="n">ss</span> <span class="o">=</span> <span class="n">SteadyStateHH</span><span class="p">(</span><span class="n">model_params</span><span class="p">,</span> <span class="n">grid_params</span><span class="p">)</span>
+<span class="n">ss</span><span class="o">.</span><span class="n">solve_ss</span><span class="p">(</span><span class="n">model_params</span><span class="o">=</span><span class="n">ss</span><span class="o">.</span><span class="n">model_params</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>the steady state is unique.
+
+
+
+
+
+(array([[1.41722822e-01, 1.46412415e-01, 1.50292317e-01, ...,
+         1.86182818e+02, 1.94981292e+02, 2.04215800e+02],
+        [2.50991933e-01, 2.55681526e-01, 2.60415096e-01, ...,
+         1.86403939e+02, 1.95202357e+02, 2.04436700e+02],
+        [4.44508157e-01, 4.49197750e-01, 4.53931320e-01, ...,
+         1.86684758e+02, 1.95483026e+02, 2.04717044e+02],
+        ...,
+        [1.34562866e+00, 1.34617631e+00, 1.34672238e+00, ...,
+         1.87539703e+02, 1.96337168e+02, 2.05569687e+02],
+        [2.11335992e+00, 2.11362938e+00, 2.11390126e+00, ...,
+         1.88211194e+02, 1.97007799e+02, 2.06238802e+02],
+        [3.17854812e+00, 3.17874042e+00, 3.17893450e+00, ...,
+         1.89156862e+02, 1.97952041e+02, 2.07180594e+02]]),
+ array([[0.00000000e+00, 0.00000000e+00, 8.53668052e-04, ...,
+         8.93360537e+03, 9.36572181e+03, 9.82092592e+03],
+        [0.00000000e+00, 0.00000000e+00, 0.00000000e+00, ...,
+         8.93349352e+03, 9.36561001e+03, 9.82081429e+03],
+        [0.00000000e+00, 0.00000000e+00, 0.00000000e+00, ...,
+         8.93340622e+03, 9.36552286e+03, 9.82072746e+03],
+        ...,
+        [4.85540026e-02, 5.26959516e-02, 5.68834457e-02, ...,
+         8.93350095e+03, 9.36561839e+03, 9.82082450e+03],
+        [3.55745601e-01, 3.60165727e-01, 3.64627417e-01, ...,
+         8.93390438e+03, 9.36602268e+03, 9.82123030e+03],
+        [1.19425196e+00, 1.19874925e+00, 1.20328874e+00, ...,
+         8.93486241e+03, 9.36698214e+03, 9.82219221e+03]]))
+</code></pre></div>
+<h2 id="3-forward-iteration-to-obtain-distribution">3. <strong>Forward Iteration to Obtain Distribution</strong><a class="headerlink" href="#3-forward-iteration-to-obtain-distribution" title="Permanent link">#</a></h2>
+<p>With steady-state policies at hand, we can compute the distribution of next-period asset holdings, <span class="arithmatex"><span class="MathJax_Preview">D_{t+1}(y, a)</span><script type="math/tex">D_{t+1}(y, a)</script></span> given the current distribution <span class="arithmatex"><span class="MathJax_Preview">D_t</span><script type="math/tex">D_t</script></span>. Assume for a moment that <span class="arithmatex"><span class="MathJax_Preview">a'</span><script type="math/tex">a'</script></span> maps assets on the grid <span class="arithmatex"><span class="MathJax_Preview">\mathcal A</span><script type="math/tex">\mathcal A</script></span>. Then </p>
+<div class="arithmatex">
+<div class="MathJax_Preview">D_{t+1}(y, a) = \sum_{\bar y \in \mathcal Y} \sum_{\bar a \in \mathcal A} D_{t}(\bar y, \bar a) \mathbb P(\bar y | y) \mathbb I(a'(\bar y, \bar a) = a) </div>
+<script type="math/tex; mode=display">D_{t+1}(y, a) = \sum_{\bar y \in \mathcal Y} \sum_{\bar a \in \mathcal A} D_{t}(\bar y, \bar a) \mathbb P(\bar y | y) \mathbb I(a'(\bar y, \bar a) = a) </script>
+</div>
+<p>Problem: <span class="arithmatex"><span class="MathJax_Preview">a'(e, a)</span><script type="math/tex">a'(e, a)</script></span> does not map into <span class="arithmatex"><span class="MathJax_Preview">\mathcal A</span><script type="math/tex">\mathcal A</script></span>. Possible solution: <strong>Lotteries</strong>.</p>
+<p>Basic idea is that if <span class="arithmatex"><span class="MathJax_Preview">a'(e, a) = a' \in [a_i, a_{i+1}]</span><script type="math/tex">a'(e, a) = a' \in [a_i, a_{i+1}]</script></span> for two consecutive grid points <span class="arithmatex"><span class="MathJax_Preview">a_i, a_{i+1}</span><script type="math/tex">a_i, a_{i+1}</script></span>, then a fraction <span class="arithmatex"><span class="MathJax_Preview">q(y, a) = \frac{a_{i+1} - a'}{a_{i+1} - a_{i}}</span><script type="math/tex">q(y, a) = \frac{a_{i+1} - a'}{a_{i+1} - a_{i}}</script></span> of the population lands on the lower gridpoint.</p>
+<!-- Start with a discretized distribution with mass on each gridpoint, $D_t(e, a)$. Then send $p(e, a)$ of mass to gridpoint $i(e, a)$ and $1-p(e, a)$ to gridpoint $i(e, a)+1$.   -->
+
+<p>Let <span class="arithmatex"><span class="MathJax_Preview">a^+</span><script type="math/tex">a^+</script></span> be the next highest grid point on the asset grid, and <span class="arithmatex"><span class="MathJax_Preview">a^-</span><script type="math/tex">a^-</script></span> the next lowest. </p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\begin{align}
+D_{t+1}(y, a) &amp;= \sum_{\bar y \in \mathcal Y} \sum_{\bar a \in \mathcal A} D_{t}(\bar y, \bar a) \mathbb P(\bar y | y) \underbrace{\left[ \mathbb I(a'(\bar y, \bar a)^+ = a) \frac{ a' - a^-}{a^+ - a^-} + \mathbb I(a'(\bar y, \bar a)^- = a) \frac{ a^+ - a'}{a^+ - a^-} \right]}_{\equiv \mu( \bar y, \bar a, a)} \\
+&amp;= \sum_{\bar y \in \mathcal Y} \sum_{\bar a \in \mathcal A} D_{t}(\bar y, \bar a) \mu( \bar y, \bar a, a) \mathbb P(\bar y | y) \\
+&amp;= \sum_{\bar y \in \mathcal Y}  \mathbb P(\bar y | y) \sum_{\bar a \in \mathcal A} D_{t}(\bar y, \bar a) \mu( \bar y, \bar a, a) 
+\end{align}</div>
+<script type="math/tex; mode=display">\begin{align}
+D_{t+1}(y, a) &= \sum_{\bar y \in \mathcal Y} \sum_{\bar a \in \mathcal A} D_{t}(\bar y, \bar a) \mathbb P(\bar y | y) \underbrace{\left[ \mathbb I(a'(\bar y, \bar a)^+ = a) \frac{ a' - a^-}{a^+ - a^-} + \mathbb I(a'(\bar y, \bar a)^- = a) \frac{ a^+ - a'}{a^+ - a^-} \right]}_{\equiv \mu( \bar y, \bar a, a)} \\
+&= \sum_{\bar y \in \mathcal Y} \sum_{\bar a \in \mathcal A} D_{t}(\bar y, \bar a) \mu( \bar y, \bar a, a) \mathbb P(\bar y | y) \\
+&= \sum_{\bar y \in \mathcal Y}  \mathbb P(\bar y | y) \sum_{\bar a \in \mathcal A} D_{t}(\bar y, \bar a) \mu( \bar y, \bar a, a) 
+\end{align}</script>
+</div>
+<p>We can pre-compute the lottery array <span class="arithmatex"><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span> to handle the forward iteration. Still, this approach is very inefficient.</p>
+<p><strong>Exercise:</strong> Explain what is so inefficient about our approach?</p>
+<p><strong>Exercise:</strong> Write a function to compute <code>mu</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Inefficient way to compute lotteries</span>
+<span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">get_mu</span><span class="p">(</span><span class="n">policy</span><span class="p">,</span> <span class="n">grid_a</span><span class="p">,</span> <span class="n">grid_y</span><span class="p">):</span>
+
+    <span class="k">assert</span> <span class="p">(</span><span class="n">policy</span> <span class="o">-</span> <span class="n">grid_a</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="p">(</span><span class="n">policy</span> <span class="o">-</span> <span class="n">grid_a</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="c1"># make sure policy is within bounds of grid_a</span>
+
+    <span class="n">n_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">grid_a</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">n_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">grid_y</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_y</span><span class="p">,</span> <span class="n">n_a</span><span class="p">,</span> <span class="n">n_a</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">index_a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grid_a</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">index_a_bar</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grid_a</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">index_y_bar</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grid_y</span><span class="p">)):</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="n">grid_a</span><span class="p">[</span><span class="n">index_a</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">policy</span><span class="p">[</span><span class="n">index_y_bar</span><span class="p">,</span> <span class="n">index_a_bar</span><span class="p">])</span> <span class="ow">and</span> <span class="p">(</span><span class="n">grid_a</span><span class="p">[</span><span class="n">index_a</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">policy</span><span class="p">[</span><span class="n">index_y_bar</span><span class="p">,</span> <span class="n">index_a_bar</span><span class="p">])</span> <span class="p">:</span>
+                    <span class="n">p_plus</span> <span class="o">=</span> <span class="p">(</span><span class="n">policy</span><span class="p">[</span><span class="n">index_y_bar</span><span class="p">,</span> <span class="n">index_a_bar</span><span class="p">]</span> <span class="o">-</span> <span class="n">grid_a</span><span class="p">[</span><span class="n">index_a</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">grid_a</span><span class="p">[</span><span class="n">index_a</span><span class="p">]</span> <span class="o">-</span> <span class="n">grid_a</span><span class="p">[</span><span class="n">index_a</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="n">mu</span><span class="p">[</span><span class="n">index_y_bar</span><span class="p">,</span> <span class="n">index_a_bar</span><span class="p">,</span> <span class="n">index_a</span><span class="p">]</span>   <span class="o">+=</span> <span class="n">p_plus</span> 
+                    <span class="k">continue</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="n">grid_a</span><span class="p">[</span><span class="n">index_a</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">policy</span><span class="p">[</span><span class="n">index_y_bar</span><span class="p">,</span> <span class="n">index_a_bar</span><span class="p">])</span> <span class="ow">and</span> <span class="p">(</span><span class="n">grid_a</span><span class="p">[</span><span class="n">index_a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">policy</span><span class="p">[</span><span class="n">index_y_bar</span><span class="p">,</span> <span class="n">index_a_bar</span><span class="p">])</span> <span class="p">:</span>
+                    <span class="n">p_minus</span> <span class="o">=</span> <span class="p">(</span><span class="n">grid_a</span><span class="p">[</span><span class="n">index_a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">policy</span><span class="p">[</span><span class="n">index_y_bar</span><span class="p">,</span> <span class="n">index_a_bar</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">grid_a</span><span class="p">[</span><span class="n">index_a</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">grid_a</span><span class="p">[</span><span class="n">index_a</span><span class="p">])</span>
+                    <span class="n">mu</span><span class="p">[</span><span class="n">index_y_bar</span><span class="p">,</span> <span class="n">index_a_bar</span><span class="p">,</span> <span class="n">index_a</span><span class="p">]</span>   <span class="o">+=</span> <span class="n">p_minus</span> 
+                    <span class="k">continue</span>
+
+    <span class="k">return</span> <span class="n">mu</span>
+
+<span class="n">mu</span> <span class="o">=</span> <span class="n">get_mu</span><span class="p">(</span><span class="n">ss</span><span class="o">.</span><span class="n">a_prime</span><span class="p">,</span> <span class="n">ss</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span><span class="p">,</span> <span class="n">ss</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_y</span><span class="p">)</span>
+
+<span class="o">%</span><span class="n">timeit</span> <span class="n">get_mu</span><span class="p">(</span><span class="n">ss</span><span class="o">.</span><span class="n">a_prime</span><span class="p">,</span> <span class="n">ss</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span><span class="p">,</span> <span class="n">ss</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_y</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>1.86 ms ± 27.2 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+</code></pre></div>
+<p>Instead, consider where the mass of <span class="arithmatex"><span class="MathJax_Preview">D_t(y, a)</span><script type="math/tex">D_t(y, a)</script></span> is sent to. For <span class="arithmatex"><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> fixed, <span class="arithmatex"><span class="MathJax_Preview">D_t(y, a) \dfrac{a'(y, a) - a'(y, a)^-}{a'(y, a)^+ - a'(y, a)^-} = D_t(y, a) q(y, a)</span><script type="math/tex">D_t(y, a) \dfrac{a'(y, a) - a'(y, a)^-}{a'(y, a)^+ - a'(y, a)^-} = D_t(y, a) q(y, a)</script></span> is sent to <span class="arithmatex"><span class="MathJax_Preview">a'(y, a)^+</span><script type="math/tex">a'(y, a)^+</script></span> and <span class="arithmatex"><span class="MathJax_Preview">D_t(y, a) (1-q(y, a))</span><script type="math/tex">D_t(y, a) (1-q(y, a))</script></span> is sent to <span class="arithmatex"><span class="MathJax_Preview">a'(y, a)^-</span><script type="math/tex">a'(y, a)^-</script></span>. Proceeding over all <span class="arithmatex"><span class="MathJax_Preview">(y, a)</span><script type="math/tex">(y, a)</script></span>, we obtain <span class="arithmatex"><span class="MathJax_Preview">\tilde D_t(\cdot, \cdot)</span><script type="math/tex">\tilde D_t(\cdot, \cdot)</script></span>, the distribution after asset choices were made and before income shocks realized.</p>
+<p>We now write a function to obtain the <span class="arithmatex"><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span> (the lotteries) and the indices of <span class="arithmatex"><span class="MathJax_Preview">a'(y, a)^+</span><script type="math/tex">a'(y, a)^+</script></span>, where the masses in the distribution are sent to. Once we got <code>q</code> and <code>indexes</code>, we can use these objects in every forward iteration on <span class="arithmatex"><span class="MathJax_Preview">D_t</span><script type="math/tex">D_t</script></span>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_lotteries</span><span class="p">(</span><span class="n">policy</span><span class="p">,</span> <span class="n">grid_a</span><span class="p">):</span>
+
+    <span class="n">indexes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">grid_a</span><span class="p">,</span> <span class="n">policy</span><span class="p">)</span> <span class="c1"># indexes corresponding to a&#39;(y, a)+  (function returns i with a[i-1] &lt; v &lt;= a[i])</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="p">(</span><span class="n">policy</span> <span class="o">-</span> <span class="n">grid_a</span><span class="p">[</span><span class="n">indexes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">grid_a</span><span class="p">[</span><span class="n">indexes</span><span class="p">]</span> <span class="o">-</span> <span class="n">grid_a</span><span class="p">[</span><span class="n">indexes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="c1"># lotteries</span>
+    <span class="k">return</span> <span class="n">indexes</span><span class="p">,</span> <span class="n">q</span>
+
+<span class="c1"># forward iteration</span>
+<span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">forward_iteration</span><span class="p">(</span><span class="n">indexes</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">Pi</span><span class="p">,</span> <span class="n">D</span><span class="p">):</span>
+    <span class="n">n_y</span><span class="p">,</span> <span class="n">n_a</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">D_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_y</span><span class="p">,</span> <span class="n">n_a</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_y</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_a</span><span class="p">):</span>
+
+            <span class="n">D_new</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">indexes</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">a</span><span class="p">]]</span>   <span class="o">+=</span> <span class="n">q</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">a</span><span class="p">]</span> <span class="o">*</span> <span class="n">D</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">a</span><span class="p">]</span>
+            <span class="n">D_new</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">indexes</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">a</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>     <span class="o">+=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">q</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">a</span><span class="p">])</span> <span class="o">*</span> <span class="n">D</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">a</span><span class="p">]</span>
+
+    <span class="c1"># D_new is D_tilde right now. Now we need to update D_tilde using Pi</span>
+    <span class="n">D_new</span> <span class="o">=</span> <span class="n">Pi</span> <span class="o">@</span> <span class="n">D_new</span>
+
+    <span class="k">return</span> <span class="n">D_new</span>
+</code></pre></div>
+<p>Note that, when calculating <code>D_new = Pi @ D_new</code>, row <span class="arithmatex"><span class="MathJax_Preview">i_y</span><script type="math/tex">i_y</script></span> corresponding to state <span class="arithmatex"><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> will hold the vector </p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+[\Pi \tilde D]_{i_y} = (\pi(i_y, 1), ...,\pi(i_y, n_y)) \tilde D = [\pi(i_y, 1)\tilde D(1, i_a) + ... +\pi(i_y, n_y)\tilde D(n_y, i_a)]_{i_a =1,...,n_a}.
+</div>
+<script type="math/tex; mode=display">
+[\Pi \tilde D]_{i_y} = (\pi(i_y, 1), ...,\pi(i_y, n_y)) \tilde D = [\pi(i_y, 1)\tilde D(1, i_a) + ... +\pi(i_y, n_y)\tilde D(n_y, i_a)]_{i_a =1,...,n_a}.
+</script>
+</div>
+<p>Finally, we compute the steady state distribution by iterating until convergence:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">distribution_ss</span><span class="p">(</span><span class="n">Pi</span><span class="p">,</span> <span class="n">policy</span><span class="p">,</span> <span class="n">grid_a</span><span class="p">,</span> <span class="n">maxiter</span><span class="o">=</span><span class="mi">10_000</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1E-10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+    <span class="n">indexes</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">get_lotteries</span><span class="p">(</span><span class="n">policy</span><span class="p">,</span> <span class="n">grid_a</span><span class="p">)</span>
+
+    <span class="c1"># initialize distribution</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">policy</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">policy</span><span class="p">)</span>
+
+    <span class="n">count</span><span class="p">,</span> <span class="n">error</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">error</span> <span class="o">&gt;</span> <span class="n">tol</span> <span class="ow">and</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="n">maxiter</span><span class="p">:</span>
+        <span class="n">D_new</span> <span class="o">=</span> <span class="n">forward_iteration</span><span class="p">(</span><span class="n">indexes</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">Pi</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">D</span> <span class="o">-</span> <span class="n">D_new</span><span class="p">))</span>
+        <span class="n">D</span> <span class="o">=</span> <span class="n">D_new</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+
+    <span class="k">if</span> <span class="n">verbose</span> <span class="p">:</span> 
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;max |D_t - D_t+1| = &quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">num iterations:&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">D</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">D_ss</span> <span class="o">=</span> <span class="n">distribution_ss</span><span class="p">(</span><span class="n">ss</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">Pi</span><span class="p">,</span> <span class="n">ss</span><span class="o">.</span><span class="n">a_prime</span><span class="p">,</span> <span class="n">ss</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span><span class="p">,</span> <span class="n">maxiter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1E-10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># check how long it takes</span>
+<span class="o">%</span><span class="n">time</span> <span class="n">distribution_ss</span><span class="p">(</span><span class="n">ss</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">Pi</span><span class="p">,</span> <span class="n">ss</span><span class="o">.</span><span class="n">a_prime</span><span class="p">,</span> <span class="n">ss</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span><span class="p">,</span> <span class="n">maxiter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1E-10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>max |D_t - D_t+1| =  9.662340372251776e-11 
+num iterations: 536
+max |D_t - D_t+1| =  9.662340372251776e-11 
+num iterations: 536
+CPU times: user 7.77 ms, sys: 33 µs, total: 7.8 ms
+Wall time: 7.72 ms
+
+
+
+
+
+array([[1.40918274e-001, 1.12836882e-004, 7.66408375e-005, ...,
+        4.63400194e-114, 6.22448773e-116, 4.23457364e-118],
+       [1.38212429e-001, 2.53033570e-004, 1.90803709e-004, ...,
+        4.61175517e-114, 6.19620063e-116, 4.21646007e-118],
+       [1.29247539e-001, 6.69139940e-004, 5.20800102e-004, ...,
+        4.61134519e-114, 6.19614397e-116, 4.21685452e-118],
+       ...,
+       [4.76938191e-003, 8.11450720e-005, 5.90862252e-005, ...,
+        4.73711752e-114, 6.35938753e-116, 4.32452420e-118],
+       [1.49636758e-004, 2.56112858e-006, 1.86456018e-006, ...,
+        4.92295035e-114, 6.59920835e-116, 4.48156752e-118],
+       [3.77194925e-006, 6.47532936e-008, 4.71375717e-008, ...,
+        5.27257915e-114, 7.04886178e-116, 4.77491899e-118]])
+</code></pre></div>
+<h3 id="using-the-steadystatehh-module"><strong>Using the SteadyStateHH Module</strong><a class="headerlink" href="#using-the-steadystatehh-module" title="Permanent link">#</a></h3>
+<p><strong>Exercise:</strong> Add the computation of steady state <span class="arithmatex"><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span> to the <code>SteadyStateHH</code> class. Import it from another file and run it.</p>
+<p>Note: restart the kernel before re-importing the classes. </p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">utils_simm</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">grid_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;n_y&#39;</span> <span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="s1">&#39;n_a&#39;</span> <span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+    <span class="s1">&#39;min_a&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;max_a&#39;</span> <span class="p">:</span> <span class="mi">10_000</span>
+<span class="p">}</span>
+
+<span class="n">model_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;beta&#39;</span> <span class="p">:</span> <span class="mi">1</span><span class="o">-</span><span class="mf">0.08</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="c1"># quarterly discount factor</span>
+    <span class="s1">&#39;r&#39;</span> <span class="p">:</span> <span class="mf">0.01</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="c1"># quarterly interest rate</span>
+    <span class="s1">&#39;eis&#39;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;rho&#39;</span> <span class="p">:</span> <span class="mf">0.975</span><span class="p">,</span>
+    <span class="s1">&#39;sd_log_y&#39;</span> <span class="p">:</span> <span class="mf">0.7</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">model_params</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">grid_params</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="c1"># create steady state object</span>
+<span class="n">ss</span> <span class="o">=</span> <span class="n">SteadyStateHH</span><span class="p">(</span><span class="n">model_params</span><span class="p">,</span> <span class="n">grid_params</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>{&#39;beta&#39;: 0.98, &#39;r&#39;: 0.0025, &#39;eis&#39;: 1, &#39;rho&#39;: 0.975, &#39;sd_log_y&#39;: 0.7}
+{&#39;n_y&#39;: 7, &#39;n_a&#39;: 500, &#39;min_a&#39;: 0, &#39;max_a&#39;: 10000}
+the steady state is unique.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># solve for steady state</span>
+<span class="n">ss</span><span class="o">.</span><span class="n">solve_ss</span><span class="p">(</span><span class="n">ss</span><span class="o">.</span><span class="n">model_params</span><span class="p">)</span>
+
+<span class="n">ss</span><span class="o">.</span><span class="n">distribution_ss</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>array([[1.40918274e-001, 1.12836882e-004, 7.66408375e-005, ...,
+        4.63400194e-114, 6.22448773e-116, 4.23457364e-118],
+       [1.38212429e-001, 2.53033570e-004, 1.90803709e-004, ...,
+        4.61175517e-114, 6.19620063e-116, 4.21646007e-118],
+       [1.29247539e-001, 6.69139940e-004, 5.20800102e-004, ...,
+        4.61134519e-114, 6.19614397e-116, 4.21685452e-118],
+       ...,
+       [4.76938191e-003, 8.11450720e-005, 5.90862252e-005, ...,
+        4.73711752e-114, 6.35938753e-116, 4.32452420e-118],
+       [1.49636758e-004, 2.56112858e-006, 1.86456018e-006, ...,
+        4.92295035e-114, 6.59920835e-116, 4.48156752e-118],
+       [3.77194925e-006, 6.47532936e-008, 4.71375717e-008, ...,
+        5.27257915e-114, 7.04886178e-116, 4.77491899e-118]])
+</code></pre></div>
+<h1 id="the-result-utils_simmpy"><strong>The result: utils_simm.py</strong><a class="headerlink" href="#the-result-utils_simmpy" title="Permanent link">#</a></h1>
+<p>For reference, here is the code for the standard incomplete markets module which we have developed in this notebook.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="k">class</span> <span class="nc">Grid</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_y</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">sd_log_y</span><span class="p">,</span> <span class="n">n_a</span><span class="p">,</span> <span class="n">min_a</span><span class="p">,</span> <span class="n">max_a</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_y</span> <span class="o">=</span> <span class="n">n_y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">=</span> <span class="n">rho</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sd_log_y</span> <span class="o">=</span> <span class="n">sd_log_y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_a</span> <span class="o">=</span> <span class="n">n_a</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_a</span> <span class="o">=</span> <span class="n">min_a</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_a</span> <span class="o">=</span> <span class="n">max_a</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Pi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rouwenhorst</span><span class="p">(</span><span class="n">n_y</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">sd_log_y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pi_ss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stationary_dist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Pi</span><span class="p">)[</span><span class="mi">0</span><span class="p">,:]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalize_y</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pi_ss</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">discretize_assets</span><span class="p">(</span><span class="n">min_a</span><span class="p">,</span> <span class="n">max_a</span><span class="p">,</span> <span class="n">n_a</span><span class="p">)</span>
+
+    <span class="c1"># sigma is the sd of the error, e_t</span>
+    <span class="k">def</span> <span class="nf">rouwenhorst</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">sd_log_y</span><span class="p">):</span>
+
+        <span class="c1"># the grid    </span>
+        <span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="c1"># sd of e on this grid with Pi is sqrt(n-1)/2</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="n">e</span> <span class="o">/</span> <span class="p">(</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">/</span><span class="mi">2</span> <span class="p">)</span> <span class="c1"># now its unit sd</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="n">e</span> <span class="o">*</span> <span class="n">sd_log_y</span> <span class="c1"># now it&#39;s the sd of the cross section of log_y</span>
+
+        <span class="c1"># the transition matrix</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">rho</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+        <span class="n">Pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">]])</span>
+
+        <span class="k">while</span> <span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+            <span class="n">Pi_next</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="o">+</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="n">Pi_next</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">:</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">Pi</span> <span class="o">*</span> <span class="n">p</span>
+            <span class="n">Pi_next</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:]</span> <span class="o">+=</span> <span class="n">Pi</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span>
+            <span class="n">Pi_next</span><span class="p">[</span><span class="o">-</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:,</span> <span class="o">-</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:]</span> <span class="o">+=</span> <span class="n">Pi</span> <span class="o">*</span> <span class="n">p</span>
+            <span class="n">Pi_next</span><span class="p">[</span><span class="o">-</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:,</span> <span class="mi">0</span><span class="p">:</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">Pi</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span>
+            <span class="n">Pi_next</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">/=</span> <span class="mi">2</span>
+            <span class="n">Pi</span> <span class="o">=</span> <span class="n">Pi_next</span>
+
+        <span class="k">return</span> <span class="n">Pi</span><span class="p">,</span> <span class="n">e</span>
+
+    <span class="k">def</span> <span class="nf">stationary_dist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Pi</span><span class="p">):</span>
+        <span class="n">Pi_stationary</span> <span class="o">=</span> <span class="n">Pi</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">eps</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">eps</span> <span class="o">&gt;</span> <span class="mf">10E-12</span><span class="p">:</span>
+            <span class="n">Pi_old</span> <span class="o">=</span> <span class="n">Pi_stationary</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">Pi_stationary</span> <span class="o">=</span> <span class="n">Pi_stationary</span> <span class="o">@</span> <span class="n">Pi_stationary</span>
+            <span class="n">eps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Pi_stationary</span> <span class="o">-</span> <span class="n">Pi_old</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span> 
+                    <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Pi_stationary</span> <span class="o">-</span> <span class="n">Pi_stationary</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">Pi_stationary</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="p">)</span>
+            <span class="p">)</span> <span class="o">&lt;</span> <span class="mf">10E-10</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the steady state is unique.&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">Pi_stationary</span>
+
+    <span class="k">def</span> <span class="nf">normalize_y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_y</span><span class="p">,</span> <span class="n">pi_ss</span><span class="p">):</span> <span class="c1"># make y have unit mean</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">log_y</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">vdot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">pi_ss</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">y</span>
+
+
+    <span class="c1"># write a function which discretizes the asset space</span>
+    <span class="k">def</span> <span class="nf">discretize_assets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amin</span><span class="p">,</span> <span class="n">amax</span><span class="p">,</span> <span class="n">n_a</span><span class="p">):</span>
+        <span class="c1"># find ubar </span>
+        <span class="n">ubar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">amax</span> <span class="o">-</span> <span class="n">amin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># make linar grid for the u&#39;s</span>
+        <span class="n">grid_u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ubar</span><span class="p">,</span> <span class="n">n_a</span><span class="p">)</span>
+        <span class="c1"># transform back to a</span>
+        <span class="n">grid_a</span> <span class="o">=</span> <span class="n">amin</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">grid_u</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+        <span class="k">return</span> <span class="n">grid_a</span>
+
+
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+
+<span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">backward_iteration</span><span class="p">(</span><span class="n">V_a</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">eis</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">grid_a</span><span class="p">,</span> <span class="n">grid_y</span><span class="p">,</span> <span class="n">Pi</span><span class="p">):</span>
+    <span class="n">W</span> <span class="o">=</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">Pi</span> <span class="o">@</span> <span class="n">V_a</span>
+
+    <span class="n">c_endog</span> <span class="o">=</span> <span class="n">W</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">eis</span><span class="p">)</span>
+    <span class="n">a_endog</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">grid_a</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">grid_y</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">+</span> <span class="n">c_endog</span><span class="p">)</span>
+    <span class="n">a_prime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">grid_y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">grid_a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+    <span class="k">for</span> <span class="n">i_y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">grid_y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">a_prime</span><span class="p">[</span><span class="n">i_y</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">grid_a</span><span class="p">,</span> <span class="n">a_endog</span><span class="p">[</span><span class="n">i_y</span><span class="p">,</span> <span class="p">:],</span> <span class="n">grid_a</span><span class="p">)</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">grid_a</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">grid_y</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span> <span class="o">-</span> <span class="n">a_prime</span>
+
+    <span class="k">return</span> <span class="n">c</span><span class="p">,</span> <span class="n">a_prime</span>
+
+<span class="k">def</span> <span class="nf">get_lotteries</span><span class="p">(</span><span class="n">policy</span><span class="p">,</span> <span class="n">grid_a</span><span class="p">):</span>
+
+    <span class="n">indexes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">grid_a</span><span class="p">,</span> <span class="n">policy</span><span class="p">)</span> <span class="c1"># indexes corresponding to a&#39;(y, a)+  (function returns i with a[i-1] &lt; v &lt;= a[i])</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="p">(</span><span class="n">policy</span> <span class="o">-</span> <span class="n">grid_a</span><span class="p">[</span><span class="n">indexes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">grid_a</span><span class="p">[</span><span class="n">indexes</span><span class="p">]</span> <span class="o">-</span> <span class="n">grid_a</span><span class="p">[</span><span class="n">indexes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="c1"># lotteries</span>
+    <span class="k">return</span> <span class="n">indexes</span><span class="p">,</span> <span class="n">q</span>
+
+<span class="c1"># forward iteration</span>
+<span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">forward_iteration</span><span class="p">(</span><span class="n">indexes</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">Pi</span><span class="p">,</span> <span class="n">D</span><span class="p">):</span>
+    <span class="n">n_y</span><span class="p">,</span> <span class="n">n_a</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">D_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_y</span><span class="p">,</span> <span class="n">n_a</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_y</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_a</span><span class="p">):</span>
+
+            <span class="n">D_new</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">indexes</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">a</span><span class="p">]]</span>   <span class="o">+=</span> <span class="n">q</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">a</span><span class="p">]</span> <span class="o">*</span> <span class="n">D</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">a</span><span class="p">]</span>
+            <span class="n">D_new</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">indexes</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">a</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>     <span class="o">+=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">q</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">a</span><span class="p">])</span> <span class="o">*</span> <span class="n">D</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">a</span><span class="p">]</span>
+
+    <span class="c1"># D_new is D_tilde right now. Now we need to update D_tilde using Pi</span>
+    <span class="n">D_new</span> <span class="o">=</span> <span class="n">Pi</span> <span class="o">@</span> <span class="n">D_new</span>
+
+    <span class="k">return</span> <span class="n">D_new</span>
+
+<span class="k">class</span> <span class="nc">SteadyStateHH</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_params</span><span class="p">,</span> <span class="n">grid_params</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="n">max_iter</span> <span class="o">=</span> <span class="mi">1_000</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_params</span> <span class="o">=</span> <span class="n">model_params</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span> <span class="o">=</span> <span class="n">grid_params</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Grids</span> <span class="o">=</span> <span class="n">Grid</span><span class="p">(</span><span class="n">n_y</span> <span class="o">=</span> <span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_y&#39;</span><span class="p">],</span> <span class="n">rho</span> <span class="o">=</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">],</span>  <span class="n">sd_log_y</span> <span class="o">=</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;sd_log_y&#39;</span><span class="p">],</span> <span class="n">n_a</span> <span class="o">=</span> <span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_a&#39;</span><span class="p">],</span> <span class="n">min_a</span> <span class="o">=</span> <span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;min_a&#39;</span><span class="p">],</span> <span class="n">max_a</span> <span class="o">=</span> <span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;max_a&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tol</span> <span class="o">=</span> <span class="n">tol</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span> <span class="o">=</span> <span class="n">max_iter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a_prime</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">V_a</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># adding the model_params as an argument allows solving for different parameterizations</span>
+    <span class="k">def</span> <span class="nf">solve_ss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_params</span><span class="p">):</span>
+
+        <span class="c1"># update grid if necessary</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;sd_log_y&#39;</span><span class="p">])</span> <span class="o">!=</span> <span class="p">(</span><span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">],</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;sd_log_y&#39;</span><span class="p">]):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Grids</span> <span class="o">=</span> <span class="n">Grid</span><span class="p">(</span><span class="n">n_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_y&#39;</span><span class="p">],</span> <span class="n">rho</span> <span class="o">=</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">],</span>  <span class="n">sd_log_y</span> <span class="o">=</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;sd_log_y&#39;</span><span class="p">],</span> <span class="n">n_a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_a&#39;</span><span class="p">],</span> <span class="n">min_a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;min_a&#39;</span><span class="p">],</span> <span class="n">max_a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;max_a&#39;</span><span class="p">])</span>
+        <span class="c1"># update model_params if necessary</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_params</span> <span class="o">!=</span> <span class="n">model_params</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model_params</span> <span class="o">=</span> <span class="n">model_params</span>
+
+        <span class="c1"># initialize value function derivative with guess</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">V_a</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">V_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_y&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_a&#39;</span><span class="p">]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">V_a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">V_a</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span><span class="p">):</span>
+            <span class="n">c</span><span class="p">,</span> <span class="n">a_prime</span> <span class="o">=</span> <span class="n">backward_iteration</span><span class="p">(</span><span class="n">V_a</span><span class="p">,</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">],</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;eis&#39;</span><span class="p">],</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">Pi</span><span class="p">)</span>
+            <span class="n">V_a_new</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="n">c</span> <span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">model_params</span><span class="p">[</span><span class="s1">&#39;eis&#39;</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">V_a_new</span> <span class="o">-</span> <span class="n">V_a</span><span class="p">))</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">tol</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="n">V_a</span> <span class="o">=</span> <span class="n">V_a_new</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">=</span> <span class="n">c</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a_prime</span> <span class="o">=</span> <span class="n">a_prime</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">V_a</span> <span class="o">=</span> <span class="n">V_a</span>
+
+        <span class="k">return</span> <span class="n">c</span><span class="p">,</span> <span class="n">a_prime</span>
+
+    <span class="k">def</span> <span class="nf">distribution_ss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maxiter</span><span class="o">=</span><span class="mi">10_000</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1E-10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_prime</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;solve_ss must be called first&quot;</span>
+
+        <span class="n">Pi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">Pi</span>
+        <span class="n">grid_a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span>
+        <span class="n">policy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_prime</span>
+
+        <span class="n">indexes</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">get_lotteries</span><span class="p">(</span><span class="n">policy</span><span class="p">,</span> <span class="n">grid_a</span><span class="p">)</span>
+
+        <span class="c1"># initialize distribution</span>
+        <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">policy</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">policy</span><span class="p">)</span>
+
+        <span class="n">count</span><span class="p">,</span> <span class="n">error</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">error</span> <span class="o">&gt;</span> <span class="n">tol</span> <span class="ow">and</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="n">maxiter</span><span class="p">:</span>
+            <span class="n">D_new</span> <span class="o">=</span> <span class="n">forward_iteration</span><span class="p">(</span><span class="n">indexes</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">Pi</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">D</span> <span class="o">-</span> <span class="n">D_new</span><span class="p">))</span>
+            <span class="n">D</span> <span class="o">=</span> <span class="n">D_new</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+
+        <span class="k">if</span> <span class="n">verbose</span> <span class="p">:</span> 
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;max |D_t - D_t+1| = &quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">num iterations:&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">D</span> <span class="o">=</span> <span class="n">D</span>
+
+        <span class="k">return</span> <span class="n">D</span>
+
+    <span class="k">def</span> <span class="nf">plot_policy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bound_grid</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">        Plot the policy function for the first 4 income states</span>
+<span class="sd">        bound_grid: float, fraction of the grid to plot</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rng_asset_grid</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">grid_params</span><span class="p">[</span><span class="s1">&#39;n_a&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">bound_grid</span><span class="p">)</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i_y</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_y</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]):</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Grids</span><span class="o">.</span><span class="n">grid_a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">rng_asset_grid</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="p">[</span><span class="n">i_y</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">rng_asset_grid</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">y</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$a$&#39;</span><span class="p">,</span> <span class="n">ylabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$c(y,a)$&#39;</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Steady State Policy Function&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;small&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.471ce7a9.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

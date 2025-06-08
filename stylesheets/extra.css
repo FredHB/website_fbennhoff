@@ -1,0 +1,475 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass&display=swap');
+
+/* Set global text color */
+.md-main {
+    color: #000000; /* Change this to your desired text color */
+    font-weight: normal;  /* Adjust the font weight as needed */
+    font-family: "Futura", "Overpass"; 
+    text-align: justify;
+}
+
+.md-header__topic .md-ellipsis {
+    font-family: "Futura", "Overpass"; 
+    font-weight: bold;
+}
+
+
+/* Exempt the navigation menu from text justified */
+.md-nav {
+    text-align: left; /* Override text alignment for navigation menu */
+}
+
+/* HEADER CONFIGURATION */
+.md-header {
+    box-shadow: none; /* Remove the shadow */
+    border-bottom: 4px solid #000000; /* Add a simple bottom border line */
+    padding: 12px;
+}
+
+.md-header__title {
+    font-size: 1.2rem;  /* Adjust the font size as needed */
+    line-height: 1.5rem;  /* Adjust the line height as needed */
+    color: #000000;
+    font-family: "Arial Black"; 
+    font-weight: normal;  /* Adjust the title font weight as needed */
+}
+
+.md-header__title--active .md-header__topic+.md-header__topic {
+    margin-top: 8px;
+    margin-left: 8px;
+}
+
+/* Logo and toc icon button sizes/settings */
+.md-header__button.md-logo img, .md-header__button.md-logo svg {
+    height: 50px;  /* Adjust the height as needed */
+    width: auto;   /* Maintain aspect ratio */
+    margin-top: 22px;
+}
+
+.md-header__inner {
+    padding: 0rem;
+}
+
+.md-header__button.md-icon svg {
+    height: 35px;  /* Adjust the height as needed */
+    width: 35px;   /* Maintain aspect ratio */
+    color: #000000;
+}
+
+
+@media(min-width: 1220px) {
+    .md-nav__title {
+        display: none;   /* Hide the title in the menu/TOC on big screen */
+    }
+}
+
+:root {
+    --md-primary-fg-color:        #ffffff; /*shows in header*/
+    --md-primary-fg-color--light: #dbd8d8;
+    --md-primary-fg-color--dark:  #62725f;
+    --md-accent-fg-color: rgb(168, 39, 39); /* Change this to your desired accent color */
+
+  }
+
+
+
+
+/* H2 alignment markdowns on phone */
+
+@media (max-width: 790px) {
+
+    .md-typeset h2, .md-typeset h1, .md-typeset h3 {
+        text-align: left;
+    } 
+    
+    #about-head {
+        text-align: center;
+    }
+}
+
+
+
+
+/* FOR THE DETAILS BLOCKS   */
+details {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+details summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+details[open] summary {
+    color: #000000;
+}
+
+
+/* ABOUT */
+
+.all-about {
+    width: 70%;
+    margin: auto;
+}
+
+.imgs-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.img-wrapper img {
+    cursor: pointer;
+    transition: .3s ease-in-out;
+    border: 5px solid black;
+}
+
+.img-wrapper:hover img {
+    transform: scale(1.05);
+}
+
+.review-text-part {
+	text-align: end;
+}
+
+.review-text-part p {
+	text-align: justify;
+	margin: 0.7rem 0rem 0.1rem 0rem;
+}
+
+.review-text-part .menu-title {
+	padding-top: 0.7rem;
+	font-weight: 600;
+	letter-spacing: 0.1rem;
+	text-align: center;
+}
+
+.read-more {
+	text-decoration: none !important;
+	cursor: pointer;
+}
+
+.read-more:hover {
+	text-decoration: none !important; 
+}
+
+@media (max-width: 990px) {
+
+    .imgs-container{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 1rem;
+        align-items: center;
+    }
+
+    .all-about {
+        width: 50%;
+        margin: auto;
+    }
+
+}
+
+
+
+
+
+/* LINKS STYLING */
+
+/* NAVIGATION MENU LINKS */
+.md-ellipsis {
+    color: #000000;
+}
+.md-nav__link:hover .md-ellipsis {
+    color: rgb(168, 39, 39);
+    transition: 125ms;
+}
+.md-nav__link--active .md-ellipsis {
+    color: #000000; /* Highlight color for active link */
+    font-weight: bold;
+}
+
+/* INLINE LINKS */
+.md-typeset a, .md-typeset a:hover, a:before {
+    transition: color 125ms;
+    color: rgb(168, 39, 39); /* Change this to your desired link color */
+    text-decoration: underline;
+    }
+
+.md-typeset .headerlink:focus, .md-typeset .headerlink:hover, .md-typeset :target>.headerlink {
+    color: white;
+}
+
+.md-typeset .headerlink:focus, .md-typeset :hover>.headerlink, .md-typeset :target>.headerlink {
+    opacity: 0;
+    transition: color .25s, opacity 125ms;
+}
+
+
+
+
+
+/* Igli and Fred Personal Websites */
+
+
+/* Set global content tabs features */
+
+
+/* Set global margins */
+
+.md-main__inner {
+    margin-top: 0.5rem;
+}
+
+
+/* Set global text color */
+
+.md-typeset h2, .md-typeset h1, .md-typeset h3 {
+    color: black;
+} 
+
+
+/* Actual css for my webpage */
+
+#igli-bajo, #frederik-bennhoff {
+    display: none;
+} 
+
+.headline {
+    padding: 0;
+    margin: 0;
+}
+
+.home-section {
+    padding: 30px 0;
+}
+
+#about-sec {
+    margin-bottom: 30px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 0.7fr 2fr;
+    gap: 20px;
+    align-items: center;
+}
+
+.teaching-grid {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr;
+    gap: 20px;
+    align-items: center;
+}
+
+.teaching-sub-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 0px;
+    align-items: center;
+}
+
+.about-img, .work-title, .research-title, .teaching-title {
+    text-align: center;
+}
+
+.about-img img {
+    border-radius: 20%;
+    max-width: 100%;
+    height: auto;
+}
+
+.about-img h3 {
+    margin-top: 12px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.work-title h3, .research-title h3, .teaching-title h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.about-img a {
+    color: #0056b3;
+    margin: 0px 3px;
+    font-size: 1.4rem;
+}
+
+.about-img a:hover {
+    color: navy;
+}
+
+.about-img .cv-link:hover {
+    text-decoration: none;
+}
+
+.about-img .cv-link {
+    text-decoration: none;
+}
+
+.about-info, .work-info, .research-info, .teaching-info {
+    text-align: left;
+}
+
+.about-info p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.work-info ul, .research-info ul, .teaching-info ul {
+    margin-bottom: 0rem;
+    margin-top: 1.35rem;
+}
+
+.work-info ul, .research-info ul {
+    list-style: none;
+    padding: 0;
+    font-size: 1rem;
+}
+
+.teaching-info ul {
+    padding: 0;
+    font-size: 1rem;
+}
+
+.teaching-info .li-head-list {
+    list-style: none;
+}
+
+.work-info li, .research-info li, .teaching-info li {
+    margin-bottom: 10px;
+}
+
+.work-info li i, .research-info li i, .teaching-info li i {
+    margin-right: 10px;
+    color: #0056b3;
+}
+
+.work-info li span, .research-info li span {
+    font-style: italic;
+}
+
+.about-info .bio {
+    margin-bottom: 1rem;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.5fr;
+    gap: 0.1rem;
+    align-items: center;
+}
+
+.summary-info p {
+    font-size: 0.9rem !important;
+}
+
+.blue-rectangle {
+    display: inline-block; /* Adjust to inline, if needed */
+    background-color:#0056b3; /* Blue fill color */
+    color: white !important; /* Text color */
+    padding: 0.5rem 0.8rem; /* Padding around the text */
+    border-radius: 0.6rem; /* Optional: Rounded corners */
+    margin: 0.2rem;
+    font-size: 0.75rem; /* Adjust text size */
+    text-align: center; /* Center text alignment */
+    text-decoration: none !important;
+  }
+
+  .blue-rectangle:hover {
+    background-color: navy; /* Darker blue on hover */
+    text-decoration: none !important; /* Remove underline on hover */
+  }
+
+
+@media (max-width: 990px) {
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 20px;
+        align-items: center;
+    }
+
+    .teaching-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 0px;
+        align-items: center;
+    }
+
+    .teaching-sub-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 0px;
+        align-items: center;
+    }
+    
+    .work-info ul, .research-info ul {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .work-info ul li, .research-info ul li {
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+
+    .work-title h3, .research-title h3 {
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+
+    .teaching-title h3 {
+        margin-top: 0px;
+        margin-bottom: 0;
+    }
+    
+    .teaching-sub-grid .teaching-info #li-head {
+        margin-top: 2px;
+        margin-bottom: 0;
+    }
+
+}
+
+.tabbed-set .tabbed-alternate {
+    margin-top: 0;
+}
+
+.tabbed-labels a {
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 0;
+}
+
+.tabbed-labels a:hover {
+    text-decoration: none;
+}
+
+.md-typeset .tabbed-set {
+    margin-top: 0;
+}
+
+.back-button a {
+    float: right;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #0056b3 !important;
+    text-decoration: none !important;
+}
+
+.back-button a:hover {
+    color: navy !important;
+}
+
+.work-info details summary, .research-info details summary {
+    font-size: 0.8rem;
+}
+
+.work-info details p, .research-info details p {
+    font-size: 0.75rem;
+}

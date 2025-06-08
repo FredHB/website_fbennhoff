@@ -1,0 +1,1444 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../BayReg/">
+      
+      
+        <link rel="next" href="../TVP-AR/">
+      
+      
+      <link rel="icon" href="../../../assets/images/logo.jpg">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.32">
+    
+    
+      
+        <title>2 The Unobserved Component Stochastic Volatility Model - Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small></title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3cba04c6.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Serif";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-unobserved-component-stochastic-volatility-model" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Frederik H Bennhoff &lt;br&gt;&lt;small&gt;&lt;i&gt;i want to be a professor of economics.&lt;/i&gt;&lt;/small&gt;" class="md-header__button md-logo" aria-label="Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2 The Unobserved Component Stochastic Volatility Model
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Frederik H Bennhoff &lt;br&gt;&lt;small&gt;&lt;i&gt;i want to be a professor of economics.&lt;/i&gt;&lt;/small&gt;" class="md-nav__button md-logo" aria-label="Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.jpg" alt="logo">
+
+    </a>
+    Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    about me
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cv/cv/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cv
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/research/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    research
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    short courses & resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            short courses & resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../sem/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    solving economic models
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            solving economic models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sem/1-numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 Numpy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sem/2-numba/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 Numba
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sem/3-application_stoch_proc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3 Application: Stochastic Processes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sem/4-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4 Optimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sem/5-endogenous_grid_method/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5 Endogenous Grid Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    bayesian econometrics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            bayesian econometrics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/courses/bmetrics/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BayReg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 Bayesian Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    2 The Unobserved Component Stochastic Volatility Model
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    2 The Unobserved Component Stochastic Volatility Model
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Theory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-purpose-and-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Purpose and Overview
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TVP-AR/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3 The Time-Varying Parameter Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Theory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-purpose-and-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Purpose and Overview
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="the-unobserved-component-stochastic-volatility-model"><strong><em>The Unobserved Component Stochastic Volatility Model</em></strong><a class="headerlink" href="#the-unobserved-component-stochastic-volatility-model" title="Permanent link">#</a></h1>
+<h2 id="theory"><strong>Theory</strong><a class="headerlink" href="#theory" title="Permanent link">#</a></h2>
+<h3 id="model-purpose-and-overview"><strong>Model Purpose and Overview</strong><a class="headerlink" href="#model-purpose-and-overview" title="Permanent link">#</a></h3>
+<p>Stock and Watson (2007) propose an unobserved components model with stochastic volatility (UCSV) for inflation. The model expresses inflation <span class="arithmatex"><span class="MathJax_Preview">\pi_t</span><script type="math/tex">\pi_t</script></span> as the sum of a time‐varying trend plus a transitory component, each with time‐varying variance. Specifically:</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    \pi_t = \mu_t + \epsilon_t, 
+    \quad \epsilon_t \sim N\bigl(0,\,\sigma_{\epsilon, t}^2 \bigr),\\
+    \quad \mu_t = \mu_{t-1} + \eta_t,
+    \quad \eta_t \sim N\bigl(0,\,\sigma_{\eta, t}^2 \bigr).
+</div>
+<script type="math/tex; mode=display">
+    \pi_t = \mu_t + \epsilon_t, 
+    \quad \epsilon_t \sim N\bigl(0,\,\sigma_{\epsilon, t}^2 \bigr),\\
+    \quad \mu_t = \mu_{t-1} + \eta_t,
+    \quad \eta_t \sim N\bigl(0,\,\sigma_{\eta, t}^2 \bigr).
+</script>
+</div>
+<p>Here, <span class="arithmatex"><span class="MathJax_Preview">h_t</span><script type="math/tex">h_t</script></span> is the volatility of the short‐run fluctuations and <span class="arithmatex"><span class="MathJax_Preview">w_t</span><script type="math/tex">w_t</script></span> is the volatility of the trend innovations; both <span class="arithmatex"><span class="MathJax_Preview">h_t</span><script type="math/tex">h_t</script></span> and <span class="arithmatex"><span class="MathJax_Preview">w_t</span><script type="math/tex">w_t</script></span> evolve over time according to their own stochastic processes.</p>
+<p><strong>Key Findings by Stock and Watson</strong></p>
+<ol>
+<li>
+<p>Changing Inflation Volatility: They show that both the permanent and transitory shocks to inflation exhibit significant variance changes, reflecting important shifts in the volatility of inflation over different historical periods.</p>
+</li>
+<li>
+<p>Improved Model Fit: Allowing time‐varying variance for both the trend and transitory shocks helps explain episodes of high and low inflation volatility. This leads to a better empirical fit compared to simpler models with constant volatility.</p>
+</li>
+<li>
+<p>Implications for Forecasting: Time variation in shock variances affects the predictability of inflation. In some periods, the trend may be more stable (lower variance), while in others the transitory component may drive larger short‐term swings. These shifts in relative volatility can make inflation more or less forecastable at different times.</p>
+</li>
+</ol>
+<p>Overall, the UCSV approach highlights how inflation can be viewed through the lens of <em>trend + noise</em>, each evolving with its own stochastic volatility, thus capturing both structural shifts and periods of stability in inflation dynamics.</p>
+<p><strong>Stochastic Processes for the Variances</strong></p>
+<p>In the Stock and Watson (2007) setup, the two error variances <span class="arithmatex"><span class="MathJax_Preview">h_t</span><script type="math/tex">h_t</script></span> and <span class="arithmatex"><span class="MathJax_Preview">w_t</span><script type="math/tex">w_t</script></span> evolve stochastically over time. Their approach is to assume each variance follows a random walk in log scale, ensuring positivity:</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+\ln \sigma_{\eta, t}^2 = \ln \sigma_{\eta, t}^2 + \nu_{\eta,t}, \quad \nu_{\eta,t} \sim N\bigl(0,\gamma_\eta^2\bigr),
+</div>
+<script type="math/tex; mode=display">
+\ln \sigma_{\eta, t}^2 = \ln \sigma_{\eta, t}^2 + \nu_{\eta,t}, \quad \nu_{\eta,t} \sim N\bigl(0,\gamma_\eta^2\bigr),
+</script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+\ln \sigma_{\epsilon, t}^2 = \ln \sigma_{\epsilon, t}^2 + \nu_{\epsilon,t}, \quad \nu_{\epsilon,t} \sim N\bigl(0,\gamma_\epsilon^2\bigr),
+</div>
+<script type="math/tex; mode=display">
+\ln \sigma_{\epsilon, t}^2 = \ln \sigma_{\epsilon, t}^2 + \nu_{\epsilon,t}, \quad \nu_{\epsilon,t} \sim N\bigl(0,\gamma_\epsilon^2\bigr),
+</script>
+</div>
+<p>Under this specification, the level of each variance changes gradually, capturing shifts in the volatility of both the permanent shocks <span class="arithmatex"><span class="MathJax_Preview">\eta_t</span><script type="math/tex">\eta_t</script></span> (with variance <span class="arithmatex"><span class="MathJax_Preview">h_t</span><script type="math/tex">h_t</script></span>) and the transitory shocks <span class="arithmatex"><span class="MathJax_Preview">\varepsilon_t</span><script type="math/tex">\varepsilon_t</script></span> (with variance <span class="arithmatex"><span class="MathJax_Preview">w_t</span><script type="math/tex">w_t</script></span>).</p>
+<h1 id="the-unobserved-component-stochastic-volatility-model_1"><strong>The Unobserved Component Stochastic Volatility Model</strong><a class="headerlink" href="#the-unobserved-component-stochastic-volatility-model_1" title="Permanent link">#</a></h1>
+<h2 id="theory_1"><strong>Theory</strong><a class="headerlink" href="#theory_1" title="Permanent link">#</a></h2>
+<h3 id="model-purpose-and-overview_1"><strong>Model Purpose and Overview</strong><a class="headerlink" href="#model-purpose-and-overview_1" title="Permanent link">#</a></h3>
+<p>Stock and Watson (2007) propose an unobserved components model with stochastic volatility (UCSV) for inflation. The model expresses inflation <span class="arithmatex"><span class="MathJax_Preview">\pi_t</span><script type="math/tex">\pi_t</script></span> as the sum of a time‐varying trend plus a transitory component, each with time‐varying variance. Specifically:</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    \pi_t = \mu_t + \epsilon_t, 
+    \quad \epsilon_t \sim N\bigl(0,\,\sigma_{\epsilon, t}^2 \bigr),\\
+    \quad \mu_t = \mu_{t-1} + \eta_t,
+    \quad \eta_t \sim N\bigl(0,\,\sigma_{\eta, t}^2 \bigr).
+</div>
+<script type="math/tex; mode=display">
+    \pi_t = \mu_t + \epsilon_t, 
+    \quad \epsilon_t \sim N\bigl(0,\,\sigma_{\epsilon, t}^2 \bigr),\\
+    \quad \mu_t = \mu_{t-1} + \eta_t,
+    \quad \eta_t \sim N\bigl(0,\,\sigma_{\eta, t}^2 \bigr).
+</script>
+</div>
+<p>Here, <span class="arithmatex"><span class="MathJax_Preview">h_t</span><script type="math/tex">h_t</script></span> is the volatility of the short‐run fluctuations and <span class="arithmatex"><span class="MathJax_Preview">w_t</span><script type="math/tex">w_t</script></span> is the volatility of the trend innovations; both <span class="arithmatex"><span class="MathJax_Preview">h_t</span><script type="math/tex">h_t</script></span> and <span class="arithmatex"><span class="MathJax_Preview">w_t</span><script type="math/tex">w_t</script></span> evolve over time according to their own stochastic processes.</p>
+<p><strong>Key Findings by Stock and Watson</strong></p>
+<ol>
+<li>
+<p>Changing Inflation Volatility: They show that both the permanent and transitory shocks to inflation exhibit significant variance changes, reflecting important shifts in the volatility of inflation over different historical periods.</p>
+</li>
+<li>
+<p>Improved Model Fit: Allowing time‐varying variance for both the trend and transitory shocks helps explain episodes of high and low inflation volatility. This leads to a better empirical fit compared to simpler models with constant volatility.</p>
+</li>
+<li>
+<p>Implications for Forecasting: Time variation in shock variances affects the predictability of inflation. In some periods, the trend may be more stable (lower variance), while in others the transitory component may drive larger short‐term swings. These shifts in relative volatility can make inflation more or less forecastable at different times.</p>
+</li>
+</ol>
+<p>Overall, the UCSV approach highlights how inflation can be viewed through the lens of <em>trend + noise</em>, each evolving with its own stochastic volatility, thus capturing both structural shifts and periods of stability in inflation dynamics.</p>
+<p><strong>Stochastic Processes for the Variances</strong></p>
+<p>In the Stock and Watson (2007) setup, the two error variances <span class="arithmatex"><span class="MathJax_Preview">h_t</span><script type="math/tex">h_t</script></span> and <span class="arithmatex"><span class="MathJax_Preview">w_t</span><script type="math/tex">w_t</script></span> evolve stochastically over time. Their approach is to assume each variance follows a random walk in log scale, ensuring positivity:</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+\ln \sigma_{\eta, t}^2 = \ln \sigma_{\eta, t}^2 + \nu_{\eta,t}, \quad \nu_{\eta,t} \sim N\bigl(0,\gamma_\eta^2\bigr),
+</div>
+<script type="math/tex; mode=display">
+\ln \sigma_{\eta, t}^2 = \ln \sigma_{\eta, t}^2 + \nu_{\eta,t}, \quad \nu_{\eta,t} \sim N\bigl(0,\gamma_\eta^2\bigr),
+</script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+\ln \sigma_{\epsilon, t}^2 = \ln \sigma_{\epsilon, t}^2 + \nu_{\epsilon,t}, \quad \nu_{\epsilon,t} \sim N\bigl(0,\gamma_\epsilon^2\bigr),
+</div>
+<script type="math/tex; mode=display">
+\ln \sigma_{\epsilon, t}^2 = \ln \sigma_{\epsilon, t}^2 + \nu_{\epsilon,t}, \quad \nu_{\epsilon,t} \sim N\bigl(0,\gamma_\epsilon^2\bigr),
+</script>
+</div>
+<p>Under this specification, the level of each variance changes gradually, capturing shifts in the volatility of both the permanent shocks <span class="arithmatex"><span class="MathJax_Preview">\eta_t</span><script type="math/tex">\eta_t</script></span> (with variance <span class="arithmatex"><span class="MathJax_Preview">h_t</span><script type="math/tex">h_t</script></span>) and the transitory shocks <span class="arithmatex"><span class="MathJax_Preview">\varepsilon_t</span><script type="math/tex">\varepsilon_t</script></span> (with variance <span class="arithmatex"><span class="MathJax_Preview">w_t</span><script type="math/tex">w_t</script></span>).</p>
+<h3 id="stock-and-watsons-approach-to-updating-h_th_t-and-w_tw_t"><strong>Stock and Watson’s Approach to Updating <span class="arithmatex"><span class="MathJax_Preview">h_t</span><script type="math/tex">h_t</script></span> and <span class="arithmatex"><span class="MathJax_Preview">w_t</span><script type="math/tex">w_t</script></span></strong><a class="headerlink" href="#stock-and-watsons-approach-to-updating-h_th_t-and-w_tw_t" title="Permanent link">#</a></h3>
+<p>In the original Stock and Watson (2007) implementation, the variances of the log-vol processes are typically <strong>fixed</strong> or <strong>calibrated</strong> rather than fully estimated via a Bayesian updating. This means they set <span class="arithmatex"><span class="MathJax_Preview">\gamma_eta^2</span><script type="math/tex">\gamma_eta^2</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\gamma_\epsilon^2</span><script type="math/tex">\gamma_\epsilon^2</script></span> to fixed values, often chosen based on a small training sample or other prior considerations.</p>
+<p>Under this scheme, the unknown paths <span class="arithmatex"><span class="MathJax_Preview">\{\sigma_{\eta, t}^2\}</span><script type="math/tex">\{\sigma_{\eta, t}^2\}</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\{\sigma_{\epsilon, t}^2\}</span><script type="math/tex">\{\sigma_{\epsilon, t}^2\}</script></span> are each updated using a <strong>separate state-space</strong> routine (akin to a Kalman filter/smoother), but the “measurement error” involved in these auxiliary models is <strong>non-normal</strong>. Hence, for the UC-SV model, one effectively solves <strong>three</strong> state-space models when setting up the Gibbs sampler:</p>
+<ol>
+<li>
+<p><strong>Main Model:</strong>  Handle this using the standard Carter and Kohn (1994) method of resampling from normal state space models, conditioning on the current values of <span class="arithmatex"><span class="MathJax_Preview">\{\sigma_{\eta, t}^2\}</span><script type="math/tex">\{\sigma_{\eta, t}^2\}</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\{\sigma_{\epsilon, t}^2\}</span><script type="math/tex">\{\sigma_{\epsilon, t}^2\}</script></span> in the Gibbs sampler sweep.
+   $$
+     \pi_t = \tau_t + \epsilon_t, 
+     \quad \epsilon_t \sim N\bigl(0,\,\sigma_{\epsilon, t}^2 \bigr),\
+     \quad \tau_t = \tau_{t-1} + \eta_t,
+     \quad \eta_t \sim N\bigl(0,\,\sigma_{\eta, t}^2 \bigr).
+   $$</p>
+</li>
+<li>
+<p><strong>Volatility of Transitory Shocks:</strong> Next, subtract <span class="arithmatex"><span class="MathJax_Preview">\tau_t</span><script type="math/tex">\tau_t</script></span> from the measurement equation and square it. The RHS is now <span class="arithmatex"><span class="MathJax_Preview">\eta_t^2 \sim \sigma_{\eta, t}^2 N(0, 1)^2</span><script type="math/tex">\eta_t^2 \sim \sigma_{\eta, t}^2 N(0, 1)^2</script></span> distributed. Taking logs, we arrive at <span class="arithmatex"><span class="MathJax_Preview">\ln \sigma_{\eta, t}^2 + \ln \chi^2</span><script type="math/tex">\ln \sigma_{\eta, t}^2 + \ln \chi^2</script></span> on the RHS. Let <span class="arithmatex"><span class="MathJax_Preview">u_{\eta, t} \sim_{iid} \ln \chi^2</span><script type="math/tex">u_{\eta, t} \sim_{iid} \ln \chi^2</script></span>, we have the following state-space model:
+   $$
+   \begin{align}
+      y^\star_t := \ln((\pi_t - \tau_t)^2) &amp;= \ln \sigma_{\eta,t}^2 + u_{\eta, t} \
+      \ln \sigma_{\eta, t}^2  &amp;= \ln \sigma_{\eta, t-1}^2 + \nu_{\eta, t}
+   \end{align}
+   $$
+   Because the measurement error is not normally distributed, we cannot use the Kalman Filter directly on this state-space model. If we could, we would be able to apply the Carter &amp; Kohn (1994) method to sample from linear state space models (see previous notebook for an introduction to Carter and Kohn). However, there we use a trick by Shephard and Kim (1998). The distribution of <span class="arithmatex"><span class="MathJax_Preview">u_{\eta, t}</span><script type="math/tex">u_{\eta, t}</script></span> can be well approximated by a mixture distribution of normals: 
+   $$
+      u_{\eta, t} \sim \sum_{1\leq i\leq 7} \phi_i N(m_i, \varsigma_i)
+   $$
+   where the <span class="arithmatex"><span class="MathJax_Preview">\phi_i</span><script type="math/tex">\phi_i</script></span> are indicators which randomly select a normal variate <span class="arithmatex"><span class="MathJax_Preview">N(m_i, \varsigma_i)</span><script type="math/tex">N(m_i, \varsigma_i)</script></span>. Each <span class="arithmatex"><span class="MathJax_Preview">\phi_i</span><script type="math/tex">\phi_i</script></span> is 1 with probability <span class="arithmatex"><span class="MathJax_Preview">\omega_i</span><script type="math/tex">\omega_i</script></span>, and the constraint <span class="arithmatex"><span class="MathJax_Preview">\sum_i \phi_i = 1</span><script type="math/tex">\sum_i \phi_i = 1</script></span> applies. The vectors <span class="arithmatex"><span class="MathJax_Preview">\omega, m</span><script type="math/tex">\omega, m</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\varsigma</span><script type="math/tex">\varsigma</script></span> are fixed and chosen such that <span class="arithmatex"><span class="MathJax_Preview">\phi_i N(m_i, \varsigma_i)</span><script type="math/tex">\phi_i N(m_i, \varsigma_i)</script></span> approximates the <span class="arithmatex"><span class="MathJax_Preview">\ln \chi^2</span><script type="math/tex">\ln \chi^2</script></span> distribution well. The insight here is that <strong>conditionally on <span class="arithmatex"><span class="MathJax_Preview">\phi</span><script type="math/tex">\phi</script></span></strong>, the noise <span class="arithmatex"><span class="MathJax_Preview">u_{\eta, t}| \phi</span><script type="math/tex">u_{\eta, t}| \phi</script></span> is normally distributed. Therefore, in a Gibbs sampling routine, we can first draw <span class="arithmatex"><span class="MathJax_Preview">\phi | \text{others} \sim \phi | y^\star</span><script type="math/tex">\phi | \text{others} \sim \phi | y^\star</script></span>, and in a second step apply the Carter and Kohn sampling scheme. The draw of <span class="arithmatex"><span class="MathJax_Preview">\phi_t | \text{others} \sim \phi | y^\star_t</span><script type="math/tex">\phi_t | \text{others} \sim \phi | y^\star_t</script></span> is easily achieved, with (<span class="arithmatex"><span class="MathJax_Preview">f_N</span><script type="math/tex">f_N</script></span> is a normal density)</p>
+</li>
+</ol>
+<div class="arithmatex">
+<div class="MathJax_Preview">\Pr(\text{component $i$ is drawn at time $t$}) \propto \omega_i f_N(y^\star_t | \ln \sigma_{\eta,t}^2 + m_i - 1.2704, \varsigma_i^2).</div>
+<script type="math/tex; mode=display">\Pr(\text{component $i$ is drawn at time $t$}) \propto \omega_i f_N(y^\star_t | \ln \sigma_{\eta,t}^2 + m_i - 1.2704, \varsigma_i^2).</script>
+</div>
+<ol>
+<li><strong>Volatility of Permanent Shocks:</strong> The idea for the process of the other volatility is the same. We write the model in state-space form with non-normal measurement error. Then we approximate the measurement error with a normal mixture, making the state space conditionally normal. To the conditionally normal state space model, we apply a forward pass of the Kalman filter and a backward pass of the Kalman smoother combined, during which we draw samples (CK method). The state space is: 
+   $$
+   \begin{align}
+      y^\star_t := \ln((\tau_t - \tau_{t-1})^2) &amp;= \ln \sigma_{\epsilon,t}^2 + u_{\epsilon, t} \
+      \ln \sigma_{\epsilon, t}^2  &amp;= \ln \sigma_{\epsilon, t-1}^2 + \nu_{\epsilon, t}
+   \end{align}
+   $$
+   By constructing a similar state-space as for <span class="arithmatex"><span class="MathJax_Preview">\ln(\eta_t^2)</span><script type="math/tex">\ln(\eta_t^2)</script></span>, Stock and Watson again use a mixture approximation for the log-chi-squared distribution to sample <span class="arithmatex"><span class="MathJax_Preview">\ln h_t</span><script type="math/tex">\ln h_t</script></span>.</li>
+</ol>
+<p>Consequently, while each volatility path is updated in a “Kalman-like” fashion, the <strong>non-Gaussian</strong> nature of <span class="arithmatex"><span class="MathJax_Preview">\ln(\varepsilon_t^2)</span><script type="math/tex">\ln(\varepsilon_t^2)</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\ln(\eta_t^2)</span><script type="math/tex">\ln(\eta_t^2)</script></span> means additional mixture-indicator steps are required, but <strong>the innovation variances</strong> <span class="arithmatex"><span class="MathJax_Preview">\sigma_h^2</span><script type="math/tex">\sigma_h^2</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\sigma_w^2</span><script type="math/tex">\sigma_w^2</script></span> for those log-vol processes remain <strong>fixed</strong> throughout the estimation. </p>
+<h2 id="implementation"><strong>Implementation</strong><a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<h3 id="normal-mixture-approximation"><strong>Normal Mixture Approximation</strong><a class="headerlink" href="#normal-mixture-approximation" title="Permanent link">#</a></h3>
+<p>We begin the coding part of this notebook by confirming that the normal mixture approximates the distribution of <span class="arithmatex"><span class="MathJax_Preview">\ln \chi^2</span><script type="math/tex">\ln \chi^2</script></span> well. Let&rsquo;s make this an exercise. The mixture weights and parameters are:</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+\begin{align*}
+    m &amp;= [-10.12999, -3.97281, -8.56686, 2.77786, 0.61942, 1.79518, -1.08819] \\
+    \varsigma^2 &amp;= [5.79596, 2.61369, 5.17950, 0.16735, 0.64009, 0.34023, 1.26261] \\
+    \omega &amp;= [0.00730, 0.10556, 0.00002, 0.04395, 0.34001, 0.24566, 0.25750]
+\end{align*}
+</div>
+<script type="math/tex; mode=display">
+\begin{align*}
+    m &= [-10.12999, -3.97281, -8.56686, 2.77786, 0.61942, 1.79518, -1.08819] \\
+    \varsigma^2 &= [5.79596, 2.61369, 5.17950, 0.16735, 0.64009, 0.34023, 1.26261] \\
+    \omega &= [0.00730, 0.10556, 0.00002, 0.04395, 0.34001, 0.24566, 0.25750]
+\end{align*}
+</script>
+</div>
+<p><strong><em>Task [Mixture Approximation of <span class="arithmatex"><span class="MathJax_Preview">\log \chi^2</span><script type="math/tex">\log \chi^2</script></span>]:</em></strong> Write a function, which will generate draws of the mixture indicators given a weights vector (here, such vector is <span class="arithmatex"><span class="MathJax_Preview">\omega</span><script type="math/tex">\omega</script></span>). Second, write a function to draw from the mixture component specified by the indicator given as input. Third, compare the samples from the mixture distribution to samples of a <span class="arithmatex"><span class="MathJax_Preview">\log \chi^2</span><script type="math/tex">\log \chi^2</script></span> variable. Plot the sampling distributions and make sure they are close.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">trange</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># we need a function to draw the indicators for a mixture of normals</span>
+<span class="k">def</span> <span class="nf">draw_from_mixture</span><span class="p">(</span><span class="n">components</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Draws samples from the normal distributions corresponding to the specified mixture components.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    components (array-like): Array of mixture component indices (1 to 7).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    np.ndarray: An array of samples drawn from the corresponding normal distributions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Updated mixture component parameters (mi, sigma_c^2 from Table 4)</span>
+    <span class="n">mixture_parameters</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+        <span class="p">(</span><span class="o">-</span><span class="mf">10.12999</span><span class="p">,</span> <span class="mf">5.79596</span><span class="p">),</span>  <span class="c1"># Component 1</span>
+        <span class="p">(</span><span class="o">-</span><span class="mf">3.97281</span><span class="p">,</span> <span class="mf">2.61369</span><span class="p">),</span>  <span class="c1"># Component 2</span>
+        <span class="p">(</span><span class="o">-</span><span class="mf">8.56686</span><span class="p">,</span> <span class="mf">5.17950</span><span class="p">),</span>  <span class="c1"># Component 3</span>
+        <span class="p">(</span><span class="mf">2.77786</span><span class="p">,</span> <span class="mf">0.16735</span><span class="p">),</span>   <span class="c1"># Component 4</span>
+        <span class="p">(</span><span class="mf">0.61942</span><span class="p">,</span> <span class="mf">0.64009</span><span class="p">),</span>   <span class="c1"># Component 5</span>
+        <span class="p">(</span><span class="mf">1.79518</span><span class="p">,</span> <span class="mf">0.34023</span><span class="p">),</span>   <span class="c1"># Component 6</span>
+        <span class="p">(</span><span class="o">-</span><span class="mf">1.08819</span><span class="p">,</span> <span class="mf">1.26261</span><span class="p">)</span>   <span class="c1"># Component 7</span>
+    <span class="p">])</span>
+
+    <span class="c1"># Ensure components are valid</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">((</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">components</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">components</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mixture_parameters</span><span class="p">))):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;All component indices must be between 1 and 7.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Get the parameters for the specified components</span>
+    <span class="n">mu_c</span> <span class="o">=</span> <span class="n">mixture_parameters</span><span class="p">[</span><span class="n">components</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># Means</span>
+    <span class="n">sigma2_c</span> <span class="o">=</span> <span class="n">mixture_parameters</span><span class="p">[</span><span class="n">components</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># Variances</span>
+    <span class="n">sigma_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma2_c</span><span class="p">)</span>  <span class="c1"># Standard deviations</span>
+
+    <span class="c1"># Draw samples from the corresponding normal distributions</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu_c</span><span class="p">,</span> <span class="n">sigma_c</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.2704</span>
+
+<span class="c1"># I write this function rather than using using pre-built functions</span>
+<span class="c1"># to ensure that the function is compatible with numba</span>
+<span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">discrete_sample</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns one index sampled according to probability vector p.</span>
+<span class="sd">    p should sum to 1.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+    <span class="n">cdf</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)):</span>
+        <span class="n">cdf</span> <span class="o">+=</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">u</span> <span class="o">&lt;</span> <span class="n">cdf</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># Fallback in case of floating-point rounding</span>
+
+<span class="k">def</span> <span class="nf">draw_mixture_index</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Draws a sample of mixture indexes.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    size (int): Number of samples to draw.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    np.ndarray: An array of samples from the mixture index.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Mixture probabilities (pi from Table 4)</span>
+    <span class="n">mixture_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.00730</span><span class="p">,</span> <span class="mf">0.10556</span><span class="p">,</span> <span class="mf">0.00002</span><span class="p">,</span> <span class="mf">0.04395</span><span class="p">,</span> <span class="mf">0.34001</span><span class="p">,</span> <span class="mf">0.24566</span><span class="p">,</span> <span class="mf">0.25750</span><span class="p">])</span>
+
+    <span class="c1"># Draw samples from the mixture index</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">discrete_sample</span><span class="p">(</span><span class="n">mixture_probabilities</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">)])</span>
+
+<span class="c1"># Example usage</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1_000_000</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">draw_mixture_index</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>  <span class="c1"># Draw a component index</span>
+<span class="n">mixture_samples</span> <span class="o">=</span> <span class="n">draw_from_mixture</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>  <span class="c1"># Draw from the corresponding normal distribution</span>
+<span class="n">true_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)))</span><span class="o">*</span><span class="mi">2</span>
+
+<span class="c1"># Plot the true and mixture samples</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">true_samples</span><span class="p">[</span><span class="n">true_samples</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">15</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;True Samples&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mixture_samples</span><span class="p">[</span><span class="n">mixture_samples</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">15</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Mixture Samples&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../UCSV_files/UCSV_6_0.png" /></p>
+<h3 id="the-data"><strong>The Data</strong><a class="headerlink" href="#the-data" title="Permanent link">#</a></h3>
+<p>The data we will be working with can be found on <a href="https://sites.google.com/site/dimitriskorobilis/">Dimitris Korobilis&rsquo;</a> website, where <a href="https://www.dropbox.com/scl/fi/nxb3mhmtw3ooi25805ygh/UCSV.zip?e=3&amp;file_subpath=%2Fcode&amp;rlkey=vm3iqv04ac3g6pd7vn2b43u1p&amp;dl=1">you can also find his full replication of the UC-SV model with some extra bells and whistles</a>. I suggest popping by if you want to learn some more of the advanced Bayesian stuff.</p>
+<p>For now, place the files <code>infl_data.dat</code> and <code>yearlabb.dat</code> somewhere where you can access them.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># import data from /data/stock_watson_infl/infl_data.dat</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./data/stock_watson_inflation/infl_data.dat&#39;</span><span class="p">)</span>
+<span class="n">years_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./data/stock_watson_inflation/yearlab.dat&#39;</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">colnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CPI&#39;</span><span class="p">,</span> <span class="s1">&#39;GPI&#39;</span><span class="p">,</span> <span class="s1">&#39;GDP_defl&#39;</span><span class="p">]</span>
+<span class="n">data_col</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># make stuff inflation rates (annualized)</span>
+<span class="n">years</span> <span class="o">=</span> <span class="n">years_data</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">4</span><span class="p">:,</span><span class="n">data_col</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="n">data_col</span><span class="p">])</span><span class="o">/</span><span class="n">data</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="n">data_col</span><span class="p">]</span> <span class="c1"># inflation time series</span>
+
+<span class="c1"># years = np.arange(2007 - len(y)/4, 2007, 1/4)</span>
+<span class="c1"># y = y[years &gt;= 1953]</span>
+<span class="c1"># years = years[years &gt;= 1953]</span>
+<span class="c1"># plt.plot(years, y)</span>
+
+<span class="c1"># plot the data</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years_data</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">colnames</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CPI headline inflation (YoY)&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../UCSV_files/UCSV_8_0.png" /></p>
+<h3 id="the-model"><strong>The Model</strong><a class="headerlink" href="#the-model" title="Permanent link">#</a></h3>
+<p>Next step is to write down a proper Gibbs sampler for the UC-SV model. And of course, that is easier said than done. We accomplish it in a sequence of steps, described in the following pseudo code.</p>
+<div class="highlight"><pre><span></span><code>INPUT: 
+  {π_t}_{t=1..T}, observed inflation data
+  hyperparameters {γ_η^2, γ_ε^2}, or initial guesses if these are fixed
+  number of MCMC iterations (N + burn_in)
+
+INITIALIZE:
+  1. For t=1..T:
+       • Set μ_t^(0) = some initial guess (e.g., 0 or an OLS-based trend)
+       • Set ln(σ_{η,t}^2)^(0) = constant (e.g., log of small value)
+       • Set ln(σ_{ε,t}^2)^(0) = constant
+  2. Possibly initialize mixture indicators if using log-chi^2 approximation
+
+FOR iteration i = 1 TO (N + burn_in):
+
+  (A) Sample the entire path {μ_t} given {σ_{η,t}^2, σ_{ε,t}^2}:
+      1. Use a forward‐filter / backward‐sample routine (Carter‐Kohn style):
+         - State equation: μ_t = μ_{t-1} + η_t, Var(η_t)=σ_{η,t}^2
+         - Measurement: π_t = μ_t + ε_t, Var(ε_t)=σ_{ε,t}^2
+         - Because σ_{η,t}^2, σ_{ε,t}^2 are known in this step (from prev iteration),
+           treat them as time‐varying “Q_t” and “R_t” in the Kalman filter.
+      2. The result is a new draw: {μ_t}^(i).
+
+  (B) Sample log‐vol {ln(σ_{ε,t}^2)} using the residuals u_t:
+      1. Compute u_t = π_t - μ_t, for t=1..T.
+      2. Let y_t = ln(u_t^2 + offset).
+      3. Similarly to step (B):
+         - Draw mixture indicators for y_t given current ln(σ_{ε,t}^2).
+         - Treat ln(σ_{ε,t}^2) as a random walk:
+             ln(σ_{ε,t}^2) = ln(σ_{ε,t-1}^2) + ν_{ε,t}, Var(ν_{ε,t})=γ_ε^2.
+         - Forward‐filter/backward‐sample to obtain {ln(σ_{ε,t}^2)}^(i).
+      4. Convert back to {σ_{ε,t}^2}^(i).
+
+  (C) Sample log‐vol {ln(σ_{η,t}^2)} using the increments of μ_t:
+      1. Compute η_t = μ_t - μ_{t-1}, for t=2..T.
+      2. Let v_t = ln(η_t^2 + offset), to avoid ln(0).
+      3. Use a mixture‐of‐normals approximation or a log(χ^2) approach:
+         - For each t=2..T, draw a mixture indicator based on v_t and current ln(σ_{η,t}^2).
+         - Construct a state‐space for ln(σ_{η,t}^2), which evolves as:
+             ln(σ_{η,t}^2) = ln(σ_{η,t-1}^2) + ν_{η,t}, Var(ν_{η,t})=γ_η^2.
+         - Apply a forward‐filter/backward‐sample step with &quot;observations&quot; = v_t - (mixture means).
+      4. The output is a new path {ln(σ_{η,t}^2)}^(i), thus {σ_{η,t}^2}^(i).
+
+  (D) [OPTIONAL] If γ_η^2 or γ_ε^2 are to be updated (we don&#39;t do this here):
+      - gather the sum of squared increments in ln(σ_{η,t}^2) or ln(σ_{ε,t}^2).
+      - draw from an appropriate Inverse‐Gamma posterior or similar.
+      Otherwise, if γ_η^2, γ_ε^2 are fixed, skip this.
+
+  (E) If i &gt; burn_in:
+      Store {μ_t}^(i), {σ_{η,t}^2}^(i), {σ_{ε,t}^2}^(i)
+
+END FOR
+
+OUTPUT:
+  Posterior draws for the trend {μ_t}, 
+  the permanent shock volatility {σ_{η,t}^2}, 
+  and the transitory shock volatility {σ_{ε,t}^2}.
+</code></pre></div>
+<p>We begin by defining functions for drawing the mixture indexes conditional on the data and the current sweep of the Gibbs sampler. </p>
+<div class="highlight"><pre><span></span><code><span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">random_choice_nb</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns &#39;size&#39; samples (as an array of indices) from the distributions in p.</span>
+<span class="sd">    rows of p should sum to 1.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="n">discrete_sample</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">s</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">draw_mixture_index_cond</span><span class="p">(</span><span class="n">obss</span><span class="p">,</span> <span class="n">lvls</span><span class="p">):</span>
+
+    <span class="c1"># preallocate</span>
+    <span class="n">mixture_weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">obss</span><span class="p">),</span> <span class="mi">7</span><span class="p">))</span>
+
+    <span class="n">mixture_qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.00730</span><span class="p">,</span> <span class="mf">0.10556</span><span class="p">,</span> <span class="mf">0.00002</span><span class="p">,</span> <span class="mf">0.04395</span><span class="p">,</span> <span class="mf">0.34001</span><span class="p">,</span> <span class="mf">0.24566</span><span class="p">,</span> <span class="mf">0.25750</span><span class="p">])</span>
+
+    <span class="n">mixture_parameters</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+            <span class="p">(</span><span class="o">-</span><span class="mf">10.12999</span><span class="p">,</span> <span class="mf">5.79596</span><span class="p">),</span> <span class="c1"># Component 1</span>
+            <span class="p">(</span><span class="o">-</span><span class="mf">3.97281</span><span class="p">,</span> <span class="mf">2.61369</span><span class="p">),</span>  <span class="c1"># Component 2</span>
+            <span class="p">(</span><span class="o">-</span><span class="mf">8.56686</span><span class="p">,</span> <span class="mf">5.17950</span><span class="p">),</span>  <span class="c1"># Component 3</span>
+            <span class="p">(</span><span class="mf">2.77786</span><span class="p">,</span> <span class="mf">0.16735</span><span class="p">),</span>   <span class="c1"># Component 4</span>
+            <span class="p">(</span><span class="mf">0.61942</span><span class="p">,</span> <span class="mf">0.64009</span><span class="p">),</span>   <span class="c1"># Component 5</span>
+            <span class="p">(</span><span class="mf">1.79518</span><span class="p">,</span> <span class="mf">0.34023</span><span class="p">),</span>   <span class="c1"># Component 6</span>
+            <span class="p">(</span><span class="o">-</span><span class="mf">1.08819</span><span class="p">,</span> <span class="mf">1.26261</span><span class="p">)</span>   <span class="c1"># Component 7</span>
+        <span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">lvl</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">obss</span><span class="p">,</span> <span class="n">lvls</span><span class="p">)):</span>
+        <span class="c1"># Compute the mixture weights based on the updated parameters</span>
+        <span class="n">mixture_weights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">mixture_qs</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">obs</span> <span class="o">-</span> <span class="n">mixture_parameters</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mf">1.2704</span> <span class="o">-</span> <span class="n">lvl</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">mixture_parameters</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">mixture_parameters</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mf">0.5</span>
+        <span class="n">mixture_weights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mixture_weights</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="c1"># Draw `size` indices based on the weights    </span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="n">random_choice_nb</span><span class="p">(</span><span class="n">mixture_weights</span><span class="p">)</span>
+
+    <span class="c1"># Return indices in 1-based format (components are 1 through 7)</span>
+    <span class="k">return</span> <span class="n">indices</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">mixture_weights</span>
+
+<span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">draw_mixture_index_cond</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]))</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">random_choice_nb</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.00730</span><span class="p">,</span> <span class="mf">0.10556</span><span class="p">,</span> <span class="mf">0.00002</span><span class="p">,</span> <span class="mf">0.04395</span><span class="p">,</span> <span class="mf">0.34001</span><span class="p">,</span> <span class="mf">0.24566</span><span class="p">,</span> <span class="mf">0.25750</span><span class="p">])[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:])</span>
+
+<span class="c1"># check that the functions runs fast</span>
+<span class="o">%</span><span class="n">time</span> <span class="n">_</span>   <span class="o">=</span> <span class="n">random_choice_nb</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.00730</span><span class="p">,</span> <span class="mf">0.10556</span><span class="p">,</span> <span class="mf">0.00002</span><span class="p">,</span> <span class="mf">0.04395</span><span class="p">,</span> <span class="mf">0.34001</span><span class="p">,</span> <span class="mf">0.24566</span><span class="p">,</span> <span class="mf">0.25750</span><span class="p">])[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:])</span>
+<span class="o">%</span><span class="n">time</span> <span class="n">_</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">draw_mixture_index_cond</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>CPU times: user 5 μs, sys: 0 ns, total: 5 μs
+Wall time: 6.91 μs
+CPU times: user 19 μs, sys: 0 ns, total: 19 μs
+Wall time: 19.8 μs
+</code></pre></div>
+<p>With working functions to draw from the mixture distribution, we turn to the Carter-Kohn sampler. The function <code>sample_univ_lss</code> specifically implements Carter and Kohn for a linear state space with time varying variances and univariate observation and state equations. It often makes sense to rewrite your state-space model from scratch from a computational perspective. While matrix algebra can express the Kalman filter and resampling procedure neatly, writing functions which deal with general linear state space models often run orders of magnitudes slower. This is due to lower compatibility with <code>numba</code> and frequently encountered matrix inverses, which hugely simplify if we are dealing with scalars or with diagonal matrices.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">sample_univ_lss</span><span class="p">(</span>
+    <span class="n">y</span><span class="p">,</span>
+    <span class="n">a</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">F</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">Q</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">c</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">H</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">R</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">x0_mean</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">x0_var</span><span class="o">=</span><span class="mf">1.0</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Samples the latent states {x_t} from a univariate, time-varying linear</span>
+<span class="sd">    Gaussian state-space model:</span>
+
+<span class="sd">      State equation:       x_{t+1} = a[t+1] + F[t+1]*x_t + ε_{t+1},      Var(ε_{t+1}) = Q[t+1]</span>
+<span class="sd">      Measurement equation: y_t = c[t] + H[t]*x_t + ω_t,                 Var(ω_t) = R[t]</span>
+
+<span class="sd">    Indexing convention:</span>
+<span class="sd">      - t ranges from 0 to T-1.</span>
+<span class="sd">      - y[t] is observed at time t.</span>
+<span class="sd">      - x0_mean, x0_var are the prior mean and variance for x_0.</span>
+<span class="sd">      - Arrays (a, F, Q, c, H, R) each have length T (univariate).</span>
+<span class="sd">      - By default, a[t] = 0, c[t] = 0, F[t] = 1, H[t] = 1 (if passed as None).</span>
+<span class="sd">      - Q and R must be explicitly specified (no default).</span>
+
+<span class="sd">    Methodology follows Carter and Kohn (1994). See also Primiceri (2004).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    y : np.ndarray of shape (T,)</span>
+<span class="sd">        Observations y[0..T-1].</span>
+<span class="sd">    a : np.ndarray of shape (T,), optional</span>
+<span class="sd">        Time-varying intercept for x_{t+1}. If None, a[t]=0 for all t.</span>
+<span class="sd">    F : np.ndarray of shape (T,), optional</span>
+<span class="sd">        Time-varying coefficient for x_{t+1} = a[t+1] + F[t+1]*x_t + ...</span>
+<span class="sd">        If None, F[t]=1 for all t.</span>
+<span class="sd">    Q : np.ndarray of shape (T,)</span>
+<span class="sd">        Time-varying variance of the state noise for x_{t+1}.</span>
+<span class="sd">    c : np.ndarray of shape (T,), optional</span>
+<span class="sd">        Time-varying intercept in y_t = c[t] + H[t]*x_t + ...</span>
+<span class="sd">        If None, c[t]=0 for all t.</span>
+<span class="sd">    H : np.ndarray of shape (T,), optional</span>
+<span class="sd">        Time-varying coefficient in y_t = c[t] + H[t]*x_t + ...</span>
+<span class="sd">        If None, H[t]=1 for all t.</span>
+<span class="sd">    R : np.ndarray of shape (T,)</span>
+<span class="sd">        Time-varying variance of the measurement noise.</span>
+<span class="sd">    x0_mean : float, optional</span>
+<span class="sd">        Prior mean for x_0. Default is 0.0.</span>
+<span class="sd">    x0_var : float, optional</span>
+<span class="sd">        Prior variance for x_0. Default is 10.0.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    x_draw : np.ndarray of shape (T,)</span>
+<span class="sd">        A single draw for the latent states x_0, ..., x_{T-1}.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="c1"># Provide defaults if any are None</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">F</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">c</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">H</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">Q</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">R</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+
+    <span class="c1"># Filtered means and variances</span>
+    <span class="n">alpha_filt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">P_filt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+
+    <span class="c1"># -------------------------------</span>
+    <span class="c1"># Forward filter</span>
+    <span class="c1"># -------------------------------</span>
+    <span class="c1"># Initialization from prior for x_0</span>
+    <span class="n">alpha_pred</span> <span class="o">=</span> <span class="n">x0_mean</span>
+    <span class="n">P_pred</span> <span class="o">=</span> <span class="n">x0_var</span>
+
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+        <span class="c1"># Measurement update: y[t] = c[t] + H[t]*x[t] + noise, Var(noise)=R[t]</span>
+        <span class="n">yhat</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">H</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">*</span><span class="n">alpha_pred</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">yhat</span>
+        <span class="n">S_t</span> <span class="o">=</span> <span class="n">H</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">P_pred</span> <span class="o">+</span> <span class="n">R</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+        <span class="n">K_t</span> <span class="o">=</span> <span class="p">(</span><span class="n">P_pred</span> <span class="o">*</span> <span class="n">H</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="o">/</span> <span class="n">S_t</span>
+
+        <span class="n">alpha_filt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">alpha_pred</span> <span class="o">+</span> <span class="n">K_t</span><span class="o">*</span><span class="n">res</span>
+        <span class="n">P_filt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">K_t</span><span class="o">*</span><span class="n">H</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="o">*</span> <span class="n">P_pred</span>
+
+        <span class="c1"># Time update for x_{t+1}, if t &lt; T-1</span>
+        <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">alpha_pred</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">F</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">alpha_filt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+            <span class="n">P_pred</span> <span class="o">=</span> <span class="p">(</span><span class="n">F</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">P_filt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">Q</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># -------------------------------</span>
+    <span class="c1"># Backward sampler</span>
+    <span class="c1"># -------------------------------</span>
+    <span class="n">x_draw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+
+    <span class="c1"># Sample x_{T-1} from N(alpha_filt[T-1], P_filt[T-1])</span>
+    <span class="n">x_draw</span><span class="p">[</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">alpha_filt</span><span class="p">[</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">P_filt</span><span class="p">[</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+
+    <span class="c1"># For t = T-2 down to 0, sample x_t | x_{t+1}, data</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">F_val</span> <span class="o">=</span> <span class="n">F</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">A_val</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">denom</span> <span class="o">=</span> <span class="n">F_val</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">P_filt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">Q</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">denom</span> <span class="o">&lt;</span> <span class="mf">1e-14</span><span class="p">:</span>
+            <span class="n">post_mean</span> <span class="o">=</span> <span class="n">alpha_filt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+            <span class="n">post_var</span>  <span class="o">=</span> <span class="n">P_filt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x_tplus1_pred</span> <span class="o">=</span> <span class="n">A_val</span> <span class="o">+</span> <span class="n">F_val</span><span class="o">*</span><span class="n">alpha_filt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+            <span class="n">K_smooth</span> <span class="o">=</span> <span class="p">(</span><span class="n">P_filt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">*</span><span class="n">F_val</span><span class="p">)</span> <span class="o">/</span> <span class="n">denom</span>
+            <span class="n">post_mean</span> <span class="o">=</span> <span class="n">alpha_filt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">K_smooth</span><span class="o">*</span><span class="p">(</span><span class="n">x_draw</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x_tplus1_pred</span><span class="p">)</span>
+            <span class="n">post_var</span>  <span class="o">=</span> <span class="n">P_filt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">K_smooth</span><span class="o">*</span><span class="p">(</span><span class="n">F_val</span><span class="o">*</span><span class="n">P_filt</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+
+        <span class="n">x_draw</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">post_mean</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">post_var</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">x_draw</span>
+
+<span class="n">s2_eta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">s2_eps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">sample_univ_lss</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> 
+                <span class="n">Q</span> <span class="o">=</span> <span class="n">s2_eps</span><span class="p">,</span>
+                <span class="n">R</span> <span class="o">=</span> <span class="n">s2_eta</span><span class="p">)</span>
+
+<span class="o">%</span><span class="n">time</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sample_univ_lss</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Q</span> <span class="o">=</span> <span class="n">s2_eps</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">s2_eta</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>CPU times: user 130 μs, sys: 0 ns, total: 130 μs
+Wall time: 133 μs
+</code></pre></div>
+<p>We are now ready to complete the Gibbs sampler. The following implementation runs efficiently. Frquent use of <code>numba</code> and tailor made code allow us to draw 10,000 samples in under 3 seconds.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">## sampling parameters</span>
+<span class="n">n_draws</span> <span class="o">=</span> <span class="mi">20_000</span>
+<span class="n">burn_in</span> <span class="o">=</span> <span class="mi">5_000</span>
+
+<span class="c1">## mixture parameters</span>
+<span class="n">mixture_parameters</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+        <span class="p">(</span><span class="o">-</span><span class="mf">10.12999</span><span class="p">,</span> <span class="mf">5.79596</span><span class="p">),</span> <span class="c1"># Component 1</span>
+        <span class="p">(</span><span class="o">-</span><span class="mf">3.97281</span><span class="p">,</span> <span class="mf">2.61369</span><span class="p">),</span>  <span class="c1"># Component 2</span>
+        <span class="p">(</span><span class="o">-</span><span class="mf">8.56686</span><span class="p">,</span> <span class="mf">5.17950</span><span class="p">),</span>  <span class="c1"># Component 3</span>
+        <span class="p">(</span><span class="mf">2.77786</span><span class="p">,</span> <span class="mf">0.16735</span><span class="p">),</span>   <span class="c1"># Component 4</span>
+        <span class="p">(</span><span class="mf">0.61942</span><span class="p">,</span> <span class="mf">0.64009</span><span class="p">),</span>   <span class="c1"># Component 5</span>
+        <span class="p">(</span><span class="mf">1.79518</span><span class="p">,</span> <span class="mf">0.34023</span><span class="p">),</span>   <span class="c1"># Component 6</span>
+        <span class="p">(</span><span class="o">-</span><span class="mf">1.08819</span><span class="p">,</span> <span class="mf">1.26261</span><span class="p">)</span>   <span class="c1"># Component 7</span>
+    <span class="p">])</span>
+
+<span class="c1">## variables that change in each sweep</span>
+<span class="n">s2_eta</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="c1"># process innovation variances</span>
+<span class="n">log_s2_eta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">s2_eta</span><span class="p">)</span>
+<span class="n">s2_eps</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="c1"># measurement noise variances</span>
+<span class="n">log_s2_eps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">s2_eps</span><span class="p">)</span>
+
+<span class="c1">## SS subsystems for process innovation/measurement noise</span>
+<span class="n">s2_v_eta</span> <span class="o">=</span> <span class="mf">.02</span> <span class="c1"># variance of state innovation in sub-SS-model (proc innovation)</span>
+<span class="n">s2_v_eps</span> <span class="o">=</span> <span class="mf">.02</span> <span class="c1"># variance of observation noise in sub-SS-model (meas noise)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mf">1E-5</span>   <span class="c1"># stabilizing constant for log transformation</span>
+
+<span class="c1">## preallocate</span>
+<span class="n">T</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">s2_eta_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_draws</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
+<span class="n">s2_eps_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_draws</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
+<span class="n">alpha_samples</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_draws</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="o">-</span><span class="n">burn_in</span><span class="p">,</span> <span class="n">n_draws</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Sampling&quot;</span><span class="p">,</span> <span class="n">leave</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="c1">### ALPHA</span>
+    <span class="c1"># Estimate the inflation trend and noise component using KF</span>
+    <span class="c1"># and sample the latent states using CK sampler</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">sample_univ_lss</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Q</span> <span class="o">=</span> <span class="n">s2_eta</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">s2_eps</span><span class="p">)</span>
+
+    <span class="c1">### ETA</span>
+    <span class="c1">## sample mixture components for measurement innov variance</span>
+    <span class="n">y_star</span>            <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">c</span><span class="p">)</span>                                      <span class="c1"># dep var in transformed state space submodel</span>
+    <span class="n">sample_indices</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">draw_mixture_index_cond</span><span class="p">(</span><span class="n">y_star</span><span class="p">,</span> <span class="n">log_s2_eta</span><span class="p">)</span>                   <span class="c1"># draw mixture indices</span>
+    <span class="n">params</span>            <span class="o">=</span> <span class="n">mixture_parameters</span><span class="p">[</span><span class="n">sample_indices</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.2704</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span> <span class="c1"># obtain the mixture parameters</span>
+    <span class="c1">## sample levels of observation noise variances</span>
+    <span class="n">log_s2_eta</span>        <span class="o">=</span> <span class="n">sample_univ_lss</span><span class="p">(</span><span class="n">y_star</span><span class="p">,</span>                                        
+                             <span class="n">Q</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">s2_v_eta</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span> <span class="p">,</span>                               <span class="c1"># state equation var</span>
+                             <span class="n">R</span><span class="o">=</span><span class="n">params</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span>                                           <span class="c1"># measurement equation var</span>
+                             <span class="n">c</span><span class="o">=</span><span class="n">params</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span>                                           <span class="c1"># measurement equation mean </span>
+                             <span class="n">x0_var</span> <span class="o">=</span> <span class="mf">1E9</span><span class="p">,</span>
+                             <span class="n">x0_mean</span> <span class="o">=</span> <span class="mf">1E-4</span>
+                             <span class="p">)</span>                
+    <span class="n">s2_eta</span>            <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">log_s2_eta</span><span class="p">)</span>
+
+    <span class="c1">### EPSILON</span>
+    <span class="c1">## sample mixture components for process noise variance</span>
+    <span class="n">y_star</span>            <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">alpha</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">c</span><span class="p">)</span>
+    <span class="n">sample_indices</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">draw_mixture_index_cond</span><span class="p">(</span><span class="n">y_star</span><span class="p">,</span> <span class="n">log_s2_eps</span><span class="p">)</span>
+    <span class="n">params</span>            <span class="o">=</span> <span class="n">mixture_parameters</span><span class="p">[</span><span class="n">sample_indices</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.2704</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+    <span class="c1">## sample states log(s2_eps_t) for t = 2, ..., T</span>
+    <span class="n">log_s2_eps</span>        <span class="o">=</span> <span class="n">sample_univ_lss</span><span class="p">(</span><span class="n">y_star</span><span class="p">,</span>                                        
+                            <span class="n">Q</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">s2_v_eps</span><span class="p">,</span> <span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">,</span>                             <span class="c1"># state equation var</span>
+                            <span class="n">R</span><span class="o">=</span><span class="n">params</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span>                                           <span class="c1"># measurement equation var</span>
+                            <span class="n">c</span><span class="o">=</span><span class="n">params</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span>                                           <span class="c1"># measurement equation mean </span>
+                            <span class="n">x0_var</span> <span class="o">=</span> <span class="mf">1E9</span><span class="p">,</span>
+                            <span class="n">x0_mean</span> <span class="o">=</span> <span class="mf">1E-4</span>
+                            <span class="p">)</span>
+    <span class="n">log_s2_eps_0</span>      <span class="o">=</span> <span class="n">log_s2_eps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s2_v_eps</span><span class="p">))</span>    <span class="c1"># sample s2_eps_0     </span>
+    <span class="n">log_s2_eps</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(([</span><span class="n">log_s2_eps_0</span><span class="p">],</span> <span class="n">log_s2_eps</span><span class="p">))</span>                 <span class="c1"># concatenate with s2_eps_0</span>
+    <span class="n">s2_eps</span>            <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">log_s2_eps</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">s2_eta_samples</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">s2_eta</span>
+        <span class="n">s2_eps_samples</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">s2_eps</span>
+        <span class="n">alpha_samples</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>  <span class="o">=</span> <span class="n">alpha</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Sampling: 100%|██████████| 25000/25000 [00:04&lt;00:00, 5091.21it/s]
+</code></pre></div>
+<h2 id="visual-analysis"><strong>Visual Analysis</strong><a class="headerlink" href="#visual-analysis" title="Permanent link">#</a></h2>
+<p>Without going in too much detail, we can plot the </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">plot_ts_quantiles</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">years</span><span class="p">,</span> <span class="n">dat</span><span class="p">,</span> <span class="n">quantiles</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">x_select</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x_select</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">dat</span><span class="o">.</span><span class="n">copy</span><span class="p">()[:,</span> <span class="n">x_select</span><span class="p">]</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">years</span><span class="p">[</span><span class="n">x_select</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">dat</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">years</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">FormatStrFormatter</span>
+    <span class="n">quantiles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">quantiles</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">quantiles</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">.8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">quantiles</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">quantiles</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;80</span><span class="si">%-i</span><span class="s1">nterval&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgrey&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.8</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x</span><span class="p">[::</span><span class="mi">20</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">x</span><span class="p">[::</span><span class="mi">20</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_yticks</span><span class="p">())</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_yticks</span><span class="p">(),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FormatStrFormatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">))</span>  <span class="c1"># round to 2 decimals</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FormatStrFormatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.0f</span><span class="s1">&#39;</span><span class="p">))</span>  <span class="c1"># round to 0 decimals</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plot_ts_quantiles</span><span class="p">(</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">years</span><span class="p">,</span> <span class="n">alpha_samples</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span> <span class="s1">&#39;Inflation Level&#39;</span><span class="p">,</span> <span class="n">x_select</span><span class="o">=</span><span class="p">(</span><span class="n">years</span> <span class="o">&gt;</span> <span class="mi">1954</span><span class="p">))</span>
+<span class="n">plot_ts_quantiles</span><span class="p">(</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">years</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s2_eps_samples</span><span class="p">),</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span> <span class="s1">&#39;State Innovation SD&#39;</span><span class="p">,</span> <span class="n">x_select</span><span class="o">=</span><span class="p">(</span><span class="n">years</span> <span class="o">&gt;</span> <span class="mi">1954</span><span class="p">))</span>
+<span class="n">plot_ts_quantiles</span><span class="p">(</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">years</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s2_eta_samples</span><span class="p">),</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span> <span class="s1">&#39;Measurement Noise SD&#39;</span><span class="p">,</span> <span class="n">x_select</span><span class="o">=</span><span class="p">(</span><span class="n">years</span> <span class="o">&gt;</span> <span class="mi">1954</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../UCSV_files/UCSV_16_0.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.471ce7a9.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

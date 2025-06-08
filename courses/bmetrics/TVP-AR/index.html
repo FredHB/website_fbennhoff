@@ -1,0 +1,1456 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../UCSV/">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/logo.jpg">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.32">
+    
+    
+      
+        <title>3 The Time-Varying Parameter Model - Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small></title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3cba04c6.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Serif";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#time-varying-parameter-ar-model" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Frederik H Bennhoff &lt;br&gt;&lt;small&gt;&lt;i&gt;i want to be a professor of economics.&lt;/i&gt;&lt;/small&gt;" class="md-header__button md-logo" aria-label="Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3 The Time-Varying Parameter Model
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Frederik H Bennhoff &lt;br&gt;&lt;small&gt;&lt;i&gt;i want to be a professor of economics.&lt;/i&gt;&lt;/small&gt;" class="md-nav__button md-logo" aria-label="Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.jpg" alt="logo">
+
+    </a>
+    Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    about me
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cv/cv/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cv
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/research/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    research
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    short courses & resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            short courses & resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../sem/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    solving economic models
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            solving economic models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sem/1-numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 Numpy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sem/2-numba/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 Numba
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sem/3-application_stoch_proc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3 Application: Stochastic Processes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sem/4-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4 Optimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sem/5-endogenous_grid_method/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5 Endogenous Grid Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    bayesian econometrics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            bayesian econometrics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/courses/bmetrics/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BayReg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 Bayesian Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UCSV/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 The Unobserved Component Stochastic Volatility Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    3 The Time-Varying Parameter Model
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    3 The Time-Varying Parameter Model
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#state-space-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      State-Space Representation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="State-Space Representation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kalman-filter-and-smoother" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kalman Filter and Smoother
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gibbs-sampler" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gibbs Sampler
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gibbs Sampler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-of-the-carter-and-kohn-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps of the Carter and Kohn Method:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#posterior-distributions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Posterior Distributions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#state-space-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      State-Space Representation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="State-Space Representation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kalman-filter-and-smoother" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kalman Filter and Smoother
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gibbs-sampler" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gibbs Sampler
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gibbs Sampler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-of-the-carter-and-kohn-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps of the Carter and Kohn Method:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#posterior-distributions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Posterior Distributions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="time-varying-parameter-ar-model"><strong><em>Time Varying Parameter AR Model</em></strong><a class="headerlink" href="#time-varying-parameter-ar-model" title="Permanent link">#</a></h1>
+<p>The following model was treated in a course taught by Dimitris Korobilis in a summer school taught at the Barcelona Graduate School of Economics in 2017. It is a simplified version of Primiceri (2005), who uses a time varying parameter (TVP) model to investigate historical changes in the way monetary policy has been transmitted in the US. The data set we will be using has nothing to do with this application, and consists of the annual percentage change in UK industrial production from 1701-1992. In order to investigate whether the dynamic structure of this time series model is changing over time, we use an AR(p) model with time-varying coefficients:</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+y_t = \alpha_{0t} + \alpha_{1t}y_{t-1} + \dots + \alpha_{pt}y_{t-p} + \varepsilon_t,
+</div>
+<script type="math/tex; mode=display">
+y_t = \alpha_{0t} + \alpha_{1t}y_{t-1} + \dots + \alpha_{pt}y_{t-p} + \varepsilon_t,
+</script>
+</div>
+<p>where for <span class="arithmatex"><span class="MathJax_Preview">i = 0, \dots, p</span><script type="math/tex">i = 0, \dots, p</script></span></p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+\alpha_{it+1} = \alpha_{it} + u_{it}.
+</div>
+<script type="math/tex; mode=display">
+\alpha_{it+1} = \alpha_{it} + u_{it}.
+</script>
+</div>
+<p>We furthermore assume that <span class="arithmatex"><span class="MathJax_Preview">\varepsilon_t \sim_{iid} N(0, h^{-1})</span><script type="math/tex">\varepsilon_t \sim_{iid} N(0, h^{-1})</script></span> and <span class="arithmatex"><span class="MathJax_Preview">u_{it} \sim_{iid} N(0, \lambda_i h^{-1})</span><script type="math/tex">u_{it} \sim_{iid} N(0, \lambda_i h^{-1})</script></span> where <span class="arithmatex"><span class="MathJax_Preview">\varepsilon_t</span><script type="math/tex">\varepsilon_t</script></span>, <span class="arithmatex"><span class="MathJax_Preview">u_{is}</span><script type="math/tex">u_{is}</script></span>, and <span class="arithmatex"><span class="MathJax_Preview">u_{jr}</span><script type="math/tex">u_{jr}</script></span> are independent of one another for all <span class="arithmatex"><span class="MathJax_Preview">s, t, r, i</span><script type="math/tex">s, t, r, i</script></span>, and <span class="arithmatex"><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>. We use a slightly informative prior for the parameters <span class="arithmatex"><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\lambda_i</span><script type="math/tex">\lambda_i</script></span> for <span class="arithmatex"><span class="MathJax_Preview">i = 0, \dots, p</span><script type="math/tex">i = 0, \dots, p</script></span>. For <span class="arithmatex"><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span>, use a Gamma prior with <span class="arithmatex"><span class="MathJax_Preview">\underline\nu = 1</span><script type="math/tex">\underline\nu = 1</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\underline s^{-2} = 1</span><script type="math/tex">\underline s^{-2} = 1</script></span>. For <span class="arithmatex"><span class="MathJax_Preview">\lambda_i^{-1}</span><script type="math/tex">\lambda_i^{-1}</script></span>, use Gamma priors with <span class="arithmatex"><span class="MathJax_Preview">\underline\nu_i = 1</span><script type="math/tex">\underline\nu_i = 1</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\underline\lambda_i = 1</span><script type="math/tex">\underline\lambda_i = 1</script></span>. With this prior, the conditional posteriors have the form:</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+p(\lambda_i^{-1} | y, \alpha_1, \dots, \alpha_T) = f_G\left(\lambda_i^{-1} | \overline{\lambda}_i^{-1}, \overline\nu_i\right),
+</div>
+<script type="math/tex; mode=display">
+p(\lambda_i^{-1} | y, \alpha_1, \dots, \alpha_T) = f_G\left(\lambda_i^{-1} | \overline{\lambda}_i^{-1}, \overline\nu_i\right),
+</script>
+</div>
+<p>for <span class="arithmatex"><span class="MathJax_Preview">i = 0, \dots, p</span><script type="math/tex">i = 0, \dots, p</script></span>, where</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+\overline\nu_i = T + \underline\nu_i
+</div>
+<script type="math/tex; mode=display">
+\overline\nu_i = T + \underline\nu_i
+</script>
+</div>
+<p>and</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+\overline{\lambda}_i =  \frac{h\sum_{t=0}^{T-1} (\alpha_{i, t+1} - \alpha_{it})(\alpha_{i, t+1} - \alpha_{it})' + \underline\nu_i \underline\lambda_i}{\overline \nu_i}.
+</div>
+<script type="math/tex; mode=display">
+\overline{\lambda}_i =  \frac{h\sum_{t=0}^{T-1} (\alpha_{i, t+1} - \alpha_{it})(\alpha_{i, t+1} - \alpha_{it})' + \underline\nu_i \underline\lambda_i}{\overline \nu_i}.
+</script>
+</div>
+<p>We will write code which implements the Gibbs sampling algorithm for the model.</p>
+<p><strong>References:</strong>
+1. De Jong, Shephard (1995) - The Simulation Smoother for Time Series Models</p>
+<ol>
+<li>
+<p>Carter, Kohn (1994) - On Gibbs Sampling for State Space Models</p>
+</li>
+<li>
+<p>Primiceri (2005) - Time Varying Structural Vector Autoregressions and Monetary Policy</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1">## import data</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">jit</span><span class="p">,</span> <span class="n">njit</span><span class="p">,</span> <span class="n">prange</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="c1">## load data from txt file</span>
+<span class="n">y_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./data/uk_ind_prod_growth.txt&#39;</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">years_raw</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1701</span> <span class="o">+</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_raw</span><span class="p">))]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y_raw</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;growth&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">years_raw</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;UK Industrial Production Growth&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;Axes: title={&#39;center&#39;: &#39;UK Industrial Production Growth&#39;}&gt;
+</code></pre></div>
+<p><img alt="png" src="../TVP-AR_files/TVP-AR_1_1.png" /></p>
+<h2 id="state-space-representation"><strong>State-Space Representation</strong><a class="headerlink" href="#state-space-representation" title="Permanent link">#</a></h2>
+<p>The Time-Varying Parameter (TVP) model can be expressed in <strong>state-space form</strong>, which consists of an <strong>observation equation</strong> and a <strong>state equation</strong>.</p>
+<ol>
+<li>
+<p><strong>Observation Equation</strong></p>
+<p>The observation equation relates the observed <span class="arithmatex"><span class="MathJax_Preview">y_t</span><script type="math/tex">y_t</script></span> to the state (parameters) <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{\alpha}_t</span><script type="math/tex">\boldsymbol{\alpha}_t</script></span>:
+$$
+y_t = \mathbf{X}_t&rsquo; \boldsymbol{\alpha}_t + \varepsilon_t,
+$$
+where:</p>
+<ul>
+<li><span class="arithmatex"><span class="MathJax_Preview">\mathbf{X}_t = [1, y_{t-1}, y_{t-2}, \dots, y_{t-p}]'</span><script type="math/tex">\mathbf{X}_t = [1, y_{t-1}, y_{t-2}, \dots, y_{t-p}]'</script></span> is a <span class="arithmatex"><span class="MathJax_Preview">(p+1) \times 1</span><script type="math/tex">(p+1) \times 1</script></span> vector of predictors (including the intercept as the first entry),</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{\alpha}_t = [\alpha_{0,t}, \alpha_{1,t}, \dots, \alpha_{p,t}]'</span><script type="math/tex">\boldsymbol{\alpha}_t = [\alpha_{0,t}, \alpha_{1,t}, \dots, \alpha_{p,t}]'</script></span> is a <span class="arithmatex"><span class="MathJax_Preview">(p+1) \times 1</span><script type="math/tex">(p+1) \times 1</script></span> vector of time-varying parameters,</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">\varepsilon_t \sim N(0, h^{-1})</span><script type="math/tex">\varepsilon_t \sim N(0, h^{-1})</script></span> is the observation noise.</li>
+</ul>
+<p>This can be written compactly as:
+$$
+y_t = \mathbf{X}_t&rsquo; \boldsymbol{\alpha}_t + \varepsilon_t, \quad \varepsilon_t \sim N(0, h^{-1}).
+$$</p>
+</li>
+<li>
+<p><strong>State Equation</strong></p>
+<p>The state equation describes the evolution of the time-varying parameters <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{\alpha}_t</span><script type="math/tex">\boldsymbol{\alpha}_t</script></span> over time:
+$$
+\boldsymbol{\alpha}_{t+1} = \boldsymbol{\alpha}_t + \mathbf{u}_t,
+$$
+where:
+- <span class="arithmatex"><span class="MathJax_Preview">\mathbf{u}_t \sim N(\mathbf{0}, \mathbf{Q})</span><script type="math/tex">\mathbf{u}_t \sim N(\mathbf{0}, \mathbf{Q})</script></span>,
+- <span class="arithmatex"><span class="MathJax_Preview">\mathbf{Q} = \text{diag}([\lambda_0 h^{-1}, \lambda_1 h^{-1}, \dots, \lambda_p h^{-1}])</span><script type="math/tex">\mathbf{Q} = \text{diag}([\lambda_0 h^{-1}, \lambda_1 h^{-1}, \dots, \lambda_p h^{-1}])</script></span> is a diagonal covariance matrix representing the process noise for each parameter.</p>
+</li>
+</ol>
+<p>This can be written compactly as:
+$$
+\boldsymbol{\alpha}_{t+1} \sim N(\boldsymbol{\alpha}_t, \mathbf{Q}).
+$$</p>
+<h3 id="kalman-filter-and-smoother">Kalman Filter and Smoother<a class="headerlink" href="#kalman-filter-and-smoother" title="Permanent link">#</a></h3>
+<p>The state-space representation allows you to apply the <strong>Kalman filter</strong> for forward filtering (estimating <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{\alpha}_t</span><script type="math/tex">\boldsymbol{\alpha}_t</script></span> given <span class="arithmatex"><span class="MathJax_Preview">y_{1:t} = \{y_1, ..., y_t\}</span><script type="math/tex">y_{1:t} = \{y_1, ..., y_t\}</script></span>) and the <strong>Kalman smoother</strong> for backward smoothing (estimating <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{\alpha}_t</span><script type="math/tex">\boldsymbol{\alpha}_t</script></span> given <span class="arithmatex"><span class="MathJax_Preview">y_{1:T}</span><script type="math/tex">y_{1:T}</script></span>). Our first objective is to set up the Kalman filter to obtain state means (given the observations and the distribution of <span class="arithmatex"><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\varepsilon</span><script type="math/tex">\varepsilon</script></span>). We also call these means <em>filtered (state) estimates</em>. The Kalman filter consists of the following equations (see Primiceri, 2005):</p>
+<ol>
+<li>
+<p><strong>Initialization</strong>
+Start with an initial guess for the state vector <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{\alpha}_0</span><script type="math/tex">\boldsymbol{\alpha}_0</script></span> and its covariance <span class="arithmatex"><span class="MathJax_Preview">\mathbf{P}_0</span><script type="math/tex">\mathbf{P}_0</script></span>: <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{\alpha}_0 \quad \text{and} \quad \mathbf{P}_0 = \text{Cov}(\boldsymbol{\alpha}_0)</span><script type="math/tex">\boldsymbol{\alpha}_0 \quad \text{and} \quad \mathbf{P}_0 = \text{Cov}(\boldsymbol{\alpha}_0)</script></span></p>
+</li>
+<li>
+<p><strong>Prediction Step</strong>
+Predict the state and its uncertainty at time <span class="arithmatex"><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>: <span class="arithmatex"><span class="MathJax_Preview">\hat{\boldsymbol{\alpha}}_{t|t-1} = \hat{\boldsymbol{\alpha}}_{t-1|t-1}</span><script type="math/tex">\hat{\boldsymbol{\alpha}}_{t|t-1} = \hat{\boldsymbol{\alpha}}_{t-1|t-1}</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\mathbf{P}_{t|t-1} = \mathbf{P}_{t-1|t-1} + \mathbf{Q}</span><script type="math/tex">\mathbf{P}_{t|t-1} = \mathbf{P}_{t-1|t-1} + \mathbf{Q}</script></span>. The prediction assumes the state evolves with added process noise from <span class="arithmatex"><span class="MathJax_Preview">\mathbf{Q}</span><script type="math/tex">\mathbf{Q}</script></span>.</p>
+</li>
+<li>
+<p><strong>Measurement Update (Correction Step)</strong>
+Use the new observation <span class="arithmatex"><span class="MathJax_Preview">y_t</span><script type="math/tex">y_t</script></span> to correct the state estimate.</p>
+<ul>
+<li>
+<p><strong>Compute the prediction error (innovation):</strong> <span class="arithmatex"><span class="MathJax_Preview">v_t = y_t - \mathbf{X}_t' \hat{\boldsymbol{\alpha}}_{t|t-1}</span><script type="math/tex">v_t = y_t - \mathbf{X}_t' \hat{\boldsymbol{\alpha}}_{t|t-1}</script></span></p>
+</li>
+<li>
+<p><strong>Compute the innovation covariance:</strong> <span class="arithmatex"><span class="MathJax_Preview">S_t = \mathbf{X}_t' \mathbf{P}_{t|t-1} \mathbf{X}_t + h^{-1}</span><script type="math/tex">S_t = \mathbf{X}_t' \mathbf{P}_{t|t-1} \mathbf{X}_t + h^{-1}</script></span></p>
+</li>
+<li>
+<p><strong>Compute the Kalman gain:</strong> <span class="arithmatex"><span class="MathJax_Preview">\mathbf{K}_t = \mathbf{P}_{t|t-1} \mathbf{X}_t \cdot S_t^{-1}</span><script type="math/tex">\mathbf{K}_t = \mathbf{P}_{t|t-1} \mathbf{X}_t \cdot S_t^{-1}</script></span></p>
+</li>
+<li>
+<p><strong>Update the state estimate:</strong> <span class="arithmatex"><span class="MathJax_Preview">\hat{\boldsymbol{\alpha}}_{t|t} = \hat{\boldsymbol{\alpha}}_{t|t-1} + \mathbf{K}_t v_t</span><script type="math/tex">\hat{\boldsymbol{\alpha}}_{t|t} = \hat{\boldsymbol{\alpha}}_{t|t-1} + \mathbf{K}_t v_t</script></span></p>
+</li>
+<li>
+<p><strong>Update the covariance estimate:</strong> <span class="arithmatex"><span class="MathJax_Preview">\mathbf{P}_{t|t} = \mathbf{P}_{t|t-1} - \mathbf{K}_t \mathbf{X}_t' \mathbf{P}_{t|t-1}</span><script type="math/tex">\mathbf{P}_{t|t} = \mathbf{P}_{t|t-1} - \mathbf{K}_t \mathbf{X}_t' \mathbf{P}_{t|t-1}</script></span></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Iterate</strong>
+Repeat the prediction and correction steps for <span class="arithmatex"><span class="MathJax_Preview">t = 1, 2, \dots</span><script type="math/tex">t = 1, 2, \dots</script></span>.</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># First, we need to generate the lagged variables</span>
+<span class="c1"># for the state space form of this model</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">y_raw</span><span class="p">),</span> <span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">y_lag</span> <span class="o">=</span> <span class="n">y_raw</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">y_lag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span> <span class="n">y_lag</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+    <span class="n">X</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_lag</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">p</span><span class="p">:,</span> <span class="p">:]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y_raw</span><span class="p">[</span><span class="n">p</span><span class="p">:]</span>
+<span class="n">years</span> <span class="o">=</span> <span class="n">years_raw</span><span class="p">[</span><span class="n">p</span><span class="p">:]</span>
+</code></pre></div>
+<p>Now, implement the Kalman filter. I call the matrices similar to the naming conventions in Primiceri (2005):</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># set up the kalman filter for a general state space model</span>
+<span class="c1"># but encapsulate performance routines for the TVP-AR(p) model</span>
+<span class="c1"># at hand.</span>
+<span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">kalman_filter</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">F</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">malpha_init</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">Palpha_init</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">    Kalman filter corresponding to the following state space model:</span>
+
+<span class="sd">        y_t = X_t&#39; α_t + ε_t</span>
+<span class="sd">        α_t = F α_{t-1}  + u_t</span>
+
+<span class="sd">        ε_t ~ N(0, R)</span>
+<span class="sd">        u_t ~ N(0, Q)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">p</span>   <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1"># number of explanatory variables</span>
+    <span class="n">T</span>   <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="c1"># Preallocate</span>
+    <span class="n">malphas</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">T</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="p">))</span>
+    <span class="n">malphas_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">T</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="p">))</span>        <span class="c1"># prediction current mean given previous data</span>
+    <span class="n">Palphas</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">T</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">))</span>
+    <span class="n">Palphas_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">T</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">))</span>   <span class="c1"># prediction current variance given previous data</span>
+    <span class="n">Ks</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>                 <span class="c1"># Kalman gains</span>
+    <span class="n">y_preds</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>      <span class="c1"># predictions; y_preds[t] = E[y_t | y_{1:t-1}]</span>
+    <span class="n">y_nowcasts</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>      <span class="c1"># nowcast: y_nowcasts[t] = E[x_t&#39; α_t | y_{1:t}]</span>
+
+
+    <span class="c1"># Initialize</span>
+    <span class="c1">## defaults for unconditional mean, variance, precision, lambdas</span>
+    <span class="k">if</span> <span class="n">malpha_init</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">malpha_init</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>     <span class="c1"># zero initial mean</span>
+    <span class="k">if</span> <span class="n">Palpha_init</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">Palpha_init</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1E9</span> <span class="c1"># large initial variance</span>
+    <span class="k">if</span> <span class="n">F</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>                 <span class="c1"># transition matrix</span>
+        <span class="n">idtrnsm</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">idtrnsm</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># construct initial values for Kalman matrices</span>
+    <span class="n">Palphas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="o">=</span> <span class="n">Palpha_init</span>           <span class="c1"># current variance given current data</span>
+    <span class="n">malphas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="o">=</span> <span class="n">malpha_init</span>           <span class="c1"># filtered mean given current data </span>
+
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+
+        <span class="c1"># prediction</span>
+        <span class="k">if</span> <span class="n">idtrnsm</span><span class="p">:</span>
+            <span class="n">malphas_pred</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">malphas</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>                <span class="c1"># malphas_pred[t] = E[α_t | y_{1:t-1}]</span>
+            <span class="n">Palphas_pred</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">Palphas</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">Q</span>            <span class="c1"># Palphas_pred[t] = Var[α_t | y_{1:t-1}]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">malphas_pred</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">F</span> <span class="o">@</span> <span class="n">malphas</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>                <span class="c1"># malphas_pred[t] = E[α_t | y_{1:t-1}]</span>
+            <span class="n">Palphas_pred</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">F</span> <span class="o">@</span> <span class="n">Palphas</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">@</span> <span class="n">F</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">Q</span>      <span class="c1"># Palphas_pred[t] = Var[α_t | y_{1:t-1}]</span>
+        <span class="n">y_t</span>             <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+        <span class="n">x_t</span>             <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="n">y_pred</span>          <span class="o">=</span> <span class="n">x_t</span> <span class="o">@</span> <span class="n">malphas_pred</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+
+        <span class="c1"># update</span>
+        <span class="n">K</span>           <span class="o">=</span> <span class="n">Palphas_pred</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">@</span> <span class="n">x_t</span><span class="o">.</span><span class="n">T</span> <span class="o">/</span> <span class="p">(</span><span class="n">x_t</span> <span class="o">@</span> <span class="n">Palphas_pred</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">@</span> <span class="n">x_t</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">R</span><span class="p">)</span> <span class="c1"># Kalman gain</span>
+        <span class="n">malpha</span>      <span class="o">=</span> <span class="n">malphas_pred</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">K</span> <span class="o">@</span> <span class="p">(</span><span class="n">y_t</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)</span>                          <span class="c1"># update mean</span>
+        <span class="n">Palpha</span>      <span class="o">=</span> <span class="n">Palphas_pred</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">K</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">@</span> <span class="n">x_t</span> <span class="o">@</span> <span class="n">Palphas_pred</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>    <span class="c1"># update variance</span>
+        <span class="n">y_nowcast</span>   <span class="o">=</span> <span class="n">x_t</span> <span class="o">@</span> <span class="n">malpha</span>                                                  <span class="c1"># nowcast</span>
+
+        <span class="c1"># store results</span>
+        <span class="n">y_preds</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>      <span class="o">=</span> <span class="n">y_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">y_nowcasts</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>   <span class="o">=</span> <span class="n">y_nowcast</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">malphas</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>    <span class="o">=</span> <span class="n">malpha</span>
+        <span class="n">Palphas</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>    <span class="o">=</span> <span class="n">Palpha</span>
+        <span class="n">Ks</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>           <span class="o">=</span> <span class="n">K</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># final prediction</span>
+    <span class="n">malphas_pred</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">malphas</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">Palphas_pred</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Palphas</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">Q</span>
+
+    <span class="c1"># remove the initial value</span>
+    <span class="n">malphas</span> <span class="o">=</span> <span class="n">malphas</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">Palphas</span> <span class="o">=</span> <span class="n">Palphas</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+    <span class="k">return</span> <span class="n">y_preds</span><span class="p">,</span> <span class="n">y_nowcasts</span><span class="p">,</span> <span class="n">malphas</span><span class="p">,</span> <span class="n">Palphas</span><span class="p">,</span> <span class="n">malphas_pred</span><span class="p">,</span> <span class="n">Palphas_pred</span><span class="p">,</span> <span class="n">Ks</span>
+</code></pre></div>
+<p>The <strong>Kalman smoother</strong> is an extension of the Kalman filter that provides <strong>smoothed estimates</strong> of the states <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{\alpha}_t</span><script type="math/tex">\boldsymbol{\alpha}_t</script></span> by using <strong>all available data</strong> (past, present, and future observations). Unlike the filter, which only estimates states sequentially up to the current time <span class="arithmatex"><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>, the smoother improves accuracy by revisiting past state estimates during a backward pass.</p>
+<p><strong>Key Concepts:</strong></p>
+<ul>
+<li><em>Kalman Filter:</em> Forward pass (time <span class="arithmatex"><span class="MathJax_Preview">1 \to T</span><script type="math/tex">1 \to T</script></span>), estimating <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{\alpha}_t</span><script type="math/tex">\boldsymbol{\alpha}_t</script></span> based on data up to <span class="arithmatex"><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>.</li>
+<li><em>Kalman Smoother:</em> Backward pass (time <span class="arithmatex"><span class="MathJax_Preview">T \to 1</span><script type="math/tex">T \to 1</script></span>), refining <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{\alpha}_t</span><script type="math/tex">\boldsymbol{\alpha}_t</script></span> using future observations.</li>
+</ul>
+<p><strong>Kalman Smoother Steps:</strong></p>
+<ol>
+<li>
+<p><em>Run the Kalman Filter</em> forward in time (from <span class="arithmatex"><span class="MathJax_Preview">t = 1</span><script type="math/tex">t = 1</script></span> to <span class="arithmatex"><span class="MathJax_Preview">t = T</span><script type="math/tex">t = T</script></span>) to get the filtered estimates <span class="arithmatex"><span class="MathJax_Preview">\hat{\boldsymbol{\alpha}}_{t|t}</span><script type="math/tex">\hat{\boldsymbol{\alpha}}_{t|t}</script></span> and covariance <span class="arithmatex"><span class="MathJax_Preview">\mathbf{P}_{t|t}</span><script type="math/tex">\mathbf{P}_{t|t}</script></span>.</p>
+</li>
+<li>
+<p><em>Backward Pass (Smoothing Step)</em>: For <span class="arithmatex"><span class="MathJax_Preview">t = T-1, T-2, \dots, 1</span><script type="math/tex">t = T-1, T-2, \dots, 1</script></span>, compute the smoothed state estimate using information from future times.</p>
+</li>
+</ol>
+<p><strong>Smoothing Equations:</strong></p>
+<ol>
+<li>
+<p><em>Smoothing Gain:</em> <span class="arithmatex"><span class="MathJax_Preview">\mathbf{G}_t = \mathbf{P}_{t|t} \mathbf{P}_{t+1|t}^{-1}</span><script type="math/tex">\mathbf{G}_t = \mathbf{P}_{t|t} \mathbf{P}_{t+1|t}^{-1}</script></span>. This gain tells us how much of the future state <span class="arithmatex"><span class="MathJax_Preview">\hat{\boldsymbol{\alpha}}_{t+1|T}</span><script type="math/tex">\hat{\boldsymbol{\alpha}}_{t+1|T}</script></span> should influence the current state.</p>
+</li>
+<li>
+<p><em>Smoothed State Estimate:</em> <span class="arithmatex"><span class="MathJax_Preview">\hat{\boldsymbol{\alpha}}_{t|T} = \hat{\boldsymbol{\alpha}}_{t|t} + \mathbf{G}_t \big( \hat{\boldsymbol{\alpha}}_{t+1|T} - \hat{\boldsymbol{\alpha}}_{t+1|t} \big)</span><script type="math/tex">\hat{\boldsymbol{\alpha}}_{t|T} = \hat{\boldsymbol{\alpha}}_{t|t} + \mathbf{G}_t \big( \hat{\boldsymbol{\alpha}}_{t+1|T} - \hat{\boldsymbol{\alpha}}_{t+1|t} \big)</script></span>. This equation adjusts the filtered estimate <span class="arithmatex"><span class="MathJax_Preview">\hat{\boldsymbol{\alpha}}_{t|t}</span><script type="math/tex">\hat{\boldsymbol{\alpha}}_{t|t}</script></span> using the future information from <span class="arithmatex"><span class="MathJax_Preview">\hat{\boldsymbol{\alpha}}_{t+1|T}</span><script type="math/tex">\hat{\boldsymbol{\alpha}}_{t+1|T}</script></span>.</p>
+</li>
+<li>
+<p><em>Smoothed Covariance:</em> <span class="arithmatex"><span class="MathJax_Preview">\mathbf{P}_{t|T} = \mathbf{P}_{t|t} + \mathbf{G}_t \big( \mathbf{P}_{t+1|T} - \mathbf{P}_{t+1|t} \big) \mathbf{G}_t'</span><script type="math/tex">\mathbf{P}_{t|T} = \mathbf{P}_{t|t} + \mathbf{G}_t \big( \mathbf{P}_{t+1|T} - \mathbf{P}_{t+1|t} \big) \mathbf{G}_t'</script></span></p>
+</li>
+</ol>
+<p>By combining forward and backward passes, the Kalman smoother effectively reduces noise and enhances estimation accuracy, making it ideal for offline applications like retrospective analysis.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">kalman_smoother</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">malphas</span><span class="p">,</span> <span class="n">Palphas</span><span class="p">,</span> <span class="n">malphas_pred</span><span class="p">,</span> <span class="n">Palphas_pred</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+    <span class="n">p</span>   <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="n">p</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">T</span>   <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="c1"># preallocate</span>
+    <span class="n">smalphas</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">T</span><span class="p">,</span> <span class="n">dim</span><span class="p">))</span> <span class="c1"># smoothed mean</span>
+    <span class="n">sPalphas</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">T</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">))</span> <span class="c1"># smoothed variance</span>
+    <span class="n">y_smootheds</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># smoothed estimate</span>
+
+    <span class="c1"># initialize</span>
+    <span class="n">smalphas</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>    <span class="o">=</span> <span class="n">malphas</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">sPalphas</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>    <span class="o">=</span> <span class="n">Palphas</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="c1"># Note that len(y)-2 = T-1; can&#39;t initialize from T</span>
+
+        <span class="n">J</span>           <span class="o">=</span> <span class="n">Palphas</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Palphas_pred</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>               <span class="c1"># smoother gain</span>
+        <span class="n">smalpha</span>     <span class="o">=</span> <span class="n">malphas</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">J</span> <span class="o">@</span> <span class="p">(</span><span class="n">smalphas</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">malphas_pred</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>      <span class="c1"># smoothed mean</span>
+        <span class="n">sPalpha</span>     <span class="o">=</span> <span class="n">Palphas</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">J</span> <span class="o">@</span> <span class="p">(</span><span class="n">sPalphas</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">Palphas_pred</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="o">@</span> <span class="n">J</span><span class="o">.</span><span class="n">T</span>  <span class="c1"># smoothed variance</span>
+        <span class="n">y_smoothed</span>  <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">@</span> <span class="n">smalpha</span>                                            <span class="c1"># smoothed estimate</span>
+
+        <span class="c1"># store results</span>
+        <span class="n">smalphas</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>     <span class="o">=</span> <span class="n">smalpha</span>
+        <span class="n">sPalphas</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>     <span class="o">=</span> <span class="n">sPalpha</span>
+        <span class="n">y_smootheds</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>  <span class="o">=</span> <span class="n">y_smoothed</span>
+
+    <span class="k">return</span> <span class="n">y_smootheds</span><span class="p">,</span> <span class="n">smalphas</span><span class="p">,</span> <span class="n">sPalphas</span>
+</code></pre></div>
+<p>We are ready to calculate and plot the Kalman filter and smoother estimates. We run the Kalman filter with large, diagonal <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol R</span><script type="math/tex">\boldsymbol R</script></span>, assuming that a lot of the variation in <span class="arithmatex"><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> is measurement error. Additionally, we assume small <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol Q</span><script type="math/tex">\boldsymbol Q</script></span>, which implies that the state only changes slowly.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">plot_kalman</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_preds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_nowcasts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_smootheds</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;UK Industrial Production Growth&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;observed&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">y_nowcasts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">y_nowcasts</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;filtered (nowcast)&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">y_preds</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">y_preds</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;prediction&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">y_smootheds</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">y_smootheds</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;smoother&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">capture</span>
+<span class="n">y_preds</span><span class="p">,</span> <span class="n">y_nowcasts</span><span class="p">,</span> <span class="n">malphas</span><span class="p">,</span> <span class="n">Palphas</span><span class="p">,</span> <span class="n">malphas_pred</span><span class="p">,</span> <span class="n">Palphas_pred</span><span class="p">,</span> <span class="n">Ks</span> <span class="o">=</span> <span class="n">kalman_filter</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> 
+                                                <span class="n">X</span><span class="p">,</span> 
+                                                <span class="n">Q</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="c1"># innovations</span>
+                                                <span class="n">R</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">30</span><span class="p">,</span>  <span class="c1"># measurement error</span>
+                                                <span class="n">Palpha_init</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1E-9</span><span class="p">)</span>
+<span class="n">y_smootheds</span><span class="p">,</span> <span class="n">smalphas</span><span class="p">,</span> <span class="n">sPalphas</span> <span class="o">=</span> <span class="n">kalman_smoother</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">malphas</span><span class="p">,</span> <span class="n">Palphas</span><span class="p">,</span> <span class="n">malphas_pred</span><span class="p">,</span> <span class="n">Palphas_pred</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">plot_kalman</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_nowcasts</span><span class="o">=</span><span class="n">y_nowcasts</span><span class="p">,</span> <span class="n">y_smootheds</span><span class="o">=</span><span class="n">y_smootheds</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../TVP-AR_files/TVP-AR_11_0.png" /></p>
+<h2 id="gibbs-sampler"><strong>Gibbs Sampler</strong><a class="headerlink" href="#gibbs-sampler" title="Permanent link">#</a></h2>
+<p>Fantastic. The first step to implementing the full Gibbs sampler is completed. The Kalman filter/smoother is very helpful to generate samples of <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol \alpha_t | \{\text{others}\}</span><script type="math/tex">\boldsymbol \alpha_t | \{\text{others}\}</script></span>. The exact way how to do this was developed in Carter and Kohn (1994) (CK) and De Jong and Shephard (1995). The CK method is </p>
+<p>The <strong>Carter and Kohn method</strong> is a technique for <strong>drawing samples of the latent states</strong> <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{\alpha}_t</span><script type="math/tex">\boldsymbol{\alpha}_t</script></span> from their posterior distribution in a <strong>state-space model</strong>. This method is commonly used in <strong>Bayesian inference</strong>, such as in the <strong>Gibbs sampling framework</strong>, to sample from the joint posterior of the states and other model parameters.</p>
+<p>We aim to draw samples of <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{\alpha}_{1:T}</span><script type="math/tex">\boldsymbol{\alpha}_{1:T}</script></span> from their posterior distribution: <span class="arithmatex"><span class="MathJax_Preview">p(\boldsymbol{\alpha}_{1:T} | y_{1:T}, \mathbf{X}_{1:T})</span><script type="math/tex">p(\boldsymbol{\alpha}_{1:T} | y_{1:T}, \mathbf{X}_{1:T})</script></span></p>
+<h3 id="steps-of-the-carter-and-kohn-method">Steps of the Carter and Kohn Method:<a class="headerlink" href="#steps-of-the-carter-and-kohn-method" title="Permanent link">#</a></h3>
+<ol>
+<li>
+<p><strong>Forward Pass (Kalman Filtering)</strong>:</p>
+<ul>
+<li>Run the <strong>Kalman filter</strong> from <span class="arithmatex"><span class="MathJax_Preview">t = 1</span><script type="math/tex">t = 1</script></span> to <span class="arithmatex"><span class="MathJax_Preview">t = T</span><script type="math/tex">t = T</script></span> to obtain:</li>
+<li>The filtered mean <span class="arithmatex"><span class="MathJax_Preview">\hat{\boldsymbol{\alpha}}_{t|t}</span><script type="math/tex">\hat{\boldsymbol{\alpha}}_{t|t}</script></span></li>
+<li>The filtered covariance <span class="arithmatex"><span class="MathJax_Preview">\mathbf{P}_{t|t}</span><script type="math/tex">\mathbf{P}_{t|t}</script></span></li>
+</ul>
+</li>
+<li>
+<p><strong>Backward Pass (State Sampling)</strong>:</p>
+</li>
+</ol>
+<p>Draw the states <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{\alpha}_T, \boldsymbol{\alpha}_{T-1}, \dots, \boldsymbol{\alpha}_1</span><script type="math/tex">\boldsymbol{\alpha}_T, \boldsymbol{\alpha}_{T-1}, \dots, \boldsymbol{\alpha}_1</script></span> recursively <strong>starting from <span class="arithmatex"><span class="MathJax_Preview">t = T</span><script type="math/tex">t = T</script></span> and moving backward</strong>:</p>
+<p><em>a. Sample <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{\alpha}_T</span><script type="math/tex">\boldsymbol{\alpha}_T</script></span></em>: Draw <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{\alpha}_T</span><script type="math/tex">\boldsymbol{\alpha}_T</script></span> from:</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\boldsymbol{\alpha}_T \sim N(\hat{\boldsymbol{\alpha}}_{T|T}, \mathbf{P}_{T|T})</div>
+<script type="math/tex; mode=display">\boldsymbol{\alpha}_T \sim N(\hat{\boldsymbol{\alpha}}_{T|T}, \mathbf{P}_{T|T})</script>
+</div>
+<p><em>b. Sample <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{\alpha}_{t}</span><script type="math/tex">\boldsymbol{\alpha}_{t}</script></span> for <span class="arithmatex"><span class="MathJax_Preview">t = T-1, T-2, \dots, 1</span><script type="math/tex">t = T-1, T-2, \dots, 1</script></span></em>: For each time step <span class="arithmatex"><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>, sample <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{\alpha}_t</span><script type="math/tex">\boldsymbol{\alpha}_t</script></span> from</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+\boldsymbol{\alpha}_t | \boldsymbol{\alpha}_{t+1}, y_{1:T} \sim N(\hat{\boldsymbol{\alpha}}_{t|T}, \mathbf{P}_{t|T})
+</div>
+<script type="math/tex; mode=display">
+\boldsymbol{\alpha}_t | \boldsymbol{\alpha}_{t+1}, y_{1:T} \sim N(\hat{\boldsymbol{\alpha}}_{t|T}, \mathbf{P}_{t|T})
+</script>
+</div>
+<p>The smoothed mean and covariance are given by:</p>
+<ul>
+<li>
+<p><strong>Smoothed Mean:</strong> <span class="arithmatex"><span class="MathJax_Preview">\hat{\boldsymbol{\alpha}}_{t|T} = \hat{\boldsymbol{\alpha}}_{t|t} + \mathbf{G}_t (\boldsymbol{\alpha}_{t+1} - \hat{\boldsymbol{\alpha}}_{t+1|t})</span><script type="math/tex">\hat{\boldsymbol{\alpha}}_{t|T} = \hat{\boldsymbol{\alpha}}_{t|t} + \mathbf{G}_t (\boldsymbol{\alpha}_{t+1} - \hat{\boldsymbol{\alpha}}_{t+1|t})</script></span></p>
+</li>
+<li>
+<p><strong>Smoothing Gain:</strong> <span class="arithmatex"><span class="MathJax_Preview">\mathbf{G}_t = \mathbf{P}_{t|t} \mathbf{P}_{t+1|t}^{-1}</span><script type="math/tex">\mathbf{G}_t = \mathbf{P}_{t|t} \mathbf{P}_{t+1|t}^{-1}</script></span></p>
+</li>
+<li>
+<p><strong>Smoothed Covariance:</strong> <span class="arithmatex"><span class="MathJax_Preview">\mathbf{P}_{t|T} = \mathbf{P}_{t|t} + \mathbf{G}_t (\mathbf{P}_{t+1|T} - \mathbf{P}_{t+1|t}) \mathbf{G}_t'</span><script type="math/tex">\mathbf{P}_{t|T} = \mathbf{P}_{t|t} + \mathbf{G}_t (\mathbf{P}_{t+1|T} - \mathbf{P}_{t+1|t}) \mathbf{G}_t'</script></span></p>
+</li>
+<li>
+<p><strong>Forecast Covariance:</strong> <span class="arithmatex"><span class="MathJax_Preview">\mathbf{P}_{t+1|t} = \mathbf{P}_{t|t} + \boldsymbol Q</span><script type="math/tex">\mathbf{P}_{t+1|t} = \mathbf{P}_{t|t} + \boldsymbol Q</script></span></p>
+</li>
+</ul>
+<p>The function <code>kalman_sample_nb</code> below implements the CK method. I also invoke a routine <code>mvn_sample</code> to sample from a multivariate normal distribution using <code>numba</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">mvn_sample</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Draws a single sample from a multivariate normal distribution:</span>
+<span class="sd">        N(mean, cov)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mean : 1D np.ndarray</span>
+<span class="sd">        The mean vector of length d.</span>
+<span class="sd">    cov  : 2D np.ndarray</span>
+<span class="sd">        The (d x d) covariance matrix.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    sample : 1D np.ndarray</span>
+<span class="sd">        A single draw from the specified MVN distribution.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Force the covariance matrix to be symmetric to avoid numerical issues</span>
+    <span class="n">cov_sym</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">cov</span> <span class="o">+</span> <span class="n">cov</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="c1"># Cholesky factor (lower triangular)</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">cholesky</span><span class="p">(</span><span class="n">cov_sym</span><span class="p">)</span>
+    <span class="c1"># Draw standard normals</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mean</span><span class="p">))</span>
+    <span class="c1"># Sample = mean + L * z</span>
+    <span class="k">return</span> <span class="n">mean</span> <span class="o">+</span> <span class="n">L</span> <span class="o">@</span> <span class="n">z</span>
+
+<span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">kalman_sample_nb</span><span class="p">(</span><span class="n">filtered_states</span><span class="p">,</span> <span class="n">filtered_variances</span><span class="p">,</span> <span class="n">Q</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Draws from the Kalman smoother backward recursion a la Carter and Kohn (1994).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fm</span><span class="p">,</span> <span class="n">fP</span> <span class="o">=</span> <span class="n">filtered_states</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">filtered_variances</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fm</span><span class="p">)</span>
+    <span class="n">α_samples</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">T</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">fm</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+    <span class="n">α_samples</span><span class="p">[</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">mvn_sample</span><span class="p">(</span><span class="n">fm</span><span class="p">[</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">fP</span><span class="p">[</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># sample from the last state</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">V_tp1_t_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">fP</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">Q</span><span class="p">)</span> <span class="c1"># Q is constant across time, varies across state variables</span>
+        <span class="n">mean</span> <span class="o">=</span> <span class="n">fm</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span>  <span class="n">fP</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">@</span> <span class="n">V_tp1_t_inv</span> <span class="o">@</span> <span class="p">(</span><span class="n">α_samples</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">fm</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>  
+        <span class="n">var</span> <span class="o">=</span> <span class="n">fP</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">fP</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">@</span> <span class="n">V_tp1_t_inv</span> <span class="o">@</span> <span class="n">fP</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> 
+        <span class="n">α_samples</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">mvn_sample</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">α_samples</span>
+</code></pre></div>
+<p>Perfect! The rest is standard and can be implemented straightforwardly. The samplers for <span class="arithmatex"><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span> are defined below. Note that <code>numpy</code> uses the shape-scale parametrization of the Gamma distribution. I prefer the degrees-of-freedom-mean parametrization, hence I define <code>gamma_from_mean_df</code> additionally.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">gamma_from_mean_df</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">dfs</span><span class="p">):</span>
+    <span class="n">means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">dfs</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">dfs</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">means</span> <span class="o">/</span> <span class="n">dfs</span>   <span class="c1"># beta or theta</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="n">dfs</span><span class="o">/</span><span class="mi">2</span>           <span class="c1"># alpha or k</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">gamma</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">scale</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">update_lam</span><span class="p">(</span><span class="n">α</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">lam0</span><span class="p">,</span> <span class="n">nulam0</span><span class="p">):</span>
+    <span class="n">T</span><span class="p">,</span> <span class="n">dim</span>  <span class="o">=</span> <span class="n">α</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">u</span>       <span class="o">=</span> <span class="n">α</span><span class="p">[</span><span class="mi">1</span><span class="p">:,:]</span> <span class="o">-</span> <span class="n">α</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]</span>
+    <span class="n">nulam1</span>  <span class="o">=</span> <span class="n">nulam0</span> <span class="o">+</span> <span class="n">T</span>
+    <span class="n">lam1</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">lam0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">dim</span><span class="p">):</span>
+        <span class="n">lam1</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">nulam0</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">lam0</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">u</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">*</span><span class="n">h</span><span class="p">)</span> <span class="o">/</span> <span class="n">nulam1</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+    <span class="n">lam_new</span> <span class="o">=</span> <span class="n">gamma_from_mean_df</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">lam1</span><span class="p">,</span> <span class="n">nulam1</span><span class="p">)</span>
+    <span class="n">lam_new</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">lam_new</span>
+    <span class="n">lam_new</span><span class="p">[</span><span class="n">lam_new</span> <span class="o">&gt;</span> <span class="mf">1E6</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1E6</span>
+    <span class="k">return</span> <span class="n">lam_new</span>
+
+<span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">get_ssr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">α</span><span class="p">):</span> 
+    <span class="n">y_hat</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span> <span class="o">*</span> <span class="n">α</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_hat</span><span class="p">)</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_hat</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">update_h</span><span class="p">(</span><span class="n">α</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ssq0_inv</span><span class="p">,</span> <span class="n">nu0</span><span class="p">):</span>
+    <span class="n">T</span><span class="p">,</span> <span class="n">_</span>    <span class="o">=</span> <span class="n">α</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">ssq0</span>    <span class="o">=</span> <span class="n">ssq0_inv</span>
+    <span class="n">nu1</span>     <span class="o">=</span> <span class="n">nu0</span> <span class="o">+</span> <span class="n">T</span>
+    <span class="n">ssr</span>     <span class="o">=</span> <span class="n">get_ssr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">α</span><span class="p">)</span>
+    <span class="n">mu</span>      <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">((</span><span class="n">ssr</span> <span class="o">+</span> <span class="n">ssq0</span> <span class="o">*</span> <span class="n">nu0</span><span class="p">)</span> <span class="o">/</span> <span class="n">nu1</span><span class="p">)</span>
+    <span class="n">h_new</span>   <span class="o">=</span> <span class="n">gamma_from_mean_df</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">nu1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">h_new</span>
+</code></pre></div>
+<p>Finally, we can put the samplers from conditional distributions together to create the Gibbs sampler. Since we use fast operations and <code>numba</code>s <code>@njit</code> in many places, the Gibbs sampler is conveniently fast!</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">trange</span>
+<span class="n">nu0</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ssq0_inv</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">lam0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">nulam0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">burn_in</span> <span class="o">=</span> <span class="mi">1_000</span>
+<span class="n">n_draws</span> <span class="o">=</span> <span class="mi">10_000</span>
+<span class="n">h_init</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">T</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># preallocate</span>
+<span class="n">h_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_draws</span><span class="p">)</span>
+<span class="n">lam_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_draws</span><span class="p">,</span> <span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">alpha_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_draws</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># initialize</span>
+<span class="n">h_sample</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">lam_sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">alpha_sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="o">-</span><span class="n">burn_in</span><span class="p">,</span> <span class="n">n_draws</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Sampling&quot;</span><span class="p">,</span> <span class="n">leave</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+    <span class="c1"># run the Kalman filter and sample alphas</span>
+    <span class="p">(</span><span class="n">y_preds</span><span class="p">,</span> <span class="n">y_nowcasts</span><span class="p">,</span> <span class="n">malphas</span><span class="p">,</span> <span class="n">Palphas</span><span class="p">,</span> 
+     <span class="n">malphas_pred</span><span class="p">,</span> <span class="n">Palphas_pred</span><span class="p">,</span> <span class="n">Ks</span><span class="p">)</span> <span class="o">=</span> <span class="n">kalman_filter</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> 
+                                                    <span class="n">X</span><span class="p">,</span> 
+                                                    <span class="n">Q</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">h_sample</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">lam_sample</span><span class="p">),</span> 
+                                                    <span class="n">R</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span><span class="o">/</span><span class="n">h_sample</span><span class="p">,</span>
+                                                    <span class="n">Palpha_init</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">alpha_sample</span>                     <span class="o">=</span> <span class="n">kalman_sample_nb</span><span class="p">(</span><span class="n">malphas</span><span class="p">,</span> 
+                                                        <span class="n">Palphas</span><span class="p">,</span> 
+                                                        <span class="n">Q</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">h_sample</span> <span class="o">*</span> <span class="n">lam_sample</span><span class="p">))</span>
+
+    <span class="c1"># update lambda</span>
+    <span class="n">lam_sample</span>  <span class="o">=</span> <span class="n">update_lam</span><span class="p">(</span><span class="n">alpha_sample</span><span class="p">,</span> <span class="n">h_sample</span><span class="p">,</span> <span class="n">lam0</span><span class="p">,</span> <span class="n">nulam0</span><span class="p">)</span>
+
+    <span class="c1"># update h</span>
+    <span class="n">h_sample</span>    <span class="o">=</span> <span class="n">update_h</span><span class="p">(</span><span class="n">alpha_sample</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ssq0_inv</span><span class="p">,</span> <span class="n">nu0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">h_samples</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>     <span class="o">=</span> <span class="n">h_sample</span>
+        <span class="n">lam_samples</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>   <span class="o">=</span> <span class="n">lam_sample</span>
+        <span class="n">alpha_samples</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">alpha_sample</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Sampling: 100%|██████████| 11000/11000 [00:11&lt;00:00, 943.19it/s]
+</code></pre></div>
+<h2 id="posterior-distributions"><strong>Posterior Distributions</strong><a class="headerlink" href="#posterior-distributions" title="Permanent link">#</a></h2>
+<p>Perfect. Now we can look at the posterior distributions of all parameters!</p>
+<div class="highlight"><pre><span></span><code><span class="n">n_plots</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">n_plots</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">ax</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">a</span><span class="o">//</span><span class="mi">3</span><span class="p">,</span> <span class="n">a</span><span class="o">%</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha_samples</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">a</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">a</span><span class="o">//</span><span class="mi">3</span><span class="p">,</span> <span class="n">a</span><span class="o">%</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">alpha_</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">a</span><span class="o">+=</span><span class="mi">1</span>
+<span class="n">ax</span><span class="p">[</span><span class="n">a</span><span class="o">//</span><span class="mi">3</span><span class="p">,</span> <span class="n">a</span><span class="o">%</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">h_samples</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="n">a</span><span class="o">//</span><span class="mi">3</span><span class="p">,</span> <span class="n">a</span><span class="o">%</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;$h$&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_plots</span><span class="p">):</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">-</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="o">//</span><span class="mi">3</span><span class="p">,</span> <span class="n">i</span><span class="o">%</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">lam_samples</span><span class="p">[:,</span><span class="n">j</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="o">//</span><span class="mi">3</span><span class="p">,</span> <span class="n">i</span><span class="o">%</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">lambda_</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Posterior Distributions&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../TVP-AR_files/TVP-AR_19_0.png" /></p>
+<p>Additionally, we can plot the state variables over time.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># change plot size</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">smalphas</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">[</span><span class="o">-</span><span class="n">m</span><span class="p">:],</span> <span class="p">(</span><span class="n">alpha_samples</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;posterior mean $E[X_t^{\prime} \alpha_t | y_{1:T}]$&#39;</span><span class="p">)</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">smalphas</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">[</span><span class="o">-</span><span class="n">m</span><span class="p">:],</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">alpha_samples</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">k</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">[</span><span class="o">-</span><span class="n">m</span><span class="p">:],</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">alpha_samples</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">k</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;median α_</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">[</span><span class="o">-</span><span class="n">m</span><span class="p">:],</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">alpha_samples</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">k</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.75</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../TVP-AR_files/TVP-AR_21_0.png" /></p>
+<p>Finally, we can also write a function to samples data <span class="arithmatex"><span class="MathJax_Preview">\tilde y</span><script type="math/tex">\tilde y</script></span> from the model:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">draw_e</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">h_samples</span><span class="p">):</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">e</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">h_samples</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">e</span>
+
+<span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">simulate_AR</span><span class="p">(</span><span class="n">alpha_samples</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">alpha_samples</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">sims</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">alpha_samples</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">alpha_samples</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">y</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">alpha_samples</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">vdot</span><span class="p">(</span><span class="n">alpha_samples</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="mi">1</span><span class="p">:],</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="n">p</span><span class="p">:</span><span class="n">t</span><span class="p">]))</span> <span class="o">+</span> <span class="n">e</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>
+        <span class="n">sims</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">sims</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">capture</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">draw_e</span><span class="p">(</span><span class="n">alpha_samples</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">h_samples</span><span class="p">)</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">simulate_AR</span><span class="p">(</span><span class="n">alpha_samples</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">sim_i</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">sim</span><span class="p">[</span><span class="n">sim_i</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Simulated UK Industrial Production Growth&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Compare time s.dev. of some simulated series with that of the data:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    simulated: &quot;</span><span class="p">,</span> <span class="n">sim</span><span class="p">[</span><span class="n">sim_i</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    data:      &quot;</span><span class="p">,</span><span class="n">y</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+</code></pre></div>
+<p><img alt="png" src="../TVP-AR_files/TVP-AR_25_0.png" /></p>
+<div class="highlight"><pre><span></span><code>Compare time s.dev. of some simulated series with that of the data:
+
+    simulated:  6.9340546525578235
+    data:       5.00149561679944
+</code></pre></div>
+<p>It can be plausible that the posterior predictive or simulated <span class="arithmatex"><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> series is significantly more volatile than the observed data, even by a factor of about three—especially in a <strong>time‐varying parameter</strong> setting with:</p>
+<ol>
+<li>
+<p><strong>Coefficient Uncertainty</strong><br />
+   When you use MCMC draws of the latent states (or time‐varying parameters) and error variance, you are sampling <em>all</em> the ways your model can generate the observed data. This broader “envelope” can easily permit larger swings than a single historical realization.</p>
+</li>
+<li>
+<p><strong>Priors or Limited Sample Size</strong><br />
+   If you have a relatively short sample or quite diffuse priors, the random walk variance in the parameters (<span class="arithmatex"><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span>) might be estimated to allow bigger drifts in the AR coefficients, plus the error variance (<span class="arithmatex"><span class="MathJax_Preview">1/h</span><script type="math/tex">1/h</script></span>) might also be relatively large.  </p>
+</li>
+<li>
+<p><strong>Model Misspecification</strong><br />
+   If the model does not capture some structural features (e.g. breaks in mean, heteroskedasticity not accounted for), the parameter uncertainty might be inflated, again leading to larger predictive variance.</p>
+</li>
+</ol>
+<p>The volatility inflation relative to the single observed time path is normal in a fully Bayesian approach, as it reflects <em>both</em> parameter and observational uncertainty. However, we see extreme outliers in the path of new samples of <span class="arithmatex"><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>. Their may be evidence that the time series is not too well described by the chosen AR-model.  </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.471ce7a9.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

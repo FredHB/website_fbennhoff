@@ -1,0 +1,1431 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../2-numba/">
+      
+      
+        <link rel="next" href="../4-optimization/">
+      
+      
+      <link rel="icon" href="../../../assets/images/logo.jpg">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.32">
+    
+    
+      
+        <title>3 Application: Stochastic Processes - Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small></title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3cba04c6.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Serif";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#application-stochastic-processes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Frederik H Bennhoff &lt;br&gt;&lt;small&gt;&lt;i&gt;i want to be a professor of economics.&lt;/i&gt;&lt;/small&gt;" class="md-header__button md-logo" aria-label="Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3 Application: Stochastic Processes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Frederik H Bennhoff &lt;br&gt;&lt;small&gt;&lt;i&gt;i want to be a professor of economics.&lt;/i&gt;&lt;/small&gt;" class="md-nav__button md-logo" aria-label="Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.jpg" alt="logo">
+
+    </a>
+    Frederik H Bennhoff <br><small><i>i want to be a professor of economics.</i></small>
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    about me
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cv/cv/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cv
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/research/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    research
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    short courses & resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            short courses & resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    solving economic models
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            solving economic models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 Numpy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-numba/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 Numba
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    3 Application: Stochastic Processes
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    3 Application: Stochastic Processes
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#armapq" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARMA(p,q)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ARMA(p,q)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-taster-of-oop" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Taster of OOP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markov-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Markov Processes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Markov Processes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-discrete-markov-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to Discrete Markov Processes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to Discrete Markov Processes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Definitions:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rouwenhorst-method-to-approximate-an-ar1-process-with-a-markov-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rouwenhorst Method to Approximate an AR(1) Process with a Markov Chain
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rouwenhorst Method to Approximate an AR(1) Process with a Markov Chain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advantages-of-the-rouwenhorst-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advantages of the Rouwenhorst Method:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4 Optimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-endogenous_grid_method/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5 Endogenous Grid Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    bayesian econometrics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            bayesian econometrics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/courses/bmetrics/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bmetrics/BayReg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 Bayesian Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bmetrics/UCSV/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 The Unobserved Component Stochastic Volatility Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bmetrics/TVP-AR/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3 The Time-Varying Parameter Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#armapq" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARMA(p,q)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ARMA(p,q)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-taster-of-oop" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Taster of OOP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markov-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Markov Processes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Markov Processes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-discrete-markov-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to Discrete Markov Processes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to Discrete Markov Processes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Definitions:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rouwenhorst-method-to-approximate-an-ar1-process-with-a-markov-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rouwenhorst Method to Approximate an AR(1) Process with a Markov Chain
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rouwenhorst Method to Approximate an AR(1) Process with a Markov Chain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advantages-of-the-rouwenhorst-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advantages of the Rouwenhorst Method:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="application-stochastic-processes"><strong>Application: Stochastic Processes</strong><a class="headerlink" href="#application-stochastic-processes" title="Permanent link">#</a></h1>
+<p>In this notebook we put some of the techniques we just learned to good use. We will:
+- write a function to simulate ARMA(p,q) processes
+- write a function to simulate Markov-processes
+- Introduce the Rouwenhorst method to approximate an AR(1) process using a Markov process on a finite grid.</p>
+<p>Additionally, we write our own class <code>markov</code> with simulation and calibration methods.</p>
+<h2 id="armapq">ARMA(p,q)<a class="headerlink" href="#armapq" title="Permanent link">#</a></h2>
+<p>Recall the definition of an ARMA(p,q) process as 
+$$ y_t = \alpha_0 + \sum_{j = 1}^p \alpha_j L^j y_t + \sum_{j = 1}^q \beta_j L^j \varepsilon_t + \varepsilon_t$$
+where <span class="arithmatex"><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> is the lag-operator and <span class="arithmatex"><span class="MathJax_Preview">\varepsilon_t\sim_{i.i.d.} \Phi(\sigma, 0)</span><script type="math/tex">\varepsilon_t\sim_{i.i.d.} \Phi(\sigma, 0)</script></span> (we assume a normal distribution on the errors).</p>
+<p>Let&rsquo;s write a function which takes in a dictionary holding <span class="arithmatex"><span class="MathJax_Preview">\alpha_0, \underline{\alpha}, \underline{\beta}</span><script type="math/tex">\alpha_0, \underline{\alpha}, \underline{\beta}</script></span> and <span class="arithmatex"><span class="MathJax_Preview">\sigma</span><script type="math/tex">\sigma</script></span> to simulate the corresponding ARMA process.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">prange</span><span class="p">,</span> <span class="n">jit</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">arma_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;alpha_0&#39;</span><span class="p">:</span> <span class="mf">0.</span><span class="p">,</span>
+    <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]),</span>  
+    <span class="s1">&#39;beta&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">]),</span>
+    <span class="s1">&#39;sigma&#39;</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">sim_arma</span><span class="p">(</span><span class="n">arma_dict</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arma_dict</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">])</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arma_dict</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">])</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">arma_dict</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">])</span> <span class="c1"># reverse the vectors to make sure a_j is multiplied to y_t-j in np.vdot </span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">arma_dict</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">])</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">1000</span><span class="o">+</span><span class="n">T</span><span class="p">)</span> <span class="c1"># 1000 burn-in draws</span>
+    <span class="n">eps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="n">arma_dict</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">],</span> <span class="n">T</span><span class="o">+</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">max</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">)]</span> <span class="o">=</span> <span class="n">eps</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">max</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">)]</span>  
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">),</span> <span class="n">T</span><span class="o">+</span><span class="mi">1000</span><span class="p">):</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vdot</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="p">(</span><span class="n">p</span><span class="p">):(</span><span class="n">i</span><span class="p">)],</span> <span class="n">alpha</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">vdot</span><span class="p">(</span><span class="n">eps</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="p">(</span><span class="n">q</span><span class="p">):(</span><span class="n">i</span><span class="p">)],</span> <span class="n">beta</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="n">T</span><span class="p">:]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">arma_ts</span> <span class="o">=</span> <span class="n">sim_arma</span><span class="p">(</span><span class="n">arma_dict</span><span class="p">,</span> <span class="mi">250</span><span class="p">)</span>
+</code></pre></div>
+<p>Let&rsquo;s write a function to plot the time series.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">plot_time_series</span><span class="p">(</span><span class="n">time_series</span><span class="p">,</span> <span class="n">arma_dict</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Value&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plots the given time series.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    time_series (array-like): The time series data to plot.</span>
+<span class="sd">    title (str): The title of the plot.</span>
+<span class="sd">    xlabel (str): The label for the x-axis.</span>
+<span class="sd">    ylabel (str): The label for the y-axis.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Time Series ARMA(&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arma_dict</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]))</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arma_dict</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]))</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_series</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Plot the time series</span>
+<span class="n">plot_time_series</span><span class="p">(</span><span class="n">arma_ts</span><span class="p">,</span> <span class="n">arma_dict</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="png" src="../3-application_stoch_proc_files/3-application_stoch_proc_7_0.png" /></p>
+<p>Recall now that a given <span class="arithmatex"><span class="MathJax_Preview">ARMA(p,q)</span><script type="math/tex">ARMA(p,q)</script></span> is stationary if and only if all roots of the characteristic polynomial on the AR-part, 
+$$ 1 - L^1 \alpha_1 - &hellip; - L^q \alpha_q $$
+are outside the (complex) unit circle. We write a function to check this. To do so, we use <code>np.roots(p)</code>, which return the roots of a polynomial with coefficients given in <code>p</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">is_stable</span><span class="p">(</span><span class="n">alpha</span><span class="p">):</span>
+    <span class="n">coefs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">alpha</span><span class="p">])[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># [::-1] reverses an array</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The lag polynomial to check is:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1 -&quot;</span><span class="p">,</span> <span class="s2">&quot; - &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">*L^</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">alpha</span><span class="p">)]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The roots are:&quot;</span><span class="p">)</span>
+    <span class="n">roots</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roots</span><span class="p">(</span><span class="n">coefs</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">root</span> <span class="ow">in</span> <span class="n">roots</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">root</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Check if all roots have modulus &gt; 1</span>
+    <span class="n">are_roots_outside_unit_circle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">roots</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">are_roots_outside_unit_circle</span> <span class="p">:</span> 
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">The process is stable.&quot;</span><span class="p">)</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">The process is unstable.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">are_roots_outside_unit_circle</span>
+</code></pre></div>
+<p>Let&rsquo;s try it!</p>
+<div class="highlight"><pre><span></span><code><span class="n">is_stable</span><span class="p">(</span><span class="n">arma_dict</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>The lag polynomial to check is:
+1 - 0.2*L^0 - 0.4*L^1 - 0.1*L^2
+The roots are:
+ -2.60+1.23j
+ -2.60-1.23j
+ 1.21+0.00j
+
+The process is stable.
+
+
+
+
+
+True
+</code></pre></div>
+<h3 id="a-taster-of-oop">A Taster of OOP<a class="headerlink" href="#a-taster-of-oop" title="Permanent link">#</a></h3>
+<p>In Python, <strong>classes</strong> are a fundamental building block of object-oriented programming (OOP). A class is a blueprint for creating <strong>objects</strong> (instances), which can have <strong>attributes</strong> (variables) and <strong>methods</strong> (functions) associated with them.</p>
+<p><strong>Basic Structure of a Class</strong></p>
+<p>Here’s a simple example to demonstrate the structure of a class in Python:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
+    <span class="c1"># Class attribute (shared by all instances)</span>
+    <span class="n">species</span> <span class="o">=</span> <span class="s2">&quot;Canis familiaris&quot;</span>
+
+    <span class="c1"># The initializer method (also called the constructor)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="c1"># Instance attributes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+    <span class="c1"># Instance method</span>
+    <span class="k">def</span> <span class="nf">bark</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> says woof!&quot;</span>
+
+    <span class="c1"># Another instance method</span>
+    <span class="k">def</span> <span class="nf">get_human_years</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">*</span> <span class="mi">7</span>
+
+<span class="c1"># Creating instances (objects) of the class</span>
+<span class="n">dog1</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s2">&quot;Buddy&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">dog2</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s2">&quot;Lucy&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Accessing attributes and methods</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dog1</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>  <span class="c1"># Output: Buddy</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dog1</span><span class="o">.</span><span class="n">bark</span><span class="p">())</span>  <span class="c1"># Output: Buddy says woof!</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dog2</span><span class="o">.</span><span class="n">get_human_years</span><span class="p">())</span>  <span class="c1"># Output: 21</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Buddy
+Buddy says woof!
+21
+</code></pre></div>
+<p><strong>Key Concepts:</strong></p>
+<ol>
+<li>
+<p><strong>Class Definition:</strong></p>
+<ul>
+<li>A class is defined using the <code>class</code> keyword followed by the class name and a colon.</li>
+<li>By convention, class names are written in CamelCase (e.g., <code>Dog</code>).</li>
+</ul>
+</li>
+<li>
+<p><strong>Attributes:</strong></p>
+<ul>
+<li><strong>Class Attributes:</strong> These are shared across all instances of the class. In the example, <code>species</code> is a class attribute.</li>
+<li><strong>Instance Attributes:</strong> These are specific to each instance of the class. They are defined inside the <code>__init__</code> method (constructor). In the example, <code>name</code> and <code>age</code> are instance attributes.</li>
+</ul>
+</li>
+<li>
+<p><strong>Methods:</strong></p>
+<ul>
+<li>Methods are functions defined within a class that operate on instances of the class.</li>
+<li><strong>Instance Methods:</strong> These take <code>self</code> as the first parameter, which refers to the instance calling the method. For example, <code>bark</code> and <code>get_human_years</code> are instance methods in the <code>Dog</code> class.</li>
+<li>The <code>__init__</code> method is a special method called automatically when a new instance of the class is created. It is used to initialize the instance&rsquo;s attributes.</li>
+</ul>
+</li>
+<li>
+<p><strong>Creating Objects:</strong></p>
+<ul>
+<li>Objects (instances) are created by calling the class as if it were a function, passing any arguments required by the <code>__init__</code> method.</li>
+<li>For example, <code>dog1 = Dog("Buddy", 5)</code> creates an instance of the <code>Dog</code> class with <code>name</code> as <code>"Buddy"</code> and <code>age</code> as <code>5</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Accessing Attributes and Methods:</strong></p>
+<ul>
+<li>Instance attributes and methods are accessed using dot notation (e.g., <code>dog1.name</code>, <code>dog1.bark()</code>).</li>
+<li>Class attributes can be accessed directly via the class name or through any instance (e.g., <code>Dog.species</code> or <code>dog1.species</code>).</li>
+</ul>
+</li>
+</ol>
+<p>After we got the basic stuff out of the way, let&rsquo;s write a class for <span class="arithmatex"><span class="MathJax_Preview">ARMA(p, q)</span><script type="math/tex">ARMA(p, q)</script></span> processes. We call the class <code>arma</code> and have the following desiderata:</p>
+<ul>
+<li>The class is initialized with the four inputs making up <code>arma_dict</code></li>
+<li>It has a method allowing to simulate a the process with the process parameters</li>
+<li>we can update the process parameters whenever we like</li>
+<li>we can check whether the ARMA process is stable.</li>
+</ul>
+<p>Let&rsquo;s get to it.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ARMA</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha_0</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha_0</span> <span class="o">=</span> <span class="n">alpha_0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">=</span> <span class="n">beta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arma_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;alpha_0&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha_0</span><span class="p">,</span>
+            <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span>
+            <span class="s1">&#39;beta&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">,</span>
+            <span class="s1">&#39;sigma&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma</span>
+        <span class="p">}</span>
+
+    <span class="c1"># Methods to update the parameters help in this class</span>
+    <span class="k">def</span> <span class="nf">set_alpha_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha_0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha_0</span> <span class="o">=</span> <span class="n">alpha_0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arma_dict</span><span class="p">[</span><span class="s1">&#39;alpha_0&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">alpha_0</span>
+
+    <span class="k">def</span> <span class="nf">set_alpha</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arma_dict</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">alpha</span>
+
+    <span class="k">def</span> <span class="nf">set_beta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">=</span> <span class="n">beta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arma_dict</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">beta</span>
+
+    <span class="k">def</span> <span class="nf">set_sigma</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arma_dict</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sigma</span>
+
+    <span class="c1"># the simulation method</span>
+    <span class="k">def</span> <span class="nf">sim_arma</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">)</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span>
+        <span class="n">beta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span>
+
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">1000</span><span class="o">+</span><span class="n">T</span><span class="p">)</span> <span class="c1"># 1000 burn-in draws</span>
+        <span class="n">eps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">arma_dict</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">],</span> <span class="n">T</span><span class="o">+</span><span class="mi">1000</span><span class="p">)</span>
+        <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">max</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">)]</span> <span class="o">=</span> <span class="n">eps</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">max</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">)]</span>  
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">T</span><span class="o">+</span><span class="mi">1000</span><span class="p">):</span>
+            <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vdot</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">):(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)],</span> <span class="n">alpha</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">vdot</span><span class="p">(</span><span class="n">eps</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="p">(</span><span class="n">q</span><span class="o">+</span><span class="mi">1</span><span class="p">):(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)],</span> <span class="n">beta</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="n">T</span><span class="p">:]</span>
+
+    <span class="c1"># checking for stability</span>
+    <span class="k">def</span> <span class="nf">is_stable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span>
+        <span class="n">coefs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">])[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># [::-1] reverses an array</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The lag polynomial to check is:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1 -&quot;</span><span class="p">,</span> <span class="s2">&quot; - &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">*L^</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)]))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">The roots are:&quot;</span><span class="p">)</span>
+        <span class="n">roots</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roots</span><span class="p">(</span><span class="n">coefs</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">root</span> <span class="ow">in</span> <span class="n">roots</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">root</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Check if all roots have modulus &gt; 1</span>
+        <span class="n">are_roots_outside_unit_circle</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">roots</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">are_roots_outside_unit_circle</span> <span class="p">:</span> 
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">The process is stable.&quot;</span><span class="p">)</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">The process is unstable.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">are_roots_outside_unit_circle</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># initialize myarma object</span>
+<span class="n">myarma</span> <span class="o">=</span> <span class="n">ARMA</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.3</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.3</span><span class="p">]),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># run and plot a little simulation</span>
+<span class="n">plot_time_series</span><span class="p">(</span><span class="n">myarma</span><span class="o">.</span><span class="n">sim_arma</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span> <span class="n">myarma</span><span class="o">.</span><span class="n">arma_dict</span><span class="p">)</span>
+<span class="n">myarma</span><span class="o">.</span><span class="n">is_stable</span><span class="p">()</span>
+
+<span class="c1"># change the coefficient vector on AR-part </span>
+<span class="n">myarma</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+<span class="n">myarma</span><span class="o">.</span><span class="n">is_stable</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../3-application_stoch_proc_files/3-application_stoch_proc_17_0.png" /></p>
+<div class="highlight"><pre><span></span><code>[0.3 0.3]
+----------------------------------------------------------------------
+The lag polynomial to check is:
+1 - 0.3*L^1 - 0.3*L^2
+
+The roots are:
+ -2.39
+ 1.39
+
+The process is stable.
+----------------------------------------------------------------------
+[3 1]
+----------------------------------------------------------------------
+The lag polynomial to check is:
+1 - 3*L^1 - 1*L^2
+
+The roots are:
+ -3.30
+ 0.30
+
+The process is unstable.
+----------------------------------------------------------------------
+
+
+
+
+
+False
+</code></pre></div>
+<h2 id="markov-processes">Markov Processes<a class="headerlink" href="#markov-processes" title="Permanent link">#</a></h2>
+<h3 id="introduction-to-discrete-markov-processes">Introduction to Discrete Markov Processes<a class="headerlink" href="#introduction-to-discrete-markov-processes" title="Permanent link">#</a></h3>
+<p>A <strong>Discrete Markov Process</strong> (or <strong>Markov Chain</strong>) is a mathematical model describing a system that transitions between a finite or countable number of states in discrete time steps. The key feature of a Markov process is the <strong>Markov Property</strong>, which states that the future state depends only on the current state and not on the sequence of events that preceded it.</p>
+<h4 id="key-definitions">Key Definitions:<a class="headerlink" href="#key-definitions" title="Permanent link">#</a></h4>
+<ul>
+<li>
+<p><strong>State Space (<span class="arithmatex"><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span>)</strong>: The set of all possible states the system can be in. It can be finite or countably infinite.</p>
+</li>
+<li>
+<p><strong>Time Parameter</strong>: Discrete, often represented as <span class="arithmatex"><span class="MathJax_Preview">t = 0, 1, 2, \ldots</span><script type="math/tex">t = 0, 1, 2, \ldots</script></span>.</p>
+</li>
+<li>
+<p><strong>Transition Probability</strong>:</p>
+<ul>
+<li>Denoted as <span class="arithmatex"><span class="MathJax_Preview">P_{ij}</span><script type="math/tex">P_{ij}</script></span>, it represents the probability of transitioning from state <span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> to state <span class="arithmatex"><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> in one time step.</li>
+<li>Mathematically: <span class="arithmatex"><span class="MathJax_Preview">P_{ij} = P(X_{t+1} = j \mid X_t = i)</span><script type="math/tex">P_{ij} = P(X_{t+1} = j \mid X_t = i)</script></span>, where <span class="arithmatex"><span class="MathJax_Preview">X_t</span><script type="math/tex">X_t</script></span> is the state at time <span class="arithmatex"><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>.</li>
+<li>Collect these in a matrix, <span class="arithmatex"><span class="MathJax_Preview">\Pi</span><script type="math/tex">\Pi</script></span></li>
+<li>The sum of probabilities in each row equals 1: <span class="arithmatex"><span class="MathJax_Preview">\sum_{j} P_{ij} = 1</span><script type="math/tex">\sum_{j} P_{ij} = 1</script></span> for all <span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Initial Distribution (<span class="arithmatex"><span class="MathJax_Preview">\pi^{(0)}</span><script type="math/tex">\pi^{(0)}</script></span>)</strong>:</p>
+<ul>
+<li>A probability distribution over the state space at time <span class="arithmatex"><span class="MathJax_Preview">t = 0</span><script type="math/tex">t = 0</script></span>.</li>
+</ul>
+</li>
+<li>
+<p><strong>n-Step Transition Probability</strong>:</p>
+<ul>
+<li>The probability of transitioning from state <span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> to state <span class="arithmatex"><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> in <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> steps, denoted as <span class="arithmatex"><span class="MathJax_Preview">\Pi_{ij}^{(n)}</span><script type="math/tex">\Pi_{ij}^{(n)}</script></span>.</li>
+<li>Calculated by raising the transition matrix to the <span class="arithmatex"><span class="MathJax_Preview">n^{th}</span><script type="math/tex">n^{th}</script></span> power: <span class="arithmatex"><span class="MathJax_Preview">(\Pi^{(n)})' = (\Pi')^n</span><script type="math/tex">(\Pi^{(n)})' = (\Pi')^n</script></span>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Stationary Distribution (<span class="arithmatex"><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>)</strong>:</p>
+<ul>
+<li>A probability distribution over states that remains unchanged as the process evolves.</li>
+<li>Satisfies <span class="arithmatex"><span class="MathJax_Preview">\pi = \Pi' \pi</span><script type="math/tex">\pi = \Pi' \pi</script></span>.</li>
+<li>Represents the long-term behavior of the Markov process if it exists and is unique.</li>
+</ul>
+</li>
+</ul>
+<p>Given a distribution <span class="arithmatex"><span class="MathJax_Preview">\pi_t</span><script type="math/tex">\pi_t</script></span>, the next period distribution will be <span class="arithmatex"><span class="MathJax_Preview">\pi_{t+1} = \Pi' \pi_t</span><script type="math/tex">\pi_{t+1} = \Pi' \pi_t</script></span></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># transition matrix</span>
+<span class="n">Pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="c1"># current distribution</span>
+<span class="n">pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">pi</span> <span class="o">=</span> <span class="n">pi</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+
+<span class="c1"># next period distribution</span>
+<span class="n">Pi</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="o">@</span> <span class="n">pi</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>array([[0.15],
+       [0.45],
+       [0.4 ]])
+</code></pre></div>
+<p><strong>Exercise:</strong> Write a function that checks whether a given matrix is a Markov matrix.</p>
+<ul>
+<li>do the columns in a given row sum to 1?  </li>
+<li>are all entries between 0 and 1?</li>
+<li>is it a square matrix?</li>
+</ul>
+<p>Then, write a function which takes a Markov transition matrix and calculates the stationary distribution. (Hint: <span class="arithmatex"><span class="MathJax_Preview">\Pi^N</span><script type="math/tex">\Pi^N</script></span> converges to a matrix which contains the stationary distribution(s) in its rows.) </p>
+<div class="highlight"><pre><span></span><code><span class="c1"># TBD</span>
+
+<span class="n">M</span> <span class="o">=</span> <span class="n">Pi</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">Pi</span> <span class="o">@</span> <span class="n">M</span>
+<span class="n">M</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>array([[0.35042735, 0.34188034, 0.30769231],
+       [0.35042735, 0.34188034, 0.30769231],
+       [0.35042735, 0.34188034, 0.30769231]])
+</code></pre></div>
+<h2 id="rouwenhorst-method-to-approximate-an-ar1-process-with-a-markov-chain">Rouwenhorst Method to Approximate an AR(1) Process with a Markov Chain<a class="headerlink" href="#rouwenhorst-method-to-approximate-an-ar1-process-with-a-markov-chain" title="Permanent link">#</a></h2>
+<h3 id="advantages-of-the-rouwenhorst-method">Advantages of the Rouwenhorst Method:<a class="headerlink" href="#advantages-of-the-rouwenhorst-method" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Flexibility:</strong> The Rouwenhorst method is particularly useful for approximating AR(1) processes with high persistence (i.e., when $ \rho $ is close to 1) because it can accommodate the high persistence and the correct distribution properties of the AR(1) process.</li>
+<li><strong>Accuracy:</strong> It provides a good approximation with relatively few states (even with a small $ n $), making it computationally efficient.</li>
+</ul>
+<hr />
+<p>For an arbitrary Markov process mapping to income states and corresponding income levels $ y $, consider the simplest case:</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+\begin{align*}
+\log y_t &amp;= \rho \log y_{t-1} + \epsilon_t, \quad \epsilon_t \sim N(0, \alpha^2), \\
+\alpha^2 &amp;= \mathrm{Var}(\log y_t) (1 - \rho^2).
+\end{align*}
+</div>
+<script type="math/tex; mode=display">
+\begin{align*}
+\log y_t &= \rho \log y_{t-1} + \epsilon_t, \quad \epsilon_t \sim N(0, \alpha^2), \\
+\alpha^2 &= \mathrm{Var}(\log y_t) (1 - \rho^2).
+\end{align*}
+</script>
+</div>
+<ul>
+<li>
+<p>Note that <span class="arithmatex"><span class="MathJax_Preview">\mathrm{Var}(\log y_t)</span><script type="math/tex">\mathrm{Var}(\log y_t)</script></span> is the long-run variance as well as the cross sectional variance, which is typically directly estimated. So is <span class="arithmatex"><span class="MathJax_Preview">\rho</span><script type="math/tex">\rho</script></span>, and we infer <span class="arithmatex"><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span>.  </p>
+</li>
+<li>
+<p>Our goal is to approximate this continuous AR(1) process with <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> discrete states using the <strong>Rouwenhorst Method</strong>. This method helps us construct a Markov transition matrix <span class="arithmatex"><span class="MathJax_Preview">\Pi</span><script type="math/tex">\Pi</script></span> that closely matches the properties of the AR(1) process.</p>
+</li>
+<li>
+<p>To approximate the AR(1) process, we represent it with <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> discrete states. Each state is a sum <span class="arithmatex"><span class="MathJax_Preview">e_t \in \{0,1,..., n-1\}</span><script type="math/tex">e_t \in \{0,1,..., n-1\}</script></span> of <span class="arithmatex"><span class="MathJax_Preview">n-1</span><script type="math/tex">n-1</script></span> underlying hidden binary state variables. Each binary state has a probability <span class="arithmatex"><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> of staying at its current value and a probability <span class="arithmatex"><span class="MathJax_Preview">1-p</span><script type="math/tex">1-p</script></span> of switching to a different value.</p>
+</li>
+<li>
+<p>The parameter <span class="arithmatex"><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> is set to match the persistence of the AR(1) process, where <span class="arithmatex"><span class="MathJax_Preview">p = \frac{1+\rho}{2}</span><script type="math/tex">p = \frac{1+\rho}{2}</script></span>. The standard deviation of the underlying state <span class="arithmatex"><span class="MathJax_Preview">e_t</span><script type="math/tex">e_t</script></span> is given by <span class="arithmatex"><span class="MathJax_Preview">\frac{\sqrt{n-1}}{2}</span><script type="math/tex">\frac{\sqrt{n-1}}{2}</script></span>. To match the cross-sectional standard deviation of log income, we scale (the grid of) <span class="arithmatex"><span class="MathJax_Preview">e_t</span><script type="math/tex">e_t</script></span> by <span class="arithmatex"><span class="MathJax_Preview">\frac{\alpha}{\sqrt{1 - \rho^2}} \frac{2}{\sqrt{n-1}} = \sigma_y \frac{2}{\sqrt{n-1}}</span><script type="math/tex">\frac{\alpha}{\sqrt{1 - \rho^2}} \frac{2}{\sqrt{n-1}} = \sigma_y \frac{2}{\sqrt{n-1}}</script></span>.</p>
+</li>
+<li>
+<p>Finally, the goal is to find the discretized income process corresponding to these states.</p>
+</li>
+</ul>
+<p>The Markov transition matrix <span class="arithmatex"><span class="MathJax_Preview">\Pi^n</span><script type="math/tex">\Pi^n</script></span> for the states <span class="arithmatex"><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span> follows the recursion:</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+\tilde{\Pi}^{n} = p \begin{bmatrix} \Pi^{n-1} &amp; \mathbf{0} \\ \mathbf{0}' &amp; 0 \end{bmatrix} 
++ (1-p) \begin{bmatrix} \mathbf{0} &amp; \Pi^{n-1} \\ 0 &amp; \mathbf{0} \end{bmatrix} 
++ (1-p) \begin{bmatrix} \mathbf{0}' &amp; 0 \\ \Pi^{n-1} &amp; \mathbf{0} \end{bmatrix} 
++ p \begin{bmatrix} 0 &amp; \mathbf{0}' \\ \mathbf{0} &amp; \Pi^{n-1} \end{bmatrix} 
+\tag{6}
+</div>
+<script type="math/tex; mode=display">
+\tilde{\Pi}^{n} = p \begin{bmatrix} \Pi^{n-1} & \mathbf{0} \\ \mathbf{0}' & 0 \end{bmatrix} 
++ (1-p) \begin{bmatrix} \mathbf{0} & \Pi^{n-1} \\ 0 & \mathbf{0} \end{bmatrix} 
++ (1-p) \begin{bmatrix} \mathbf{0}' & 0 \\ \Pi^{n-1} & \mathbf{0} \end{bmatrix} 
++ p \begin{bmatrix} 0 & \mathbf{0}' \\ \mathbf{0} & \Pi^{n-1} \end{bmatrix} 
+\tag{6}
+</script>
+</div>
+<p>The final transition matrix <span class="arithmatex"><span class="MathJax_Preview">\Pi^n</span><script type="math/tex">\Pi^n</script></span> is equal to <span class="arithmatex"><span class="MathJax_Preview">\tilde{\Pi}^{n}</span><script type="math/tex">\tilde{\Pi}^{n}</script></span> for the first and last rows, and <span class="arithmatex"><span class="MathJax_Preview">\tilde{\Pi}^{n}/2</span><script type="math/tex">\tilde{\Pi}^{n}/2</script></span> for all other rows. The base case for the recursion is:</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+\Pi^{2} = \begin{bmatrix} p &amp; 1-p \\ 1-p &amp; p \end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\Pi^{2} = \begin{bmatrix} p & 1-p \\ 1-p & p \end{bmatrix}
+</script>
+</div>
+<p>This procedure can be implemented in a function <code>rouwenhorst(n, rho, sd_log_y)</code> which returns a transition matrix and a grid for <span class="arithmatex"><span class="MathJax_Preview">\log y</span><script type="math/tex">\log y</script></span>.</p>
+<p>Let&rsquo;s get to it:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># sigma is the sd of the error, e_t</span>
+<span class="nd">@jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">rouwenhorst</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">sd_log_y</span><span class="p">):</span>
+
+    <span class="c1"># the grid    </span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="c1"># sd of e on this grid with Pi is sqrt(n-1)/2</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">e</span> <span class="o">/</span> <span class="p">(</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">/</span><span class="mi">2</span> <span class="p">)</span> <span class="c1"># now its unit sd</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">e</span> <span class="o">*</span> <span class="n">sd_log_y</span> <span class="c1"># now it&#39;s the sd of the cross section of log_y</span>
+
+    <span class="c1"># the transition matrix</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">rho</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">Pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">]])</span>
+
+    <span class="k">while</span> <span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">Pi_next</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="o">+</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="n">Pi_next</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">:</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">Pi</span> <span class="o">*</span> <span class="n">p</span>
+        <span class="n">Pi_next</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:]</span> <span class="o">+=</span> <span class="n">Pi</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">Pi_next</span><span class="p">[</span><span class="o">-</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:,</span> <span class="o">-</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:]</span> <span class="o">+=</span> <span class="n">Pi</span> <span class="o">*</span> <span class="n">p</span>
+        <span class="n">Pi_next</span><span class="p">[</span><span class="o">-</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:,</span> <span class="mi">0</span><span class="p">:</span><span class="n">Pi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">Pi</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">Pi_next</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">/=</span> <span class="mi">2</span>
+        <span class="n">Pi</span> <span class="o">=</span> <span class="n">Pi_next</span>
+
+    <span class="k">return</span> <span class="n">Pi</span><span class="p">,</span> <span class="n">e</span>
+
+<span class="nd">@jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">stationary_dist</span><span class="p">(</span><span class="n">Pi</span><span class="p">):</span>
+    <span class="n">Pi_stationary</span> <span class="o">=</span> <span class="n">Pi</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">eps</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">eps</span> <span class="o">&gt;</span> <span class="mf">10E-12</span><span class="p">:</span>
+        <span class="n">Pi_old</span> <span class="o">=</span> <span class="n">Pi_stationary</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">Pi_stationary</span> <span class="o">=</span> <span class="n">Pi_stationary</span> <span class="o">@</span> <span class="n">Pi_stationary</span>
+        <span class="n">eps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Pi_stationary</span> <span class="o">-</span> <span class="n">Pi_old</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span> 
+                <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Pi_stationary</span> <span class="o">-</span> <span class="n">Pi_stationary</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">Pi_stationary</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="p">)</span>
+        <span class="p">)</span> <span class="o">&lt;</span> <span class="mf">10E-10</span><span class="p">:</span> <span class="c1"># the ugly sum.../ .shape construction is because numpy cant handle np.mean with axis args</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the steady state is unique.&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Pi_stationary</span>
+
+<span class="k">def</span> <span class="nf">normalize_y</span><span class="p">(</span><span class="n">log_y</span><span class="p">,</span> <span class="n">pi_ss</span><span class="p">):</span> <span class="c1"># make y have unit mean</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">log_y</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">vdot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">pi_ss</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">y</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># lets test our code</span>
+<span class="n">Pi</span><span class="p">,</span> <span class="n">log_y</span> <span class="o">=</span> <span class="n">rouwenhorst</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mf">0.975</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
+<span class="n">pi_ss</span> <span class="o">=</span> <span class="n">stationary_dist</span><span class="p">(</span><span class="n">Pi</span><span class="p">)[</span><span class="mi">0</span><span class="p">,:]</span>
+<span class="n">y_grid</span> <span class="o">=</span> <span class="n">normalize_y</span><span class="p">(</span><span class="n">log_y</span><span class="p">,</span> <span class="n">pi_ss</span><span class="p">)</span>
+
+<span class="c1"># plot income and probability distribution</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_grid</span><span class="p">,</span> <span class="n">pi_ss</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Steady State Income Distribution&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Income&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>the steady state is unique.
+</code></pre></div>
+<p><img alt="png" src="../3-application_stoch_proc_files/3-application_stoch_proc_26_1.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.471ce7a9.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
