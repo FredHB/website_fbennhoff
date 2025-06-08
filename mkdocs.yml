@@ -4,7 +4,8 @@ nav:
   - about me: index.md
   - cv: cv/cv.md
   - research: research/research.md
-  - short courses & resources:
+  - teaching & short courses: 
+    - ./courses/index.md
     - solving economic models: 
       - courses/sem/index.md
       - 1 Numpy: ./courses/sem/1-numpy.md
