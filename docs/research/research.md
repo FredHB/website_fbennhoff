@@ -1,3 +1,8 @@
+---
+hide: 
+    - toc
+---
+
 # **working papers, projects, publications**
 
 **macroeconomics**<br>
