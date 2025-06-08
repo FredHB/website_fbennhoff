@@ -13,7 +13,7 @@ nav:
       - 4 Optimization: ./courses/sem/4-optimization.md
       - 5 Endogenous Grid Method: ./courses/sem/5-endogenous_grid_method.md
     - bayesian econometrics:
-      - /courses/bmetrics/index.md
+      - ./courses/bmetrics/index.md
       - 1 Bayesian Regression: ./courses/bmetrics/BayReg.md
       - 2 The Unobserved Component Stochastic Volatility Model: ./courses/bmetrics/UCSV.md
       - 3 The Time-Varying Parameter Model: ./courses/bmetrics/TVP-AR.md
