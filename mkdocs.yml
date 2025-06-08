@@ -35,12 +35,19 @@ theme:
   font:
     text: "IBM Plex Serif"
     code: "IBM Plex Mono"
-  # extra:
-  #   social:
-  #     - type: "github"
-  #       link: "https://github.com/FredHB"
-  #     - type: "linkedin"
-  #       link: "https://linkedin.com/in/fbennhoff"
+  extra:
+    meta:
+      - name: description
+        content: "Personal website of Frederik Bennhoff, researcher in macroeconomics and public finance."
+      - name: keywords
+        content: "Frederik Bennhoff, macroeconomics, public finance, capital gains taxation"
+    social:
+      - type: website
+        link: https://fredhb.github.io/
+      - type: "github"
+        link: "https://github.com/FredHB"
+      - type: "linkedin"
+        link: "https://linkedin.com/in/fbennhoff"
 
 plugins: [] # disable search
 

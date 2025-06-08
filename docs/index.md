@@ -1,5 +1,5 @@
 ---
-title: "about me"
+title: "about me | Frederik Bennhoff"
 hide: 
     - toc
 # template: _home.html

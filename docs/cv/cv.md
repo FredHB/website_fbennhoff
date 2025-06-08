@@ -1,5 +1,5 @@
 ---
-title: "cv"
+title: "cv | Frederik Bennhoff"
 hide: 
     - toc
 ---

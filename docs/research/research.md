@@ -1,4 +1,5 @@
 ---
+title: "research | Frederik Bennhoff"
 hide: 
     - toc
 ---

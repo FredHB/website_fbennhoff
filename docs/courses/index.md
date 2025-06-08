@@ -1,4 +1,5 @@
 ---
+title: "teaching | Frederik Bennhoff"
 hide:
   - toc
 ---
